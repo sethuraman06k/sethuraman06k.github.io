@@ -1,0 +1,612 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="description" content="Sethuraman Karunanithi — Process and Quality Engineer in Chicago. Three years on high-volume automated manufacturing lines at Samsung and Delphi TVS. MS Industrial Engineering, University of Illinois Chicago.">
+<meta name="author" content="Sethuraman Karunanithi">
+<meta property="og:title" content="Sethuraman Karunanithi — Process &amp; Quality Engineer">
+<meta property="og:description" content="Root-cause investigations that end in a verified countermeasure. Scrap 6.3% to 0.78%, line efficiency 70% to 87%, OEE above 85%.">
+<meta property="og:type" content="website">
+<title>Sethuraman Karunanithi</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: sticky scroll-spy nav over a measured column; six discipline hues carry meaning — each project wears its discipline's colour and always its name. */
+:root{
+  --ground:#E7ECF2; --bg:#FFFFFF; --surface:#FFFFFF; --tint:#F5F8FB;
+  --fg:#14181F; --muted:#59626F;
+  --accent:#1F3864; --line:#DFE3EA; --rail:#858E9C; --chip:#F1F3F7;
+  --grid:rgba(31,56,100,.055); --shadow:rgba(20,30,50,.10);
+  --before:#B4601F; --after:#2E6FB8;
+  --d-process:#B4601F; --d-quality:#2E6FB8; --d-lean:#5C7A1E;
+  --d-data:#7A5AC4; --d-design:#0F7D5E; --d-solve:#BE3A3A;
+  --sans:"IBM Plex Sans",-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif;
+  --mono:"IBM Plex Mono",ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --ground:#06070A; --bg:#111620; --surface:#111620; --tint:#161C28;
+  --fg:#E8EBF0; --muted:#9AA3B2;
+  --accent:#8FB0EC; --line:#262C37; --rail:#78828F; --chip:#1B2029;
+  --grid:rgba(143,176,236,.065); --shadow:rgba(0,0,0,.55);
+  --before:#C87D36; --after:#5590DE;
+  --d-process:#C87D36; --d-quality:#5590DE; --d-lean:#7F9A34;
+  --d-data:#9579DC; --d-design:#2EA383; --d-solve:#DC6058; color-scheme:dark;}}
+:root[data-theme="dark"]{
+  --ground:#06070A; --bg:#111620; --surface:#111620; --tint:#161C28;
+  --fg:#E8EBF0; --muted:#9AA3B2;
+  --accent:#8FB0EC; --line:#262C37; --rail:#78828F; --chip:#1B2029;
+  --grid:rgba(143,176,236,.065); --shadow:rgba(0,0,0,.55);
+  --before:#C87D36; --after:#5590DE;
+  --d-process:#C87D36; --d-quality:#5590DE; --d-lean:#7F9A34;
+  --d-data:#9579DC; --d-design:#2EA383; --d-solve:#DC6058; color-scheme:dark;}
+
+*{box-sizing:border-box}
+body{background:var(--ground);color:var(--fg);font-family:var(--sans);font-size:16px;
+  line-height:1.6;-webkit-font-smoothing:antialiased;margin:0}
+/* the content sits on a sheet; the ground shows at the sides like a document on a desk */
+.wrap{max-width:1040px;margin:0 auto;background:var(--surface);
+  border-left:1px solid var(--line);border-right:1px solid var(--line);
+  box-shadow:0 1px 34px var(--shadow);
+  padding-left:max(16px,env(safe-area-inset-left,0px));
+  padding-right:max(16px,env(safe-area-inset-right,0px));}
+@media (max-width:1040px){.wrap{box-shadow:none;border-left:none;border-right:none}}
+h1,h2,h3{text-wrap:balance;margin:0;font-weight:600;line-height:1.25}
+p{margin:0}
+a{color:var(--accent)}
+a:focus-visible,button:focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:2px}
+.num{font-variant-numeric:tabular-nums}
+
+/* nav + scroll spy */
+nav{position:sticky;top:env(safe-area-inset-top,0px);z-index:10;
+  background:var(--surface);border-bottom:1px solid var(--line)}
+.navin{max-width:1040px;margin:0 auto;display:flex;flex-wrap:wrap;
+  align-items:center;gap:4px 18px;padding-block:10px;
+  padding-left:max(16px,env(safe-area-inset-left,0px));
+  padding-right:max(16px,env(safe-area-inset-right,0px));}
+.navin a{font-family:var(--mono);font-size:12px;letter-spacing:.07em;
+  text-transform:uppercase;color:var(--muted);text-decoration:none;
+  padding-bottom:2px;border-bottom:2px solid transparent}
+.navin a:hover{color:var(--fg)}
+.navin a.on{color:var(--accent);border-bottom-color:var(--accent)}
+#theme{margin-left:auto;font-family:var(--mono);font-size:11px;letter-spacing:.07em;
+  text-transform:uppercase;color:var(--muted);background:var(--chip);
+  border:1px solid var(--line);border-radius:2px;padding:5px 11px;cursor:pointer}
+#theme:hover{color:var(--fg)}
+
+/* hero — faint drawing-paper grid, the one texture that belongs on an engineer's page */
+.mast{padding-block:46px 34px;border-bottom:1.5px solid var(--fg);position:relative}
+.mast::before{content:"";position:absolute;inset:0;pointer-events:none;
+  background-image:linear-gradient(var(--grid) 1px,transparent 1px),
+                   linear-gradient(90deg,var(--grid) 1px,transparent 1px);
+  background-size:26px 26px;
+  -webkit-mask-image:linear-gradient(180deg,#000 0%,transparent 86%);
+  mask-image:linear-gradient(180deg,#000 0%,transparent 86%)}
+.mast>*{position:relative}
+.mast h1{font-size:clamp(30px,6vw,46px);letter-spacing:-0.015em}
+.role{font-family:var(--mono);font-size:13px;letter-spacing:.09em;
+  text-transform:uppercase;color:var(--accent);margin-top:11px}
+.intro{margin-top:20px;max-width:62ch;color:var(--muted);font-size:17px}
+.chips{display:flex;flex-wrap:wrap;gap:7px;margin-top:22px}
+.chip{font-family:var(--mono);font-size:11.5px;letter-spacing:.04em;color:var(--muted);
+  background:var(--chip);border:1px solid var(--line);border-radius:2px;padding:3px 9px}
+.cta{display:flex;flex-wrap:wrap;gap:10px;margin-top:26px}
+.btn{font-family:var(--mono);font-size:12.5px;letter-spacing:.06em;text-transform:uppercase;
+  text-decoration:none;padding:10px 17px;border-radius:2px;border:1px solid var(--accent);
+  color:var(--accent);background:transparent;display:inline-block}
+.btn.solid{background:var(--accent);color:var(--bg);border-color:var(--accent)}
+.contact{display:flex;flex-wrap:wrap;gap:8px 22px;margin-top:26px;
+  font-family:var(--mono);font-size:13px;color:var(--muted)}
+.contact span,.contact a{white-space:nowrap}
+
+/* sections */
+section{padding-block:40px;border-bottom:1px solid var(--line);scroll-margin-top:60px}
+.grid{display:grid;grid-template-columns:148px minmax(0,1fr);gap:28px}
+@media (max-width:860px){.grid{grid-template-columns:1fr;gap:14px}}
+.label{font-family:var(--mono);font-size:11px;letter-spacing:.14em;
+  text-transform:uppercase;color:var(--rail);padding-top:4px}
+.body{min-width:0}
+.h2{font-size:19px;font-weight:600;margin:0}
+ul{margin:14px 0 0;padding-left:19px}
+li{margin-bottom:7px;max-width:70ch}
+li::marker{color:var(--rail)}
+li:last-child{margin-bottom:0}
+b{font-weight:600}
+.about li{margin-bottom:9px}
+
+/* charts */
+.legend{display:flex;gap:18px;margin:16px 0 20px;font-family:var(--mono);
+  font-size:11.5px;letter-spacing:.05em;color:var(--muted)}
+.key{display:flex;align-items:center;gap:7px}
+.sw{width:13px;height:9px;border-radius:2px;display:inline-block;flex:none}
+.panels{display:grid;grid-template-columns:repeat(auto-fit,minmax(255px,1fr));gap:26px}
+.panel{min-width:0}
+.panel h4{margin:0;font-size:14.5px;font-weight:600}
+.panel .hint{font-family:var(--mono);font-size:10.5px;letter-spacing:.07em;
+  text-transform:uppercase;color:var(--rail);margin-top:3px}
+.bars{margin-top:13px;display:grid;gap:8px}
+.bar{display:grid;grid-template-columns:50px minmax(0,1fr);gap:9px;align-items:center}
+.bar .bl{font-family:var(--mono);font-size:10.5px;letter-spacing:.06em;
+  text-transform:uppercase;color:var(--rail)}
+.track{display:flex;align-items:center;gap:8px;min-width:0}
+.fill{height:15px;border-radius:0 4px 4px 0;flex:none;
+  transition:width .9s cubic-bezier(.2,.7,.3,1),filter .15s}
+.bar:hover .fill{filter:brightness(1.12)}
+.bv{font-family:var(--mono);font-size:12.5px;font-variant-numeric:tabular-nums;
+  color:var(--fg);white-space:nowrap}
+.meter{margin-top:30px;max-width:520px}
+.meter h4{margin:0;font-size:14.5px;font-weight:600}
+.mtrack{margin-top:11px;height:15px;background:var(--chip);border:1px solid var(--line);
+  border-radius:3px;overflow:hidden}
+.mfill{height:100%;background:var(--after);border-radius:0 3px 3px 0;
+  transition:width .9s cubic-bezier(.2,.7,.3,1)}
+.mcap{display:flex;justify-content:space-between;gap:12px;margin-top:7px;
+  font-family:var(--mono);font-size:11.5px;color:var(--muted);font-variant-numeric:tabular-nums}
+.ledger{display:grid;grid-template-columns:repeat(auto-fit,minmax(205px,1fr));
+  gap:0 28px;margin-top:34px;border-top:1px solid var(--line)}
+.metric{padding-block:12px;border-bottom:1px solid var(--line);min-width:0}
+.metric .v{font-family:var(--mono);font-size:18px;font-variant-numeric:tabular-nums}
+.metric .k{font-size:13.5px;color:var(--muted);margin-top:2px}
+
+/* roles */
+.role-block{padding-block:22px;border-bottom:1px solid var(--line)}
+.role-block:first-child{padding-top:0}
+.role-block:last-child{border-bottom:none;padding-bottom:0}
+.rhead{display:flex;flex-wrap:wrap;justify-content:space-between;gap:4px 18px;align-items:baseline}
+.rhead h3{font-size:18px}
+.when{font-family:var(--mono);font-size:12.5px;color:var(--muted);
+  font-variant-numeric:tabular-nums;white-space:nowrap}
+.rtitle{color:var(--accent);font-size:15px;font-style:italic;margin-top:3px}
+.rmeta{font-family:var(--mono);font-size:12px;color:var(--rail);margin-top:6px;letter-spacing:.03em}
+.tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:13px}
+.tag{font-family:var(--mono);font-size:11px;letter-spacing:.05em;color:var(--muted);
+  border:1px solid var(--line);border-radius:2px;padding:2px 7px;background:var(--surface)}
+
+/* filter */
+.filters{display:flex;flex-wrap:wrap;gap:8px;margin:16px 0 4px}
+.fb{font-family:var(--mono);font-size:11.5px;letter-spacing:.05em;cursor:pointer;
+  background:var(--surface);border:1px solid var(--line);border-radius:2px;
+  padding:5px 11px;color:var(--muted);display:flex;align-items:center;gap:7px}
+.fb:hover{color:var(--fg)}
+.fb[aria-pressed="true"]{color:var(--fg);border-color:currentColor;background:var(--chip)}
+.fdot{width:9px;height:9px;border-radius:50%;flex:none}
+.count{font-family:var(--mono);font-size:11.5px;color:var(--rail);margin-top:12px}
+
+/* cases — left rule carries the discipline hue */
+.case{padding:20px 20px 20px 19px;border-left:3px solid var(--dc,var(--line));
+  border-top:1px solid var(--line);border-right:1px solid var(--line);
+  border-bottom:1px solid var(--line);margin-top:18px;background:var(--tint)}
+.case h3{font-size:18px}
+.disc{font-family:var(--mono);font-size:10.5px;letter-spacing:.11em;text-transform:uppercase;
+  color:var(--dc);margin-bottom:5px;display:flex;align-items:center;gap:7px}
+.steps{margin-top:16px;display:grid;gap:12px}
+.step{display:grid;grid-template-columns:92px minmax(0,1fr);gap:16px;align-items:baseline}
+@media (max-width:560px){.step{grid-template-columns:1fr;gap:2px}}
+.step .s{font-family:var(--mono);font-size:11px;letter-spacing:.11em;
+  text-transform:uppercase;color:var(--rail)}
+.step .t{max-width:66ch}
+
+/* skills — dot ties each group to its discipline hue */
+.skillrow{display:grid;grid-template-columns:200px minmax(0,1fr);gap:20px;
+  padding-block:12px;border-bottom:1px solid var(--line)}
+.skillrow:last-child{border-bottom:none}
+@media (max-width:640px){.skillrow{grid-template-columns:1fr;gap:5px}}
+.skillrow .cat{font-weight:600;font-size:14.5px;display:flex;align-items:center;gap:9px}
+.skillrow .items{color:var(--muted);font-size:14.5px}
+.sdot{width:9px;height:9px;border-radius:50%;flex:none;background:var(--dc)}
+
+.sheet{margin-top:26px;border:1px solid var(--line);background:#FFFFFF;
+  box-shadow:0 1px 18px var(--shadow);max-width:720px}
+.sheet img{display:block;width:100%;height:auto;max-width:100%}
+
+.edu{padding-block:16px;border-bottom:1px solid var(--line)}
+.edu:first-child{padding-top:0}
+.edu:last-child{border-bottom:none;padding-bottom:0}
+.course{font-size:14px;color:var(--muted);margin-top:8px;max-width:70ch}
+.course .cl{font-family:var(--mono);font-size:11px;letter-spacing:.11em;
+  text-transform:uppercase;color:var(--rail);display:block;margin-bottom:3px}
+
+footer{padding-block:34px 56px;color:var(--muted);font-size:14px}
+footer .f{font-family:var(--mono);font-size:12px;color:var(--rail);letter-spacing:.05em;margin-top:10px}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
+</style>
+
+<style>
+:root{color-scheme:light}
+html,body{margin:0}
+img{max-width:100%}
+[hidden]{display:none!important}
+</style>
+</head>
+<body>
+<nav><div class="navin">
+  <a href="#about">About</a><a href="#results">Results</a><a href="#experience">Experience</a>
+  <a href="#cases">Projects</a><a href="#skills">Skills</a><a href="#education">Education</a>
+  <a href="#certs">Certification</a><a href="#contact">Contact</a>
+  <button id="theme" type="button" aria-label="Switch colour theme">Theme</button>
+</div></nav>
+
+<div class="wrap">
+
+  <header class="mast">
+    <h1>Sethuraman Karunanithi</h1>
+    <div class="role">Process &amp; Quality Engineer</div>
+    <p class="intro">Three years on high-volume automated manufacturing lines at Samsung and Delphi TVS.
+      I develop and qualify processes, and I run root-cause investigations that end in a verified
+      countermeasure on the machine — not a report. MS Industrial Engineering, University of Illinois Chicago.</p>
+    <div class="chips">
+      <span class="chip">Process Engineering</span><span class="chip">Root Cause Analysis</span>
+      <span class="chip">SPC &amp; Cp/Cpk</span><span class="chip">Lean Six Sigma Green Belt</span>
+      <span class="chip">Equipment Qualification</span><span class="chip">Power BI</span>
+    </div>
+    <div class="cta">
+      <a class="btn solid" href="#cases">View projects</a>
+      <button class="btn" type="button" id="rbtn" aria-expanded="false" aria-controls="rsheet">Resume</button>
+      <a class="btn" href="Sethuraman_Karunanithi_Resume.pdf" download="Sethuraman_Karunanithi_Resume.pdf">Download PDF</a>
+    </div>
+    <div class="contact">
+      <span>Chicago, IL</span><span class="num">(312) 296-9015</span>
+      <span>sethuraman06k@gmail.com</span>
+      <a href="https://www.linkedin.com/in/sethuramankarunanithi/">linkedin.com/in/sethuramankarunanithi</a>
+    </div>
+    <div class="sheet" id="rsheet" hidden><img src="resume.png" width="1360" height="1760"
+      alt="One-page resume for Sethuraman Karunanithi: Process and Quality Engineer, Chicago. Experience at One Community Global, Samsung India Electronics and Delphi TVS Technologies; MS Industrial Engineering at the University of Illinois Chicago; projects and technical skills."></div>
+  </header>
+
+  <section id="about"><div class="grid">
+    <div class="label">About</div>
+    <div class="body">
+      <h2 class="h2">What I bring to a process engineering role</h2>
+      <ul class="about">
+        <li><b>Ownership of a running line.</b> Two high-volume automated lines at Samsung — process, quality and equipment, against daily targets for safety, quality, output and cost.</li>
+        <li><b>Root cause through to countermeasure.</b> 8D, DMAIC, 5 Why, Fishbone and Pareto, closed as verified CAPA. The fix is error-proofing on the machine, not an extra inspection downstream.</li>
+        <li><b>Statistics used, not quoted.</b> SPC, Cp/Cpk, Gage R&amp;R, MSA and DOE to qualify processes and prove capability — with OEE, yield and scrap tracked in Power BI and Minitab.</li>
+        <li><b>Equipment from specification to sign-off.</b> Specs and RFQs, design review, installation, commissioning and acceptance testing for robotics and AGV.</li>
+        <li><b>Documentation that holds up.</b> PFMEA, control plans and inspection criteria across 40+ operations, plus the SOPs and standard work, and 60+ operators trained to them.</li>
+        <li><b>Cost delivered.</b> $57K against a $112K annual reduction target, from scrap, cycle time and layout rather than headcount.</li>
+      </ul>
+    </div>
+  </div></section>
+
+  <section id="results"><div class="grid">
+    <div class="label">Results</div>
+    <div class="body">
+      <h2 class="h2">Before and after, at Samsung</h2>
+      <div class="legend">
+        <span class="key"><span class="sw" style="background:var(--before)"></span>Before</span>
+        <span class="key"><span class="sw" style="background:var(--after)"></span>After</span>
+      </div>
+      <div class="panels">
+        <div class="panel">
+          <h4>Scrap rate</h4>
+          <div class="hint">Percent of parts · lower is better</div>
+          <div class="bars">
+            <div class="bar"><span class="bl">Before</span><span class="track"><span class="fill" data-w="168" style="background:var(--before)"></span><span class="bv">6.3%</span></span></div>
+            <div class="bar"><span class="bl">After</span><span class="track"><span class="fill" data-w="21" style="background:var(--after)"></span><span class="bv">0.78%</span></span></div>
+          </div>
+        </div>
+        <div class="panel">
+          <h4>Line efficiency</h4>
+          <div class="hint">Percent · higher is better</div>
+          <div class="bars">
+            <div class="bar"><span class="bl">Before</span><span class="track"><span class="fill" data-w="135" style="background:var(--before)"></span><span class="bv">70%</span></span></div>
+            <div class="bar"><span class="bl">After</span><span class="track"><span class="fill" data-w="168" style="background:var(--after)"></span><span class="bv">87%</span></span></div>
+          </div>
+        </div>
+        <div class="panel">
+          <h4>Takt time</h4>
+          <div class="hint">Seconds per part · lower is better</div>
+          <div class="bars">
+            <div class="bar"><span class="bl">Before</span><span class="track"><span class="fill" data-w="168" style="background:var(--before)"></span><span class="bv">14.8s</span></span></div>
+            <div class="bar"><span class="bl">After</span><span class="track"><span class="fill" data-w="51" style="background:var(--after)"></span><span class="bv">4.5s</span></span></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="meter">
+        <h4>Cost reduction delivered</h4>
+        <div class="mtrack"><div class="mfill" id="mfill" style="width:50.9%"></div></div>
+        <div class="mcap"><span>$57K delivered</span><span>$112K annual target</span></div>
+      </div>
+
+      <div class="ledger">
+        <div class="metric"><div class="v">&gt; <span class="cu" data-to="85" data-suf="%">85%</span></div><div class="k">OEE held across two lines</div></div>
+        <div class="metric"><div class="v"><span class="cu" data-to="40" data-suf="+">40+</span></div><div class="k">Operations documented</div></div>
+        <div class="metric"><div class="v"><span class="cu" data-to="60" data-suf="+">60+</span></div><div class="k">Operators trained</div></div>
+        <div class="metric"><div class="v"><span class="cu" data-to="24">24</span></div><div class="k">Technicians led on a task force</div></div>
+        <div class="metric"><div class="v"><span class="cu" data-to="6">6</span></div><div class="k">Suppliers qualified</div></div>
+        <div class="metric"><div class="v"><span class="cu" data-to="9">9</span></div><div class="k">Stations in the capability study</div></div>
+      </div>
+    </div>
+  </div></section>
+
+  <section id="experience"><div class="grid">
+    <div class="label">Experience</div>
+    <div class="body">
+
+      <div class="role-block">
+        <div class="rhead"><h3>One Community Global</h3><span class="when">Sep 2026 — Present</span></div>
+        <div class="rtitle">Industrial Engineer (Volunteer)</div>
+        <div class="rmeta">Remote · 22 hrs/week · Highest Good Network, open-source platform</div>
+        <ul>
+          <li>Rebuilding the outdated Highest Good Network user manual across <b>seven user roles</b>, starting with the volunteer role.</li>
+          <li>Writing SOP-style procedures structured so both a new user and an AI chatbot can follow them step by step — documentation built for retrieval, not only for reading.</li>
+          <li>Testing every page of the application and correcting the draft wherever documented steps did not match what the software actually does.</li>
+          <li>Keeping process documentation consistent across modules, with one current version of every procedure.</li>
+        </ul>
+        <div class="tags"><span class="tag">SOP Writing</span><span class="tag">Process Documentation</span><span class="tag">Software Testing</span><span class="tag">Version Control</span></div>
+      </div>
+
+      <div class="role-block">
+        <div class="rhead"><h3>Samsung India Electronics Pvt. Ltd.</h3><span class="when">Oct 2022 — Jun 2024</span></div>
+        <div class="rtitle">Associate Engineer — Process Engineering</div>
+        <div class="rmeta">Chennai, India · Two high-volume automated lines · Process, quality and equipment ownership</div>
+        <ul>
+          <li>Improved manufacturing processes against safety, quality, productivity and cost, raising <b>line efficiency from 70% to 87%</b>.</li>
+          <li>Cut <b>scrap from 6.3% to 0.78%</b> and held <b>OEE above 85%</b>, saving <b>$57K</b> against a <b>$112K</b> annual cost-reduction target.</li>
+          <li>Found the root cause of field failures using 8D, DMAIC, 5 Why, Fishbone and Pareto, closing each as a verified CAPA.</li>
+          <li>Ran process validation, equipment qualification and process capability studies — SPC, Cp/Cpk, Gage R&amp;R, MSA, DOE.</li>
+          <li>Wrote the part quality standards for <b>40+ operations</b>: PFMEA, control plans and inspection criteria.</li>
+          <li>Wrote SOPs, work instructions and standard work for those operations and trained <b>60+ operators</b> to use them.</li>
+          <li>Brought in capital equipment for robotics and AGV: specifications, RFQs, design review, installation and acceptance testing.</li>
+          <li>Ran engineering changes through 4M change control, from the first request through verifying the change was actually in place.</li>
+          <li>Led Lean and continuous improvement — value stream mapping, SMED, 5S, TPM and Kaizen — as <b>plant 5S coordinator</b>.</li>
+          <li>Ran time studies to set routings and rebalance <b>takt from 14.8s to 4.5s</b>; redesigned floor layout and material flow.</li>
+          <li>Managed supplier quality, qualifying <b>6 suppliers</b> through site visits, audits and process trials.</li>
+          <li>Tracked OEE, yield, scrap and capability in Power BI and Excel, led a <b>24-technician task force</b>, and supported NPI trials.</li>
+        </ul>
+        <div class="tags"><span class="tag">SPC</span><span class="tag">Cp/Cpk</span><span class="tag">8D</span><span class="tag">DMAIC</span><span class="tag">PFMEA</span><span class="tag">DOE</span><span class="tag">SMED</span><span class="tag">5S</span><span class="tag">TPM</span><span class="tag">OEE</span><span class="tag">Power BI</span><span class="tag">SAP</span><span class="tag">Robotics &amp; AGV</span></div>
+      </div>
+
+      <div class="role-block">
+        <div class="rhead"><h3>Delphi TVS Technologies Ltd.</h3><span class="when">Jun 2021 — Sep 2022</span></div>
+        <div class="rtitle">Graduate Engineer Trainee — Quality Engineering</div>
+        <div class="rmeta">Chennai, India · Fuel pumps and injectors · Incoming quality</div>
+        <ul>
+          <li>Verified incoming fuel pump and injector components against drawing specification using CMM, precision dimensional measurement and GD&amp;T.</li>
+          <li>Reviewed non-conforming material, decided disposition through technical review, and closed each case out with the supplier.</li>
+        </ul>
+        <div class="tags"><span class="tag">CMM</span><span class="tag">GD&amp;T</span><span class="tag">Metrology</span><span class="tag">Non-Conforming Material</span><span class="tag">Supplier Quality</span></div>
+      </div>
+
+    </div>
+  </div></section>
+
+  <section id="cases"><div class="grid">
+    <div class="label">Projects</div>
+    <div class="body">
+      <h2 class="h2">Six projects, by discipline</h2>
+      <div class="filters" id="filters">
+        <button class="fb" type="button" data-f="all" aria-pressed="true">All six</button>
+        <button class="fb" type="button" data-f="solve" aria-pressed="false"><span class="fdot" style="background:var(--d-solve)"></span>Problem Solving</button>
+        <button class="fb" type="button" data-f="quality" aria-pressed="false"><span class="fdot" style="background:var(--d-quality)"></span>Quality &amp; Statistics</button>
+        <button class="fb" type="button" data-f="design" aria-pressed="false"><span class="fdot" style="background:var(--d-design)"></span>Design &amp; Metrology</button>
+        <button class="fb" type="button" data-f="process" aria-pressed="false"><span class="fdot" style="background:var(--d-process)"></span>Process &amp; Equipment</button>
+        <button class="fb" type="button" data-f="lean" aria-pressed="false"><span class="fdot" style="background:var(--d-lean)"></span>Lean &amp; Improvement</button>
+        <button class="fb" type="button" data-f="data" aria-pressed="false"><span class="fdot" style="background:var(--d-data)"></span>Data &amp; Modelling</button>
+      </div>
+      <p class="count" id="count">Showing all six projects.</p>
+
+      <div id="cases-list">
+
+        <div class="case" data-d="solve quality" style="--dc:var(--d-solve)">
+          <div class="disc"><span class="fdot" style="background:var(--d-solve)"></span>Problem Solving</div>
+          <h3>Field failure traced to one drilling station</h3>
+          <div class="tags"><span class="tag">8D</span><span class="tag">Cp/Cpk</span><span class="tag">Gemba</span><span class="tag">Poka-Yoke</span><span class="tag">CAPA</span><span class="tag">Samsung</span></div>
+          <div class="steps">
+            <div class="step"><div class="s">Problem</div><div class="t">A compressor came back from the customer with metal burrs inside it — a field failure on finished product already with the customer.</div></div>
+            <div class="step"><div class="s">Difficulty</div><div class="t">Any of <b>nine stations</b> on the line could have produced the burrs, and nothing in the process data pointed at one of them.</div></div>
+            <div class="step"><div class="s">Method</div><div class="t">Teardown failure analysis on the returned unit, then a process capability (Cpk) study across all nine stations to find which was drifting, then a <b>one-week Gemba study</b> standing at the shortlisted machines. The source was a single drilling step.</div></div>
+            <div class="step"><div class="s">Countermeasure</div><div class="t">Built an in-machine poka-yoke air purge so a part physically cannot leave the station with burrs present — error-proofing at source rather than added inspection downstream.</div></div>
+            <div class="step"><div class="s">Result</div><div class="t">Closed as a verified CAPA, then rolled out to the other stations running the same operation.</div></div>
+          </div>
+        </div>
+
+        <div class="case" data-d="design process quality" style="--dc:var(--d-design)">
+          <div class="disc"><span class="fdot" style="background:var(--d-design)"></span>Design &amp; Metrology</div>
+          <h3>Leak-test sealing cap, designed in-house</h3>
+          <div class="tags"><span class="tag">SolidWorks</span><span class="tag">GD&amp;T</span><span class="tag">Process Validation</span><span class="tag">Samsung</span></div>
+          <div class="steps">
+            <div class="step"><div class="s">Problem</div><div class="t">Imported leak-test couplers were damaging the shell pipes during the test and generating false rejects — good product being scrapped by the test itself.</div></div>
+            <div class="step"><div class="s">Method</div><div class="t">Designed a replacement sealing cap in SolidWorks, dimensioned to GD&amp;T, to seal without marking the part.</div></div>
+            <div class="step"><div class="s">Validation</div><div class="t">Proved the design over a one-month pilot run on the line before release.</div></div>
+            <div class="step"><div class="s">Result</div><div class="t">Released into production as the standard tool, replacing the imported couplers.</div></div>
+          </div>
+        </div>
+
+        <div class="case" data-d="process data" style="--dc:var(--d-process)">
+          <div class="disc"><span class="fdot" style="background:var(--d-process)"></span>Process &amp; Equipment</div>
+          <h3>Capital justification — N<sub>2</sub> purge &amp; capping automation</h3>
+          <div class="tags"><span class="tag">Feasibility Study</span><span class="tag">Cost-Benefit</span><span class="tag">Capital Proposal</span><span class="tag">Samsung</span></div>
+          <div class="steps">
+            <div class="step"><div class="s">Problem</div><div class="t">Nitrogen purge and capping were run manually across <b>two finishing lines</b> — a candidate for automation, but one that needed a business case before anyone would fund it.</div></div>
+            <div class="step"><div class="s">Method</div><div class="t">Assessed the manufacturing feasibility of automating both operations across the two lines: what the equipment would have to do, where it would sit, and what it would displace.</div></div>
+            <div class="step"><div class="s">Result</div><div class="t">Authored the cost-benefit proposal and presented it to <b>Korean HQ</b> — the capital decision-makers, not the local plant.</div></div>
+          </div>
+        </div>
+
+        <div class="case" data-d="lean process" style="--dc:var(--d-lean)">
+          <div class="disc"><span class="fdot" style="background:var(--d-lean)"></span>Lean &amp; Improvement</div>
+          <h3>Floor layout &amp; material flow redesign</h3>
+          <div class="tags"><span class="tag">AutoCAD</span><span class="tag">AGV Routing</span><span class="tag">Line-Side Delivery</span><span class="tag">Material Flow</span><span class="tag">Samsung</span></div>
+          <div class="steps">
+            <div class="step"><div class="s">Problem</div><div class="t">Material moved from the warehouse to the point of use through intermediate staging, with operators walking to fetch it — motion and inventory, two of the seven wastes, built into the layout.</div></div>
+            <div class="step"><div class="s">Method</div><div class="t">Redesigned the floor layout and conveyance routes in AutoCAD so AGVs deliver directly to line side instead of to a staging area.</div></div>
+            <div class="step"><div class="s">Result</div><div class="t">Cut both the walking and the intermediate staging between the warehouse and the point of use.</div></div>
+          </div>
+        </div>
+
+        <div class="case" data-d="lean process" style="--dc:var(--d-lean)">
+          <div class="disc"><span class="fdot" style="background:var(--d-lean)"></span>Lean &amp; Improvement</div>
+          <h3>Line ergonomics &amp; workstation improvement</h3>
+          <div class="tags"><span class="tag">REBA</span><span class="tag">Ergonomics</span><span class="tag">Time Study</span><span class="tag">Noise Survey</span><span class="tag">Samsung</span></div>
+          <div class="steps">
+            <div class="step"><div class="s">Problem</div><div class="t">Operators at high-frequency stations were carrying avoidable physical load, and plant noise had never been mapped against the layout.</div></div>
+            <div class="step"><div class="s">Method</div><div class="t">Scored the workstations with <b>REBA</b>, then specified screw-gun balancers and stator lifters at the stations carrying the most load. Separately surveyed noise plant-wide and matched it to the layout.</div></div>
+            <div class="step"><div class="s">Result</div><div class="t">REBA scores improved at the treated stations, and enclosures were specified at the highest-dB areas — approved and installed.</div></div>
+          </div>
+        </div>
+
+        <div class="case" data-d="data lean" style="--dc:var(--d-data)">
+          <div class="disc"><span class="fdot" style="background:var(--d-data)"></span>Data &amp; Modelling</div>
+          <h3>Hospital capacity &amp; staffing optimization model</h3>
+          <div class="tags"><span class="tag">Operations Research</span><span class="tag">Linear Programming</span><span class="tag">Excel Solver</span><span class="tag">Capacity Planning</span><span class="tag">UIC</span></div>
+          <div class="steps">
+            <div class="step"><div class="s">Problem</div><div class="t">Allocate a fixed pool of rooms and staff across competing service lines when demand varies — the classic capacity problem, set in a hospital rather than a plant.</div></div>
+            <div class="step"><div class="s">Method</div><div class="t">Formulated a linear programming model in <b>Excel Solver</b> allocating <b>40 rooms and 120 staff</b> across <b>four service lines</b>, under capacity and demand constraints, to maximize monthly throughput.</div></div>
+            <div class="step"><div class="s">Result</div><div class="t">Produced an allocation that raised throughput and cut projected overtime cost against the baseline roster.</div></div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div></section>
+
+  <section id="skills"><div class="grid">
+    <div class="label">Skills &amp; tools</div>
+    <div class="body">
+      <div class="skillrow" style="--dc:var(--d-process)"><div class="cat"><span class="sdot"></span>Process &amp; Equipment</div><div class="items">Process Development &amp; Optimization · Process Validation · Equipment Qualification · Commissioning · Acceptance Testing · NPI · Ramp-Up</div></div>
+      <div class="skillrow" style="--dc:var(--d-lean)"><div class="cat"><span class="sdot"></span>Lean &amp; Improvement</div><div class="items">Lean Manufacturing · Lean Six Sigma Green Belt · Kaizen · 5S · SMED · TPM · Value Stream Mapping · Standard Work · Time Studies · Line Balancing</div></div>
+      <div class="skillrow" style="--dc:var(--d-quality)"><div class="cat"><span class="sdot"></span>Quality &amp; Statistics</div><div class="items">SPC · Cp/Cpk · Process Capability · Gage R&amp;R · MSA · DOE · PFMEA · Control Plans · CAPA · Non-Conforming Material</div></div>
+      <div class="skillrow" style="--dc:var(--d-solve)"><div class="cat"><span class="sdot"></span>Problem Solving</div><div class="items">Root Cause Analysis · 8D · DMAIC · 5 Why · Fishbone / Ishikawa · Pareto · Failure Analysis · Poka-Yoke · Countermeasures</div></div>
+      <div class="skillrow" style="--dc:var(--d-design)"><div class="cat"><span class="sdot"></span>Design &amp; Metrology</div><div class="items">SolidWorks · AutoCAD · GD&amp;T · CMM · Fixture Design · DFM · Layout &amp; Material Flow · Ergonomics (REBA)</div></div>
+      <div class="skillrow" style="--dc:var(--d-data)"><div class="cat"><span class="sdot"></span>Data &amp; Systems</div><div class="items">SAP (ERP) · Power BI · Advanced Excel · Minitab · SQL · Python · MS Project · Data Analysis</div></div>
+    </div>
+  </div></section>
+
+  <section id="education"><div class="grid">
+    <div class="label">Education</div>
+    <div class="body">
+      <div class="edu">
+        <div class="rhead"><h3>University of Illinois Chicago</h3><span class="when">Aug 2024 — May 2026</span></div>
+        <div class="rtitle">Master of Science, Industrial Engineering — GPA 3.9 / 4.0</div>
+        <p class="course"><span class="cl">Coursework</span>Statistical Quality Control · Operations Research I &amp; II · Work Measurement &amp; Methods · Supply Chain Management</p>
+      </div>
+      <div class="edu">
+        <div class="rhead"><h3>Rajalakshmi Engineering College</h3><span class="when">Aug 2017 — May 2021</span></div>
+        <div class="rtitle">Bachelor of Engineering, Mechanical Engineering — GPA 3.6 / 4.0</div>
+        <p class="course"><span class="cl">Coursework</span>Total Quality Management · Production Planning &amp; Control · Process Planning &amp; Cost Estimation · CAD/CAM · Metrology</p>
+      </div>
+    </div>
+  </div></section>
+
+  <section id="certs"><div class="grid">
+    <div class="label">Certification</div>
+    <div class="body">
+      <div class="edu">
+        <div class="rhead"><h3>Lean Six Sigma Green Belt</h3><span class="when">May 2025</span></div>
+        <div class="rtitle">University of Illinois Chicago — UIC Business</div>
+        <p class="course"><span class="cl">Applied in practice</span>DMAIC · SPC and process capability · Cp/Cpk · Gage R&amp;R · MSA · DOE · value stream mapping · poka-yoke — used daily on the lines at Samsung rather than studied in isolation.</p>
+      </div>
+    </div>
+  </div></section>
+
+  <footer id="contact"><div class="grid">
+    <div class="label">Contact</div>
+    <div class="body">
+      <p>Open to process, manufacturing and quality engineering roles, in Chicago or relocating.
+        Reach me at <b>sethuraman06k@gmail.com</b> or <b class="num">(312) 296-9015</b>.</p>
+      <p class="f">Chicago, IL · linkedin.com/in/sethuramankarunanithi</p>
+    </div>
+  </div></footer>
+
+</div>
+
+<script>
+(function(){
+  var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  /* theme toggle — remembers the choice per browser, works without storage */
+  var root = document.documentElement, btn = document.getElementById('theme');
+  try { var saved = localStorage.getItem('sk-theme'); if (saved) root.setAttribute('data-theme', saved); } catch(e){}
+  function current(){
+    var a = root.getAttribute('data-theme');
+    if (a) return a;
+    return (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) ? 'dark' : 'light';
+  }
+  btn.addEventListener('click', function(){
+    var next = current() === 'dark' ? 'light' : 'dark';
+    root.setAttribute('data-theme', next);
+    try { localStorage.setItem('sk-theme', next); } catch(e){}
+  });
+
+  /* project filter */
+  var cases = Array.prototype.slice.call(document.querySelectorAll('#cases-list .case'));
+  var buttons = Array.prototype.slice.call(document.querySelectorAll('#filters .fb'));
+  var count = document.getElementById('count');
+  var words = ['zero','one','two','three','four','five','six'];
+  buttons.forEach(function(b){
+    b.addEventListener('click', function(){
+      var f = b.getAttribute('data-f');
+      buttons.forEach(function(o){ o.setAttribute('aria-pressed', String(o === b)); });
+      var shown = 0;
+      cases.forEach(function(c){
+        var match = (f === 'all') || (' ' + c.getAttribute('data-d') + ' ').indexOf(' ' + f + ' ') > -1;
+        c.hidden = !match;
+        if (match) shown++;
+      });
+      count.textContent = (f === 'all')
+        ? 'Showing all six projects.'
+        : 'Showing ' + words[shown] + ' of six projects — ' + b.textContent.trim() + '.';
+    });
+  });
+
+  /* resume opens on a button rather than sitting open */
+  /* one button at the top opens the resume in place */
+  var rbtn = document.getElementById('rbtn'), rsheet = document.getElementById('rsheet');
+  if (rbtn && rsheet){
+    rbtn.addEventListener('click', function(){
+      var open = rsheet.hidden;
+      rsheet.hidden = !open;
+      rbtn.setAttribute('aria-expanded', String(open));
+      rbtn.textContent = open ? 'Hide resume' : 'Resume';
+    });
+  }
+
+  /* scroll spy */
+  var links = Array.prototype.slice.call(document.querySelectorAll('.navin a'));
+  var map = {};
+  links.forEach(function(a){ map[a.getAttribute('href').slice(1)] = a; });
+  var targets = Object.keys(map).map(function(id){ return document.getElementById(id); }).filter(Boolean);
+  if (window.IntersectionObserver && targets.length){
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(en){
+        if (en.isIntersecting){
+          links.forEach(function(a){ a.classList.remove('on'); });
+          var a = map[en.target.id]; if (a) a.classList.add('on');
+        }
+      });
+    }, { rootMargin: '-56px 0px -72% 0px', threshold: 0 });
+    targets.forEach(function(t){ io.observe(t); });
+  }
+
+  /* bars grow from zero, numbers count up — real values already in the HTML */
+  var fills = Array.prototype.slice.call(document.querySelectorAll('.fill'));
+  fills.forEach(function(f){ f.style.width = (reduce ? f.getAttribute('data-w') : '0') + 'px'; });
+  var mf = document.getElementById('mfill');
+  var mTarget = mf.style.width;
+  if (!reduce) mf.style.width = '0%';
+
+  function run(){
+    fills.forEach(function(f){ f.style.width = f.getAttribute('data-w') + 'px'; });
+    mf.style.width = mTarget;
+    document.querySelectorAll('.cu').forEach(function(el){
+      var to = parseFloat(el.getAttribute('data-to'));
+      var suf = el.getAttribute('data-suf') || '';
+      var t0 = null, dur = 750;
+      function step(ts){
+        if (t0 === null) t0 = ts;
+        var p = Math.min(1, (ts - t0) / dur);
+        var e = 1 - Math.pow(1 - p, 3);
+        el.textContent = Math.round(to * e) + suf;
+        if (p < 1) requestAnimationFrame(step);
+      }
+      el.textContent = '0' + suf;
+      requestAnimationFrame(step);
+    });
+  }
+  if (!reduce) requestAnimationFrame(function(){ setTimeout(run, 90); });
+})();
+</script>
+
+</body>
+</html>
