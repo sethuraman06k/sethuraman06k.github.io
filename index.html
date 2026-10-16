@@ -338,7 +338,7 @@ img{max-width:100%}
 
       <div class="role-block">
         <div class="rhead"><h3>Samsung India Electronics Pvt. Ltd.</h3><span class="when">Oct 2022 — Jun 2024</span></div>
-        <div class="rtitle">Associate Engineer — Process Engineering</div>
+        <div class="rtitle">Associate – Industrial / Process Control Engineer</div>
         <div class="rmeta">Chennai, India · Two high-volume automated lines · Process, quality and equipment ownership</div>
         <ul>
           <li>Improved manufacturing processes against safety, quality, productivity and cost, raising <b>line efficiency from 70% to 87%</b>.</li>
@@ -374,9 +374,9 @@ img{max-width:100%}
   <section id="cases"><div class="grid">
     <div class="label">Projects</div>
     <div class="body">
-      <h2 class="h2">Six projects, by discipline</h2>
+      <h2 class="h2">Nine projects, by discipline</h2>
       <div class="filters" id="filters">
-        <button class="fb" type="button" data-f="all" aria-pressed="true">All six</button>
+        <button class="fb" type="button" data-f="all" aria-pressed="true">All nine</button>
         <button class="fb" type="button" data-f="solve" aria-pressed="false"><span class="fdot" style="background:var(--d-solve)"></span>Problem Solving</button>
         <button class="fb" type="button" data-f="quality" aria-pressed="false"><span class="fdot" style="background:var(--d-quality)"></span>Quality &amp; Statistics</button>
         <button class="fb" type="button" data-f="design" aria-pressed="false"><span class="fdot" style="background:var(--d-design)"></span>Design &amp; Metrology</button>
@@ -384,7 +384,7 @@ img{max-width:100%}
         <button class="fb" type="button" data-f="lean" aria-pressed="false"><span class="fdot" style="background:var(--d-lean)"></span>Lean &amp; Improvement</button>
         <button class="fb" type="button" data-f="data" aria-pressed="false"><span class="fdot" style="background:var(--d-data)"></span>Data &amp; Modelling</button>
       </div>
-      <p class="count" id="count">Showing all six projects.</p>
+      <p class="count" id="count">Showing all nine projects.</p>
 
       <div id="cases-list">
 
@@ -394,10 +394,10 @@ img{max-width:100%}
           <div class="tags"><span class="tag">8D</span><span class="tag">Cp/Cpk</span><span class="tag">Gemba</span><span class="tag">Poka-Yoke</span><span class="tag">CAPA</span><span class="tag">Samsung</span></div>
           <div class="steps">
             <div class="step"><div class="s">Problem</div><div class="t">A compressor came back from the customer with metal burrs inside it — a field failure on finished product already with the customer.</div></div>
-            <div class="step"><div class="s">Difficulty</div><div class="t">Any of <b>nine stations</b> on the line could have produced the burrs, and nothing in the process data pointed at one of them.</div></div>
-            <div class="step"><div class="s">Method</div><div class="t">Teardown failure analysis on the returned unit, then a process capability (Cpk) study across all nine stations to find which was drifting, then a <b>one-week Gemba study</b> standing at the shortlisted machines. The source was a single drilling step.</div></div>
-            <div class="step"><div class="s">Countermeasure</div><div class="t">Built an in-machine poka-yoke air purge so a part physically cannot leave the station with burrs present — error-proofing at source rather than added inspection downstream.</div></div>
-            <div class="step"><div class="s">Result</div><div class="t">Closed as a verified CAPA, then rolled out to the other stations running the same operation.</div></div>
+            <div class="step"><div class="s">Difficulty</div><div class="t">The block ran on a single <b>transfer machine with nine sequential workstations</b> — grinding, milling, facing, drilling — any of which could have produced the burrs, and nothing in the process data pointed at one of them.</div></div>
+            <div class="step"><div class="s">Method</div><div class="t">Teardown failure analysis on the returned unit, a process capability (Cpk) study across all nine stations to find which was drifting, then a <b>one-week production monitoring study</b> standing at the shortlisted machines. Burr formation isolated to the <b>final drilling station on the leg portion of the block</b>.</div></div>
+            <div class="step"><div class="s">Countermeasure</div><div class="t">Engineered a <b>needle-type air purge attachment targeting all four leg bores</b>, so a part physically cannot leave the station with burrs present — error-proofing at source rather than added inspection downstream.</div></div>
+            <div class="step"><div class="s">Result</div><div class="t">Internal burr accumulation eliminated and <b>downstream rework removed entirely</b>. Closed as a verified CAPA, then rolled out to the other stations running the same operation.</div></div>
           </div>
         </div>
 
@@ -448,12 +448,45 @@ img{max-width:100%}
 
         <div class="case" data-d="data lean" style="--dc:var(--d-data)">
           <div class="disc"><span class="fdot" style="background:var(--d-data)"></span>Data &amp; Modelling</div>
-          <h3>Hospital capacity &amp; staffing optimization model</h3>
-          <div class="tags"><span class="tag">Operations Research</span><span class="tag">Linear Programming</span><span class="tag">Excel Solver</span><span class="tag">Capacity Planning</span><span class="tag">UIC</span></div>
+          <h3>Patient intake optimization model</h3>
+          <div class="tags"><span class="tag">Linear Programming</span><span class="tag">Excel Solver</span><span class="tag">Simplex</span><span class="tag">Operations Research</span><span class="tag">UIC</span></div>
           <div class="steps">
-            <div class="step"><div class="s">Problem</div><div class="t">Allocate a fixed pool of rooms and staff across competing service lines when demand varies — the classic capacity problem, set in a hospital rather than a plant.</div></div>
-            <div class="step"><div class="s">Method</div><div class="t">Formulated a linear programming model in <b>Excel Solver</b> allocating <b>40 rooms and 120 staff</b> across <b>four service lines</b>, under capacity and demand constraints, to maximize monthly throughput.</div></div>
-            <div class="step"><div class="s">Result</div><div class="t">Produced an allocation that raised throughput and cut projected overtime cost against the baseline roster.</div></div>
+            <div class="step"><div class="s">Problem</div><div class="t">Allocate a fixed pool of rooms and staff across competing surgical treatments when demand varies — the classic capacity problem, set in a hospital rather than a plant.</div></div>
+            <div class="step"><div class="s">Method</div><div class="t">Built a linear programming model for <b>Northwestern Memorial Hospital</b> optimizing room allocation across four surgical treatments — cataract, hallux valgus, knee operations and osteoarthritis — within constraints of <b>40 rooms and 120 staff</b>.</div></div>
+            <div class="step"><div class="s">Result</div><div class="t">Maximized patient intake to <b>120 patients per month</b>, validated two ways — <b>Excel Solver</b> and manual <b>Simplex</b> tabulation.</div></div>
+          </div>
+        </div>
+
+        <div class="case" data-d="lean process" style="--dc:var(--d-lean)">
+          <div class="disc"><span class="fdot" style="background:var(--d-lean)"></span>Lean &amp; Improvement</div>
+          <h3>Tool localization &amp; cost reduction</h3>
+          <div class="tags"><span class="tag">Supplier Evaluation</span><span class="tag">Tooling</span><span class="tag">Cost Reduction</span><span class="tag">Samsung</span></div>
+          <div class="steps">
+            <div class="step"><div class="s">Problem</div><div class="t">Consumable tooling on the compressor line was driving both cost per part and changeover downtime — abrasive film at the shaft super-finishing stage, and drill bits wearing out faster than the schedule allowed.</div></div>
+            <div class="step"><div class="s">Method</div><div class="t">Sourced and evaluated a <b>higher-yield abrasive film roll</b> for the super-finishing stage, holding the same surface quality while getting more output per roll. Separately evaluated <b>drill bit coating alternatives</b> to extend tool life.</div></div>
+            <div class="step"><div class="s">Result</div><div class="t">More output per roll and less changeover downtime at the super-finishing stage, with hole quality and dimensional accuracy held through the drill bit change.</div></div>
+          </div>
+        </div>
+
+        <div class="case" data-d="design quality" style="--dc:var(--d-design)">
+          <div class="disc"><span class="fdot" style="background:var(--d-design)"></span>Design &amp; Metrology</div>
+          <h3>Bad design — ergonomic analysis of lecture hall seating</h3>
+          <div class="tags"><span class="tag">RULA</span><span class="tag">Anthropometrics</span><span class="tag">Human Factors</span><span class="tag">UIC</span></div>
+          <div class="steps">
+            <div class="step"><div class="s">Problem</div><div class="t">Fixed lecture hall seating at UIC forced sustained awkward posture across a population with a wide range of body dimensions.</div></div>
+            <div class="step"><div class="s">Method</div><div class="t">Applied <b>RULA</b> assessment, anthropometric analysis and a <b>Human-Task-Environment</b> framework to identify where the design failed its users.</div></div>
+            <div class="step"><div class="s">Result</div><div class="t">Identified biomechanical strain, postural fatigue and accessibility gaps, and proposed human-centred redesign solutions addressing each.</div></div>
+          </div>
+        </div>
+
+        <div class="case" data-d="design process" style="--dc:var(--d-design)">
+          <div class="disc"><span class="fdot" style="background:var(--d-design)"></span>Design &amp; Metrology</div>
+          <h3>VR-based training prototype</h3>
+          <div class="tags"><span class="tag">Unreal Engine</span><span class="tag">DaVinci Resolve</span><span class="tag">Training Content</span><span class="tag">UIC</span></div>
+          <div class="steps">
+            <div class="step"><div class="s">Problem</div><div class="t">Procedural training is hard to deliver through documents alone — the learner needs to see the sequence and the hand position, not read about them.</div></div>
+            <div class="step"><div class="s">Method</div><div class="t">Designed an immersive VR training prototype in <b>Unreal Engine</b> covering DIY home repair scenarios, then produced integrated VR and video content in <b>DaVinci Resolve</b>.</div></div>
+            <div class="step"><div class="s">Result</div><div class="t">A working prototype for industrial training applications, where the same approach applies to machine setup, changeover and standard work.</div></div>
           </div>
         </div>
 
@@ -468,7 +501,7 @@ img{max-width:100%}
       <div class="skillrow" style="--dc:var(--d-lean)"><div class="cat"><span class="sdot"></span>Lean &amp; Improvement</div><div class="items">Lean Manufacturing · Lean Six Sigma Green Belt · Kaizen · 5S · SMED · TPM · Value Stream Mapping · Standard Work · Time Studies · Line Balancing</div></div>
       <div class="skillrow" style="--dc:var(--d-quality)"><div class="cat"><span class="sdot"></span>Quality &amp; Statistics</div><div class="items">SPC · Cp/Cpk · Process Capability · Gage R&amp;R · MSA · DOE · PFMEA · Control Plans · CAPA · Non-Conforming Material</div></div>
       <div class="skillrow" style="--dc:var(--d-solve)"><div class="cat"><span class="sdot"></span>Problem Solving</div><div class="items">Root Cause Analysis · 8D · DMAIC · 5 Why · Fishbone / Ishikawa · Pareto · Failure Analysis · Poka-Yoke · Countermeasures</div></div>
-      <div class="skillrow" style="--dc:var(--d-design)"><div class="cat"><span class="sdot"></span>Design &amp; Metrology</div><div class="items">SolidWorks · AutoCAD · GD&amp;T · CMM · Fixture Design · DFM · Layout &amp; Material Flow · Ergonomics (REBA)</div></div>
+      <div class="skillrow" style="--dc:var(--d-design)"><div class="cat"><span class="sdot"></span>Design &amp; Metrology</div><div class="items">SolidWorks · AutoCAD · Autodesk Inventor · GD&amp;T · CMM · Fixture Design · DFM · Layout &amp; Material Flow · Ergonomics (REBA)</div></div>
       <div class="skillrow" style="--dc:var(--d-data)"><div class="cat"><span class="sdot"></span>Data &amp; Systems</div><div class="items">SAP (ERP) · Power BI · Advanced Excel · Minitab · SQL · Python · MS Project · Data Analysis</div></div>
     </div>
   </div></section>
@@ -533,7 +566,7 @@ img{max-width:100%}
   var cases = Array.prototype.slice.call(document.querySelectorAll('#cases-list .case'));
   var buttons = Array.prototype.slice.call(document.querySelectorAll('#filters .fb'));
   var count = document.getElementById('count');
-  var words = ['zero','one','two','three','four','five','six'];
+  var words = ['zero','one','two','three','four','five','six','seven','eight','nine'];
   buttons.forEach(function(b){
     b.addEventListener('click', function(){
       var f = b.getAttribute('data-f');
@@ -545,8 +578,8 @@ img{max-width:100%}
         if (match) shown++;
       });
       count.textContent = (f === 'all')
-        ? 'Showing all six projects.'
-        : 'Showing ' + words[shown] + ' of six projects — ' + b.textContent.trim() + '.';
+        ? 'Showing all nine projects.'
+        : 'Showing ' + words[shown] + ' of nine projects — ' + b.textContent.trim() + '.';
     });
   });
 
