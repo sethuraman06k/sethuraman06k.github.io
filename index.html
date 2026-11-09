@@ -179,11 +179,46 @@ b{font-weight:600}
 .disc{font-family:var(--mono);font-size:10.5px;letter-spacing:.11em;text-transform:uppercase;
   color:var(--dc);margin-bottom:5px;display:flex;align-items:center;gap:7px}
 .steps{margin-top:16px;display:grid;gap:12px}
-.step{display:grid;grid-template-columns:92px minmax(0,1fr);gap:16px;align-items:baseline}
+.step{display:grid;grid-template-columns:118px minmax(0,1fr);gap:16px;align-items:baseline}
 @media (max-width:560px){.step{grid-template-columns:1fr;gap:2px}}
 .step .s{font-family:var(--mono);font-size:11px;letter-spacing:.11em;
   text-transform:uppercase;color:var(--rail)}
 .step .t{max-width:66ch}
+
+/* ---- transfer line: the one interactive moment on the page ---- */
+.sim{margin:26px 0 30px;padding:20px 22px 18px;border:1px solid var(--line);
+  background:var(--tint);border-radius:2px}
+.sim .cap{font-size:13.5px;color:var(--muted);margin:0 0 20px;max-width:62ch}
+.sim .cap b{color:var(--fg);font-weight:600}
+.rail{position:relative;height:66px}
+.bed{position:absolute;left:0;right:0;top:56px;height:2px;background:var(--rail);opacity:.3}
+.stn{position:absolute;top:26px;width:9.4%;height:30px;background:var(--bg);
+  border:1px solid var(--line);border-bottom:2px solid var(--rail)}
+.stn span{position:absolute;bottom:-17px;left:50%;transform:translateX(-50%);
+  font-family:var(--mono);font-size:10px;color:var(--rail)}
+.pt{position:absolute;top:32px;margin-left:2%;width:5.4%;height:18px;
+  background:var(--after);border-radius:1px;
+  animation:index var(--dur,13s) steps(9,end) infinite;
+  animation-delay:calc(var(--dur,13s) / -9 * var(--i))}
+@keyframes index{from{left:0}to{left:95.4%}}
+.sim.slow .pt{background:var(--before)}
+.ctl{display:flex;align-items:center;gap:14px;flex-wrap:wrap;margin-top:26px}
+.ctl label{font-size:13.5px;color:var(--muted)}
+.ctl input[type=range]{flex:1 1 200px;min-width:170px;accent-color:var(--accent);height:22px}
+.ctl .val{font-family:var(--mono);font-size:17px;font-weight:600;color:var(--fg);
+  min-width:62px;font-variant-numeric:tabular-nums}
+.ctl .pre{display:flex;gap:8px}
+.ctl .pre button{font:inherit;font-size:12.5px;padding:5px 11px;cursor:pointer;
+  border:1px solid var(--line);background:var(--bg);color:var(--muted);border-radius:2px}
+.ctl .pre button[aria-pressed=true]{border-color:var(--accent);color:var(--accent);font-weight:600}
+.ctl .pre button:focus-visible,.ctl input:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.out{display:flex;gap:30px;margin-top:16px;padding-top:14px;border-top:1px solid var(--line);flex-wrap:wrap}
+.out div{display:flex;flex-direction:column;gap:2px}
+.out .n{font-family:var(--mono);font-size:19px;font-weight:600;color:var(--fg);font-variant-numeric:tabular-nums}
+.out .l{font-size:12px;color:var(--muted)}
+@media (max-width:560px){.rail{height:58px}.stn{height:24px;top:24px}.pt{top:28px;height:14px}.bed{top:48px}}
+@media (prefers-reduced-motion:reduce){.pt{animation-play-state:paused}}
+
 
 /* skills — dot ties each group to its discipline hue */
 .skillrow{display:grid;grid-template-columns:200px minmax(0,1fr);gap:20px;
@@ -233,10 +268,33 @@ img{max-width:100%}
     <p class="intro">Three years on high-volume automated manufacturing lines at Samsung and Delphi TVS.
       I develop and qualify processes, and I run root-cause investigations that end in a verified
       countermeasure on the machine — not a report. MS Industrial Engineering, University of Illinois Chicago.</p>
+    <div class="sim" id="sim">
+      <p class="cap">A nine-station transfer line machining compressor blocks. Time studies reset the
+        routings and took the cycle from <b>14.8 seconds to 4.5</b>. Drag the control to see the difference &mdash; the line is shown at ten times speed.</p>
+      <div class="rail" aria-hidden="true">
+        <div class="bed"></div>
+        <div class="stn" style="left:0.0%"><span>1</span></div><div class="stn" style="left:10.6%"><span>2</span></div><div class="stn" style="left:21.2%"><span>3</span></div><div class="stn" style="left:31.8%"><span>4</span></div><div class="stn" style="left:42.4%"><span>5</span></div><div class="stn" style="left:53.0%"><span>6</span></div><div class="stn" style="left:63.6%"><span>7</span></div><div class="stn" style="left:74.2%"><span>8</span></div><div class="stn" style="left:84.8%"><span>9</span></div>
+        <div class="pt" style="--i:0"></div><div class="pt" style="--i:1"></div><div class="pt" style="--i:2"></div><div class="pt" style="--i:3"></div><div class="pt" style="--i:4"></div><div class="pt" style="--i:5"></div><div class="pt" style="--i:6"></div><div class="pt" style="--i:7"></div><div class="pt" style="--i:8"></div>
+      </div>
+      <div class="ctl">
+        <label for="takt">Cycle time</label>
+        <input id="takt" type="range" min="45" max="148" step="1" value="148"
+               aria-label="Cycle time in tenths of a second">
+        <span class="val" id="taktv">14.8 s</span>
+        <span class="pre">
+          <button type="button" data-v="148" aria-pressed="true">Before</button>
+          <button type="button" data-v="45" aria-pressed="false">After</button>
+        </span>
+      </div>
+      <div class="out">
+        <div><span class="n" id="pph">243</span><span class="l">Parts per hour (3600 ÷ cycle time)</span></div>
+        <div><span class="n" id="mult">1.0&times;</span><span class="l">Throughput against the 14.8 s baseline</span></div>
+      </div>
+    </div>
     <div class="chips">
       <span class="chip">Process Engineering</span><span class="chip">Root Cause Analysis</span>
       <span class="chip">SPC &amp; Cp/Cpk</span><span class="chip">Lean Six Sigma Green Belt</span>
-      <span class="chip">Equipment Qualification</span><span class="chip">Power BI</span>
+      <span class="chip">Equipment Qualification</span><span class="chip">MES</span>
     </div>
     <div class="cta">
       <a class="btn solid" href="#cases">View projects</a>
@@ -259,10 +317,10 @@ img{max-width:100%}
       <ul class="about">
         <li><b>Ownership of a running line.</b> Two high-volume automated lines at Samsung — process, quality and equipment, against daily targets for safety, quality, output and cost.</li>
         <li><b>Root cause through to countermeasure.</b> 8D, DMAIC, 5 Why, Fishbone and Pareto, closed as verified CAPA. The fix is error-proofing on the machine, not an extra inspection downstream.</li>
-        <li><b>Statistics used, not quoted.</b> SPC, Cp/Cpk, Gage R&amp;R, MSA and DOE to qualify processes and prove capability — with OEE, yield and scrap tracked in Power BI and Minitab.</li>
+        <li><b>Statistics used, not quoted.</b> SPC, Cp/Cpk, Gage R&amp;R, MSA and DOE to qualify processes and prove capability — with OEE, yield and scrap tracked in Minitab and Excel.</li>
         <li><b>Equipment from specification to sign-off.</b> Specs and RFQs, design review, installation, commissioning and acceptance testing for robotics and AGV.</li>
         <li><b>Documentation that holds up.</b> PFMEA, control plans and inspection criteria across 40+ operations, plus the SOPs and standard work, and 60+ operators trained to them.</li>
-        <li><b>Cost delivered.</b> $57K against a $112K annual reduction target, from scrap, cycle time and layout rather than headcount.</li>
+        <li><b>Cost delivered.</b> $112K a year by qualifying six local vendors to replace imported parts.</li>
       </ul>
     </div>
   </div></section>
@@ -302,11 +360,6 @@ img{max-width:100%}
         </div>
       </div>
 
-      <div class="meter">
-        <h4>Cost reduction delivered</h4>
-        <div class="mtrack"><div class="mfill" id="mfill" style="width:50.9%"></div></div>
-        <div class="mcap"><span>$57K delivered</span><span>$112K annual target</span></div>
-      </div>
 
       <div class="ledger">
         <div class="metric"><div class="v">&gt; <span class="cu" data-to="85" data-suf="%">85%</span></div><div class="k">OEE held across two lines</div></div>
@@ -342,19 +395,21 @@ img{max-width:100%}
         <div class="rmeta">Chennai, India · Two high-volume automated lines · Process, quality and equipment ownership</div>
         <ul>
           <li>Improved manufacturing processes against safety, quality, productivity and cost, raising <b>line efficiency from 70% to 87%</b>.</li>
-          <li>Cut <b>scrap from 6.3% to 0.78%</b> and held <b>OEE above 85%</b>, saving <b>$57K</b> against a <b>$112K</b> annual cost-reduction target.</li>
+          <li>Cut <b>scrap from 6.3% to 0.78%</b> and held <b>OEE above 85%</b> across a nine-station transfer line.</li>
           <li>Found the root cause of field failures using 8D, DMAIC, 5 Why, Fishbone and Pareto, closing each as a verified CAPA.</li>
           <li>Ran process validation, equipment qualification and process capability studies — SPC, Cp/Cpk, Gage R&amp;R, MSA, DOE.</li>
           <li>Wrote the part quality standards for <b>40+ operations</b>: PFMEA, control plans and inspection criteria.</li>
           <li>Wrote SOPs, work instructions and standard work for those operations and trained <b>60+ operators</b> to use them.</li>
+          <li>Authored work instructions and routings for <b>40+ operations</b> in the plant MES (Samsung GMES).</li>
+          <li>Ran <b>EHS risk assessments</b>, safety walkthroughs and factory audits, driving findings to closure, and scored workstation ergonomics with RULA and REBA.</li>
           <li>Brought in capital equipment for robotics and AGV: specifications, RFQs, design review, installation and acceptance testing.</li>
           <li>Ran engineering changes through 4M change control, from the first request through verifying the change was actually in place.</li>
           <li>Led Lean and continuous improvement — value stream mapping, SMED, 5S, TPM and Kaizen — as <b>plant 5S coordinator</b>.</li>
-          <li>Ran time studies to set routings and rebalance <b>takt from 14.8s to 4.5s</b>; redesigned floor layout and material flow.</li>
-          <li>Managed supplier quality, qualifying <b>6 suppliers</b> through site visits, audits and process trials.</li>
-          <li>Tracked OEE, yield, scrap and capability in Power BI and Excel, led a <b>24-technician task force</b>, and supported NPI trials.</li>
+          <li>Ran time studies in MCube to set routings and rebalance <b>takt from 14.8s to 4.5s</b>; redesigned floor layout and material flow.</li>
+          <li>Managed supplier quality, qualifying <b>6 suppliers</b> through site visits, audits and process trials to replace imported parts, saving <b>$112K</b> a year.</li>
+          <li>Tracked OEE, yield, scrap and capability in Minitab and Excel, led a <b>24-technician task force</b>, and supported NPI trials.</li>
         </ul>
-        <div class="tags"><span class="tag">SPC</span><span class="tag">Cp/Cpk</span><span class="tag">8D</span><span class="tag">DMAIC</span><span class="tag">PFMEA</span><span class="tag">DOE</span><span class="tag">SMED</span><span class="tag">5S</span><span class="tag">TPM</span><span class="tag">OEE</span><span class="tag">Power BI</span><span class="tag">SAP</span><span class="tag">Robotics &amp; AGV</span></div>
+        <div class="tags"><span class="tag">SPC</span><span class="tag">Cp/Cpk</span><span class="tag">8D</span><span class="tag">DMAIC</span><span class="tag">PFMEA</span><span class="tag">DOE</span><span class="tag">SMED</span><span class="tag">5S</span><span class="tag">TPM</span><span class="tag">OEE</span><span class="tag">MES</span><span class="tag">SAP</span><span class="tag">Robotics &amp; AGV</span></div>
       </div>
 
       <div class="role-block">
@@ -502,7 +557,7 @@ img{max-width:100%}
       <div class="skillrow" style="--dc:var(--d-quality)"><div class="cat"><span class="sdot"></span>Quality &amp; Statistics</div><div class="items">SPC · Cp/Cpk · Process Capability · Gage R&amp;R · MSA · DOE · PFMEA · Control Plans · CAPA · Non-Conforming Material</div></div>
       <div class="skillrow" style="--dc:var(--d-solve)"><div class="cat"><span class="sdot"></span>Problem Solving</div><div class="items">Root Cause Analysis · 8D · DMAIC · 5 Why · Fishbone / Ishikawa · Pareto · Failure Analysis · Poka-Yoke · Countermeasures</div></div>
       <div class="skillrow" style="--dc:var(--d-design)"><div class="cat"><span class="sdot"></span>Design &amp; Metrology</div><div class="items">SolidWorks · AutoCAD · Autodesk Inventor · GD&amp;T · CMM · Fixture Design · DFM · Layout &amp; Material Flow · Ergonomics (REBA)</div></div>
-      <div class="skillrow" style="--dc:var(--d-data)"><div class="cat"><span class="sdot"></span>Data &amp; Systems</div><div class="items">SAP (ERP) · Power BI · Advanced Excel · Minitab · SQL · Python · MS Project · Data Analysis</div></div>
+      <div class="skillrow" style="--dc:var(--d-data)"><div class="cat"><span class="sdot"></span>Data &amp; Systems</div><div class="items">SAP (ERP) · Samsung GMES (MES) · MCube · Advanced Excel · Minitab · MS Project · Data Analysis</div></div>
     </div>
   </div></section>
 
@@ -529,6 +584,10 @@ img{max-width:100%}
         <div class="rhead"><h3>Lean Six Sigma Green Belt</h3><span class="when">May 2025</span></div>
         <div class="rtitle">University of Illinois Chicago — UIC Business</div>
         <p class="course"><span class="cl">Applied in practice</span>DMAIC · SPC and process capability · Cp/Cpk · Gage R&amp;R · MSA · DOE · value stream mapping · poka-yoke — used daily on the lines at Samsung rather than studied in isolation.</p>
+      </div>
+      <div class="edu">
+        <div class="rhead"><h3>Foundations of Data Analysis</h3><span class="when">Dec 2025</span></div>
+        <div class="rtitle">Minitab Education Hub</div>
       </div>
     </div>
   </div></section>
@@ -612,16 +671,44 @@ img{max-width:100%}
     targets.forEach(function(t){ io.observe(t); });
   }
 
+
+  /* transfer line — cycle time drives the flow */
+  (function(){
+    var sim=document.getElementById('sim'); if(!sim) return;
+    var r=document.getElementById('takt'), v=document.getElementById('taktv'),
+        pph=document.getElementById('pph'), mu=document.getElementById('mult'),
+        pre=sim.querySelectorAll('.pre button');
+    function paint(){
+      var t=+r.value/10;
+      sim.style.setProperty('--dur',(t*0.9).toFixed(2)+'s');
+      sim.classList.toggle('slow',t>9.6);
+      v.textContent=t.toFixed(1)+' s';
+      pph.textContent=Math.round(3600/t).toLocaleString();
+      mu.innerHTML=(14.8/t).toFixed(1)+'&times;';
+      pre.forEach(function(b){b.setAttribute('aria-pressed',String(+b.dataset.v===+r.value));});
+    }
+    r.addEventListener('input',paint);
+    pre.forEach(function(b){b.addEventListener('click',function(){
+      var from=+r.value,to=+b.dataset.v,t0=performance.now();
+      (function step(now){
+        var k=Math.min((now-t0)/650,1), e=1-Math.pow(1-k,3);
+        r.value=Math.round(from+(to-from)*e); paint();
+        if(k<1) requestAnimationFrame(step);
+      })(t0);
+    });});
+    paint();
+  })();
+
   /* bars grow from zero, numbers count up — real values already in the HTML */
   var fills = Array.prototype.slice.call(document.querySelectorAll('.fill'));
   fills.forEach(function(f){ f.style.width = (reduce ? f.getAttribute('data-w') : '0') + 'px'; });
   var mf = document.getElementById('mfill');
-  var mTarget = mf.style.width;
-  if (!reduce) mf.style.width = '0%';
+  var mTarget = mf ? mf.style.width : null;
+  if (mf && !reduce) mf.style.width = '0%';
 
   function run(){
     fills.forEach(function(f){ f.style.width = f.getAttribute('data-w') + 'px'; });
-    mf.style.width = mTarget;
+    if (mf) mf.style.width = mTarget;
     document.querySelectorAll('.cu').forEach(function(el){
       var to = parseFloat(el.getAttribute('data-to'));
       var suf = el.getAttribute('data-suf') || '';
