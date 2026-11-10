@@ -1,716 +1,374 @@
 <!doctype html>
-<html lang="en">
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<meta name="description" content="Sethuraman Karunanithi — Process and Quality Engineer in Chicago. Three years on high-volume automated manufacturing lines at Samsung and Delphi TVS. MS Industrial Engineering, University of Illinois Chicago.">
-<meta name="author" content="Sethuraman Karunanithi">
-<meta property="og:title" content="Sethuraman Karunanithi — Process &amp; Quality Engineer">
-<meta property="og:description" content="Root-cause investigations that end in a verified countermeasure. Scrap 6.3% to 0.78%, line efficiency 70% to 87%, OEE above 85%.">
-<meta property="og:type" content="website">
-<title>Sethuraman Karunanithi</title>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<html lang="en"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Sethuraman Karunanithi — Process &amp; Industrial Engineer</title>
+<meta name="description" content="Process and industrial engineer. Three years on high-volume automated lines at Samsung and Delphi TVS. MS Industrial Engineering, UIC.">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
 <style>
-/* Layout: sticky scroll-spy nav over a measured column; six discipline hues carry meaning — each project wears its discipline's color and always its name. */
+*{margin:0;padding:0;box-sizing:border-box}
 :root{
-  --ground:#E7ECF2; --bg:#FFFFFF; --surface:#FFFFFF; --tint:#F5F8FB;
-  --fg:#14181F; --muted:#59626F;
-  --accent:#1F3864; --line:#DFE3EA; --rail:#858E9C; --chip:#F1F3F7;
-  --grid:rgba(31,56,100,.055); --shadow:rgba(20,30,50,.10);
-  --before:#B4601F; --after:#2E6FB8;
-  --d-process:#B4601F; --d-quality:#2E6FB8; --d-lean:#5C7A1E;
-  --d-data:#7A5AC4; --d-design:#0F7D5E; --d-solve:#BE3A3A;
-  --sans:"IBM Plex Sans",-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif;
-  --mono:"IBM Plex Mono",ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+  --void:#080B10; --deck:#0E131C; --panel:#131A26; --edge:#1F2938; --edge-2:#2B3850;
+  --fg:#E8EEF7; --dim:#8794A8; --faint:#5A6678;
+  --ok:#3FD68C; --warn:#E8A33D; --cool:#4CC9F0; --hot:#FF6B5A;
+  --mono:"JetBrains Mono",ui-monospace,Menlo,Consolas,monospace;
+  --cond:"Barlow Condensed",Impact,sans-serif;
+  --ui:"Inter",-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
 }
-@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
-  --ground:#06070A; --bg:#111620; --surface:#111620; --tint:#161C28;
-  --fg:#E8EBF0; --muted:#9AA3B2;
-  --accent:#8FB0EC; --line:#262C37; --rail:#78828F; --chip:#1B2029;
-  --grid:rgba(143,176,236,.065); --shadow:rgba(0,0,0,.55);
-  --before:#C87D36; --after:#5590DE;
-  --d-process:#C87D36; --d-quality:#5590DE; --d-lean:#7F9A34;
-  --d-data:#9579DC; --d-design:#2EA383; --d-solve:#DC6058; color-scheme:dark;}}
-:root[data-theme="dark"]{
-  --ground:#06070A; --bg:#111620; --surface:#111620; --tint:#161C28;
-  --fg:#E8EBF0; --muted:#9AA3B2;
-  --accent:#8FB0EC; --line:#262C37; --rail:#78828F; --chip:#1B2029;
-  --grid:rgba(143,176,236,.065); --shadow:rgba(0,0,0,.55);
-  --before:#C87D36; --after:#5590DE;
-  --d-process:#C87D36; --d-quality:#5590DE; --d-lean:#7F9A34;
-  --d-data:#9579DC; --d-design:#2EA383; --d-solve:#DC6058; color-scheme:dark;}
+html{scroll-behavior:smooth}
+body{background:var(--void);color:var(--fg);font-family:var(--ui);line-height:1.6;
+  -webkit-font-smoothing:antialiased;overflow-x:hidden}
+body:before{content:"";position:fixed;inset:0;pointer-events:none;z-index:0;opacity:.5;
+  background:
+    radial-gradient(900px 500px at 12% -5%,rgba(76,201,240,.10),transparent 60%),
+    radial-gradient(760px 460px at 92% 8%,rgba(63,214,140,.07),transparent 60%),
+    repeating-linear-gradient(0deg,transparent 0 39px,rgba(255,255,255,.018) 39px 40px),
+    repeating-linear-gradient(90deg,transparent 0 39px,rgba(255,255,255,.018) 39px 40px)}
+.shell{position:relative;z-index:1;max-width:1180px;margin:0 auto;padding:0 clamp(16px,3.4vw,34px)}
 
-*{box-sizing:border-box}
-body{background:var(--ground);color:var(--fg);font-family:var(--sans);font-size:16px;
-  line-height:1.6;-webkit-font-smoothing:antialiased;margin:0}
-/* the content sits on a sheet; the ground shows at the sides like a document on a desk */
-.wrap{max-width:1040px;margin:0 auto;background:var(--surface);
-  border-left:1px solid var(--line);border-right:1px solid var(--line);
-  box-shadow:0 1px 34px var(--shadow);
-  padding-left:max(16px,env(safe-area-inset-left,0px));
-  padding-right:max(16px,env(safe-area-inset-right,0px));}
-@media (max-width:1040px){.wrap{box-shadow:none;border-left:none;border-right:none}}
-h1,h2,h3{text-wrap:balance;margin:0;font-weight:600;line-height:1.25}
-p{margin:0}
-a{color:var(--accent)}
-a:focus-visible,button:focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:2px}
-.num{font-variant-numeric:tabular-nums}
+/* status bar */
+.bar{position:fixed;inset:0 0 auto;z-index:40;background:rgba(8,11,16,.82);
+  backdrop-filter:blur(14px);border-bottom:1px solid var(--edge)}
+.bar .in{max-width:1180px;margin:0 auto;padding:0 clamp(16px,3.4vw,34px);height:50px;
+  display:flex;align-items:center;justify-content:space-between;gap:16px}
+.bar .id{font-family:var(--mono);font-size:12px;letter-spacing:.06em;color:var(--fg);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.bar .id i{color:var(--ok);font-style:normal}
+.bar nav{display:flex;gap:clamp(12px,2vw,26px)}
+.bar a{font-family:var(--mono);font-size:11px;letter-spacing:.07em;color:var(--dim);
+  text-decoration:none;text-transform:uppercase;transition:color .2s;white-space:nowrap}
+.bar a:hover{color:var(--cool)}
+@media(max-width:860px){.bar nav a:nth-child(n+4){display:none}}
+@media(max-width:620px){.bar nav a:nth-child(n+2){display:none}}
+@media(max-width:460px){.bar .id{font-size:10.5px}}
+.prog{position:fixed;top:50px;left:0;height:2px;width:0;z-index:41;
+  background:linear-gradient(90deg,var(--cool),var(--ok))}
 
-/* nav + scroll spy */
-nav{position:sticky;top:env(safe-area-inset-top,0px);z-index:10;
-  background:var(--surface);border-bottom:1px solid var(--line)}
-.navin{max-width:1040px;margin:0 auto;display:flex;flex-wrap:wrap;
-  align-items:center;gap:4px 18px;padding-block:10px;
-  padding-left:max(16px,env(safe-area-inset-left,0px));
-  padding-right:max(16px,env(safe-area-inset-right,0px));}
-.navin a{font-family:var(--mono);font-size:12px;letter-spacing:.07em;
-  text-transform:uppercase;color:var(--muted);text-decoration:none;
-  padding-bottom:2px;border-bottom:2px solid transparent}
-.navin a:hover{color:var(--fg)}
-.navin a.on{color:var(--accent);border-bottom-color:var(--accent)}
-#theme{margin-left:auto;font-family:var(--mono);font-size:11px;letter-spacing:.07em;
-  text-transform:uppercase;color:var(--muted);background:var(--chip);
-  border:1px solid var(--line);border-radius:2px;padding:5px 11px;cursor:pointer}
-#theme:hover{color:var(--fg)}
+/* hero */
+.hero{padding:clamp(96px,16vh,150px) 0 clamp(50px,8vh,86px)}
+.tagline{font-family:var(--mono);font-size:11.5px;letter-spacing:.2em;color:var(--ok);
+  text-transform:uppercase;margin-bottom:18px}
+h1{font-family:var(--cond);font-weight:700;font-size:clamp(50px,10.5vw,124px);
+  line-height:.9;letter-spacing:-.015em;text-transform:uppercase}
+h1 em{font-style:normal;color:var(--cool)}
+.lede{font-size:clamp(15.5px,1.8vw,19px);color:var(--dim);max-width:60ch;margin-top:22px}
+.id-row{display:flex;gap:10px 26px;flex-wrap:wrap;margin-top:26px;
+  font-family:var(--mono);font-size:12.5px;color:var(--faint)}
+.id-row a{color:var(--cool);text-decoration:none}
+.id-row a:hover{text-decoration:underline}
 
-/* hero — faint drawing-paper grid, the one texture that belongs on an engineer's page */
-.mast{padding-block:46px 34px;border-bottom:1.5px solid var(--fg);position:relative}
-.mast::before{content:"";position:absolute;inset:0;pointer-events:none;
-  background-image:linear-gradient(var(--grid) 1px,transparent 1px),
-                   linear-gradient(90deg,var(--grid) 1px,transparent 1px);
-  background-size:26px 26px;
-  -webkit-mask-image:linear-gradient(180deg,#000 0%,transparent 86%);
-  mask-image:linear-gradient(180deg,#000 0%,transparent 86%)}
-.mast>*{position:relative}
-.mast h1{font-size:clamp(30px,6vw,46px);letter-spacing:-0.015em}
-.role{font-family:var(--mono);font-size:13px;letter-spacing:.09em;
-  text-transform:uppercase;color:var(--accent);margin-top:11px}
-.intro{margin-top:20px;max-width:62ch;color:var(--muted);font-size:17px}
-.chips{display:flex;flex-wrap:wrap;gap:7px;margin-top:22px}
-.chip{font-family:var(--mono);font-size:11.5px;letter-spacing:.04em;color:var(--muted);
-  background:var(--chip);border:1px solid var(--line);border-radius:2px;padding:3px 9px}
-.cta{display:flex;flex-wrap:wrap;gap:10px;margin-top:26px}
-.btn{font-family:var(--mono);font-size:12.5px;letter-spacing:.06em;text-transform:uppercase;
-  text-decoration:none;padding:10px 17px;border-radius:2px;border:1px solid var(--accent);
-  color:var(--accent);background:transparent;display:inline-block}
-.btn.solid{background:var(--accent);color:var(--bg);border-color:var(--accent)}
-.contact{display:flex;flex-wrap:wrap;gap:8px 22px;margin-top:26px;
-  font-family:var(--mono);font-size:13px;color:var(--muted)}
-.contact span,.contact a{white-space:nowrap}
+/* gauges */
+.gauges{display:grid;grid-template-columns:repeat(auto-fit,minmax(172px,1fr));
+  gap:14px;margin-top:clamp(40px,6vw,62px)}
+.g{background:var(--panel);border:1px solid var(--edge);border-radius:10px;
+  padding:20px 18px 16px;position:relative;overflow:hidden}
+.g:after{content:"";position:absolute;inset:0 0 auto;height:1px;
+  background:linear-gradient(90deg,transparent,var(--c,var(--cool)),transparent);opacity:.65}
+.g svg{display:block;margin:0 auto}
+.g .trk{fill:none;stroke:var(--edge-2);stroke-width:7}
+.g .arc{fill:none;stroke:var(--c,var(--cool));stroke-width:7;stroke-linecap:round;
+  stroke-dasharray:var(--len);stroke-dashoffset:var(--len);
+  transition:stroke-dashoffset 1.5s cubic-bezier(.2,.75,.25,1)}
+.g.on .arc{stroke-dashoffset:var(--off)}
+.g .rd{position:absolute;top:82px;left:0;right:0;transform:translateY(-50%);text-align:center;pointer-events:none}
+.g .rd b{display:block;font-family:var(--mono);font-weight:700;
+  font-size:clamp(18px,2.1vw,23px);color:var(--c,var(--cool));line-height:1.05}
+.g .rd s{display:block;font-family:var(--mono);font-size:10px;color:var(--faint);
+  text-decoration:none;margin-top:4px;letter-spacing:-.01em}
+.g h4{font-family:var(--mono);font-size:10.5px;letter-spacing:.11em;text-transform:uppercase;
+  color:var(--dim);text-align:center;margin-top:12px}
+.g p{font-size:11.5px;color:var(--faint);text-align:center;margin-top:3px}
 
 /* sections */
-section{padding-block:40px;border-bottom:1px solid var(--line);scroll-margin-top:60px}
-.grid{display:grid;grid-template-columns:148px minmax(0,1fr);gap:28px}
-@media (max-width:860px){.grid{grid-template-columns:1fr;gap:14px}}
-.label{font-family:var(--mono);font-size:11px;letter-spacing:.14em;
-  text-transform:uppercase;color:var(--rail);padding-top:4px}
-.body{min-width:0}
-.h2{font-size:19px;font-weight:600;margin:0}
-ul{margin:14px 0 0;padding-left:19px}
-li{margin-bottom:7px;max-width:70ch}
-li::marker{color:var(--rail)}
-li:last-child{margin-bottom:0}
-b{font-weight:600}
-.about li{margin-bottom:9px}
+section{padding:clamp(60px,9vw,108px) 0;position:relative}
+.head{display:flex;align-items:baseline;gap:16px;margin-bottom:clamp(26px,4vw,42px);
+  border-bottom:1px solid var(--edge);padding-bottom:14px}
+.head span{font-family:var(--mono);font-size:11px;color:var(--ok);letter-spacing:.14em}
+.head h2{font-family:var(--cond);font-weight:600;font-size:clamp(28px,4.4vw,52px);
+  text-transform:uppercase;letter-spacing:-.005em;line-height:1}
 
-/* charts */
-.legend{display:flex;gap:18px;margin:16px 0 20px;font-family:var(--mono);
-  font-size:11.5px;letter-spacing:.05em;color:var(--muted)}
-.key{display:flex;align-items:center;gap:7px}
-.sw{width:13px;height:9px;border-radius:2px;display:inline-block;flex:none}
-.panels{display:grid;grid-template-columns:repeat(auto-fit,minmax(255px,1fr));gap:26px}
-.panel{min-width:0}
-.panel h4{margin:0;font-size:14.5px;font-weight:600}
-.panel .hint{font-family:var(--mono);font-size:10.5px;letter-spacing:.07em;
-  text-transform:uppercase;color:var(--rail);margin-top:3px}
-.bars{margin-top:13px;display:grid;gap:8px}
-.bar{display:grid;grid-template-columns:50px minmax(0,1fr);gap:9px;align-items:center}
-.bar .bl{font-family:var(--mono);font-size:10.5px;letter-spacing:.06em;
-  text-transform:uppercase;color:var(--rail)}
-.track{display:flex;align-items:center;gap:8px;min-width:0}
-.fill{height:15px;border-radius:0 4px 4px 0;flex:none;
-  transition:width .9s cubic-bezier(.2,.7,.3,1),filter .15s}
-.bar:hover .fill{filter:brightness(1.12)}
-.bv{font-family:var(--mono);font-size:12.5px;font-variant-numeric:tabular-nums;
-  color:var(--fg);white-space:nowrap}
-.meter{margin-top:30px;max-width:520px}
-.meter h4{margin:0;font-size:14.5px;font-weight:600}
-.mtrack{margin-top:11px;height:15px;background:var(--chip);border:1px solid var(--line);
-  border-radius:3px;overflow:hidden}
-.mfill{height:100%;background:var(--after);border-radius:0 3px 3px 0;
-  transition:width .9s cubic-bezier(.2,.7,.3,1)}
-.mcap{display:flex;justify-content:space-between;gap:12px;margin-top:7px;
-  font-family:var(--mono);font-size:11.5px;color:var(--muted);font-variant-numeric:tabular-nums}
-.ledger{display:grid;grid-template-columns:repeat(auto-fit,minmax(205px,1fr));
-  gap:0 28px;margin-top:34px;border-top:1px solid var(--line)}
-.metric{padding-block:12px;border-bottom:1px solid var(--line);min-width:0}
-.metric .v{font-family:var(--mono);font-size:18px;font-variant-numeric:tabular-nums}
-.metric .k{font-size:13.5px;color:var(--muted);margin-top:2px}
+/* work orders */
+.wo{border:1px solid var(--edge);border-radius:12px;background:var(--deck);
+  margin-bottom:16px;overflow:hidden;transition:border-color .3s}
+.wo:hover{border-color:var(--edge-2)}
+.wo .top{display:flex;align-items:center;gap:14px;padding:14px 20px;
+  border-bottom:1px solid var(--edge);background:rgba(255,255,255,.015);flex-wrap:wrap}
+.wo .op{font-family:var(--mono);font-size:11px;color:var(--faint);letter-spacing:.1em}
+.wo .ttl{font-family:var(--cond);font-weight:600;font-size:clamp(19px,2.5vw,27px);
+  text-transform:uppercase;letter-spacing:.005em;flex:1;min-width:200px;line-height:1.1}
+.wo .st{font-family:var(--mono);font-size:10px;letter-spacing:.1em;padding:3px 9px;
+  border-radius:3px;border:1px solid currentColor;color:var(--ok)}
+.wo .body{display:grid;grid-template-columns:230px minmax(0,1fr);gap:clamp(16px,3vw,32px);padding:22px 20px}
+@media(max-width:720px){.wo .body{grid-template-columns:1fr;gap:16px}}
+.wo .kpi{font-family:var(--mono);font-weight:700;font-size:clamp(34px,5vw,52px);
+  color:var(--c,var(--cool));line-height:1}
+.wo .kpl{font-family:var(--mono);font-size:11px;color:var(--faint);margin-top:8px;letter-spacing:.04em}
+.wo dl{display:grid;gap:12px}
+.wo dt{font-family:var(--mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--faint);margin-bottom:3px}
+.wo dd{font-size:15px;color:var(--dim)}
+.wo dd b{color:var(--fg);font-weight:600}
 
-/* roles */
-.role-block{padding-block:22px;border-bottom:1px solid var(--line)}
-.role-block:first-child{padding-top:0}
-.role-block:last-child{border-bottom:none;padding-bottom:0}
-.rhead{display:flex;flex-wrap:wrap;justify-content:space-between;gap:4px 18px;align-items:baseline}
-.rhead h3{font-size:18px}
-.when{font-family:var(--mono);font-size:12.5px;color:var(--muted);
-  font-variant-numeric:tabular-nums;white-space:nowrap}
-.rtitle{color:var(--accent);font-size:15px;font-style:italic;margin-top:3px}
-.rmeta{font-family:var(--mono);font-size:12px;color:var(--rail);margin-top:6px;letter-spacing:.03em}
-.tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:13px}
-.tag{font-family:var(--mono);font-size:11px;letter-spacing:.05em;color:var(--muted);
-  border:1px solid var(--line);border-radius:2px;padding:2px 7px;background:var(--surface)}
+/* ledger */
+.ledger{display:grid;grid-template-columns:repeat(auto-fit,minmax(158px,1fr));gap:1px;
+  background:var(--edge);border:1px solid var(--edge);border-radius:10px;overflow:hidden}
+.ledger div{background:var(--deck);padding:20px 16px}
+.ledger .v{font-family:var(--mono);font-weight:700;font-size:clamp(23px,3vw,31px);color:var(--cool)}
+.ledger .k{font-size:12px;color:var(--faint);margin-top:6px;line-height:1.4}
 
-/* filter */
-.filters{display:flex;flex-wrap:wrap;gap:8px;margin:16px 0 4px}
-.fb{font-family:var(--mono);font-size:11.5px;letter-spacing:.05em;cursor:pointer;
-  background:var(--surface);border:1px solid var(--line);border-radius:2px;
-  padding:5px 11px;color:var(--muted);display:flex;align-items:center;gap:7px}
-.fb:hover{color:var(--fg)}
-.fb[aria-pressed="true"]{color:var(--fg);border-color:currentColor;background:var(--chip)}
-.fdot{width:9px;height:9px;border-radius:50%;flex:none}
-.count{font-family:var(--mono);font-size:11.5px;color:var(--rail);margin-top:12px}
+/* timeline */
+.tl{position:relative;padding-left:30px}
+.tl:before{content:"";position:absolute;left:5px;top:6px;bottom:6px;width:1px;background:var(--edge)}
+.job{position:relative;padding-bottom:clamp(28px,4vw,44px)}
+.job:before{content:"";position:absolute;left:-29px;top:7px;width:11px;height:11px;border-radius:50%;
+  background:var(--void);border:2px solid var(--cool)}
+.job.now:before{border-color:var(--ok);box-shadow:0 0 0 4px rgba(63,214,140,.16)}
+.job .when{font-family:var(--mono);font-size:11px;color:var(--faint);letter-spacing:.08em}
+.job h3{font-family:var(--cond);font-weight:600;font-size:clamp(21px,2.8vw,30px);
+  text-transform:uppercase;margin:4px 0 2px;line-height:1.1}
+.job .role{font-size:13.5px;color:var(--cool);margin-bottom:12px}
+.job ul{list-style:none;display:grid;gap:8px}
+.job li{font-size:14.5px;color:var(--dim);padding-left:16px;position:relative}
+.job li:before{content:"";position:absolute;left:0;top:.68em;width:5px;height:1px;background:var(--faint)}
+.job b{color:var(--fg);font-weight:600}
 
-/* cases — left rule carries the discipline hue */
-.case{padding:20px 20px 20px 19px;border-left:3px solid var(--dc,var(--line));
-  border-top:1px solid var(--line);border-right:1px solid var(--line);
-  border-bottom:1px solid var(--line);margin-top:18px;background:var(--tint)}
-.case h3{font-size:18px}
-.disc{font-family:var(--mono);font-size:10.5px;letter-spacing:.11em;text-transform:uppercase;
-  color:var(--dc);margin-bottom:5px;display:flex;align-items:center;gap:7px}
-.steps{margin-top:16px;display:grid;gap:12px}
-.step{display:grid;grid-template-columns:118px minmax(0,1fr);gap:16px;align-items:baseline}
-@media (max-width:560px){.step{grid-template-columns:1fr;gap:2px}}
-.step .s{font-family:var(--mono);font-size:11px;letter-spacing:.11em;
-  text-transform:uppercase;color:var(--rail)}
-.step .t{max-width:66ch}
+/* spec grid */
+.spec{display:grid;grid-template-columns:repeat(auto-fit,minmax(252px,1fr));gap:14px}
+.spec div{background:var(--panel);border:1px solid var(--edge);border-radius:10px;padding:18px}
+.spec h4{font-family:var(--mono);font-size:10.5px;letter-spacing:.13em;text-transform:uppercase;
+  color:var(--ok);margin-bottom:9px}
+.spec p{font-size:13.5px;color:var(--dim);line-height:1.66}
 
-/* ---- transfer line schematic ---- */
-.sim{margin:26px 0 30px;padding:22px 24px 18px;border:1px solid var(--line);
-  background:var(--tint);border-radius:2px}
-.sim .swrap{overflow-x:auto;overflow-y:hidden;-webkit-overflow-scrolling:touch}
-.sim svg{width:100%;height:auto;display:block;overflow:visible;min-width:600px}
-.sim .dim{stroke:var(--rail);stroke-width:1;opacity:.75}
-.sim .blk{fill:var(--bg);stroke:var(--rail);stroke-width:1.1}
-.sim .blk.hot{stroke:var(--before);stroke-width:1.8}
-.sim .bar{stroke:var(--rail);stroke-width:2.5;opacity:.45}
-.sim .num{font-family:var(--mono);font-size:10px;fill:var(--rail)}
-.sim .op{font-family:var(--mono);font-size:9.5px;fill:var(--muted);letter-spacing:.04em}
-.sim .dlabel{font-family:var(--mono);font-size:11px;fill:var(--fg);font-weight:600}
-.sim .was{font-family:var(--mono);font-size:11px;fill:var(--rail);text-decoration:line-through}
-.sim .note{font-family:var(--sans);font-size:11.5px;fill:var(--before)}
-.sim .lead{stroke:var(--before);stroke-width:1;stroke-dasharray:2 2}
-.wp{fill:var(--after);animation:idx 4.05s steps(9,end) infinite}
-@keyframes idx{from{transform:translateX(0)}to{transform:translateX(954px)}}
-.sim figcaption{font-size:13px;color:var(--muted);margin-top:16px;max-width:64ch}
-.sim figcaption b{color:var(--fg);font-weight:600}
-@media (prefers-reduced-motion:reduce){.wp{animation:none}}
+/* contact */
+.end{text-align:center;padding:clamp(70px,10vw,120px) 0}
+.end h2{font-family:var(--cond);font-weight:700;font-size:clamp(34px,6vw,70px);text-transform:uppercase;line-height:1}
+.end p{color:var(--dim);margin:14px auto 0;max-width:52ch}
+.acts{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-top:28px}
+.acts a{font-family:var(--mono);font-size:12.5px;letter-spacing:.06em;padding:12px 24px;
+  border-radius:6px;text-decoration:none;border:1px solid var(--edge-2);color:var(--fg);transition:.2s}
+.acts a.pri{background:var(--ok);border-color:var(--ok);color:#06240F;font-weight:700}
+.acts a:hover{border-color:var(--cool);color:var(--cool)}
+.acts a.pri:hover{opacity:.85;color:#06240F}
+footer{border-top:1px solid var(--edge);padding:22px 0;text-align:center;
+  font-family:var(--mono);font-size:11px;color:var(--faint)}
 
+.rv{opacity:0;transform:translateY(20px);transition:opacity .7s ease,transform .7s ease}
+.rv.on{opacity:1;transform:none}
+@media(prefers-reduced-motion:reduce){
+  .rv{opacity:1;transform:none;transition:none}
+  .g .arc{transition:none}html{scroll-behavior:auto}}
+:focus-visible{outline:2px solid var(--cool);outline-offset:3px}
+</style></head><body>
 
-/* skills — dot ties each group to its discipline hue */
-.skillrow{display:grid;grid-template-columns:200px minmax(0,1fr);gap:20px;
-  padding-block:12px;border-bottom:1px solid var(--line)}
-.skillrow:last-child{border-bottom:none}
-@media (max-width:640px){.skillrow{grid-template-columns:1fr;gap:5px}}
-.skillrow .cat{font-weight:600;font-size:14.5px;display:flex;align-items:center;gap:9px}
-.skillrow .items{color:var(--muted);font-size:14.5px}
-.sdot{width:9px;height:9px;border-radius:50%;flex:none;background:var(--dc)}
+<div class="bar"><div class="in">
+  <span class="id"><i>&#9679;</i> SETHURAMAN KARUNANITHI</span>
+  <nav><a href="#results">Results</a><a href="#work">Work orders</a>
+    <a href="#record">Record</a><a href="#spec">Spec</a><a href="#end">Contact</a></nav>
+</div></div>
+<div class="prog" id="prog"></div>
 
-.sheet{margin-top:26px;border:1px solid var(--line);background:#FFFFFF;
-  box-shadow:0 1px 18px var(--shadow);max-width:720px}
-.sheet img{display:block;width:100%;height:auto;max-width:100%}
+<header class="hero"><div class="shell">
+  <p class="tagline">Process &amp; Industrial Engineer &#183; Chicago</p>
+  <h1>I take time<br>out of <em>lines</em>.</h1>
+  <p class="lede">Three years on high-volume automated manufacturing lines at Samsung and Delphi TVS.
+    Cycle time, process capability, tooling and equipment — and field failures closed at the machine
+    rather than caught downstream. MS Industrial Engineering, University of Illinois Chicago.</p>
+  <p class="id-row">
+    <span>(312) 296-9015</span>
+    <a href="mailto:sethuraman06k@gmail.com">sethuraman06k@gmail.com</a>
+    <a href="https://www.linkedin.com/in/sethuramankarunanithi/">linkedin.com/in/sethuramankarunanithi</a>
+  </p>
 
-.edu{padding-block:16px;border-bottom:1px solid var(--line)}
-.edu:first-child{padding-top:0}
-.edu:last-child{border-bottom:none;padding-bottom:0}
-.course{font-size:14px;color:var(--muted);margin-top:8px;max-width:70ch}
-.course .cl{font-family:var(--mono);font-size:11px;letter-spacing:.11em;
-  text-transform:uppercase;color:var(--rail);display:block;margin-bottom:3px}
+  <div class="gauges" id="gauges">
+    <div class="g" style="--c:var(--ok)"  data-pct="70">
+      <svg width="124" height="124" viewBox="0 0 124 124"><circle class="trk" cx="62" cy="62" r="50"/>
+      <circle class="arc" cx="62" cy="62" r="50" transform="rotate(-90 62 62)"/></svg>
+      <div class="rd"><b>4.5s</b><s>was 14.8s</s></div>
+      <h4>Cycle time</h4><p>70% reduction</p></div>
 
-footer{padding-block:34px 56px;color:var(--muted);font-size:14px}
-footer .f{font-family:var(--mono);font-size:12px;color:var(--rail);letter-spacing:.05em;margin-top:10px}
-@media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
-</style>
+    <div class="g" style="--c:var(--cool)" data-pct="88">
+      <svg width="124" height="124" viewBox="0 0 124 124"><circle class="trk" cx="62" cy="62" r="50"/>
+      <circle class="arc" cx="62" cy="62" r="50" transform="rotate(-90 62 62)"/></svg>
+      <div class="rd"><b>0.78%</b><s>was 6.3%</s></div>
+      <h4>Scrap rate</h4><p>88% reduction</p></div>
 
-<style>
-:root{color-scheme:light}
-html,body{margin:0}
-img{max-width:100%}
-[hidden]{display:none!important}
-</style>
-</head>
-<body>
-<nav><div class="navin">
-  <a href="#about">About</a><a href="#results">Results</a><a href="#experience">Experience</a>
-  <a href="#cases">Projects</a><a href="#skills">Skills</a><a href="#education">Education</a>
-  <a href="#certs">Certification</a><a href="#contact">Contact</a>
-  <button id="theme" type="button" aria-label="Switch color theme">Theme</button>
-</div></nav>
+    <div class="g" style="--c:var(--warn)" data-pct="87">
+      <svg width="124" height="124" viewBox="0 0 124 124"><circle class="trk" cx="62" cy="62" r="50"/>
+      <circle class="arc" cx="62" cy="62" r="50" transform="rotate(-90 62 62)"/></svg>
+      <div class="rd"><b>87%</b><s>was 70%</s></div>
+      <h4>Line efficiency</h4><p>17 points gained</p></div>
 
-<div class="wrap">
+    <div class="g" style="--c:var(--ok)" data-pct="85">
+      <svg width="124" height="124" viewBox="0 0 124 124"><circle class="trk" cx="62" cy="62" r="50"/>
+      <circle class="arc" cx="62" cy="62" r="50" transform="rotate(-90 62 62)"/></svg>
+      <div class="rd"><b>&gt;85%</b><s>sustained</s></div>
+      <h4>OEE</h4><p>Nine-station line</p></div>
+  </div>
+</div></header>
 
-  <header class="mast">
-    <h1>Sethuraman Karunanithi</h1>
-    <div class="role">Process &amp; Quality Engineer</div>
-    <p class="intro">Three years on high-volume automated manufacturing lines at Samsung and Delphi TVS.
-      I develop and qualify processes, and I run root-cause investigations that end in a verified
-      countermeasure on the machine — not a report. MS Industrial Engineering, University of Illinois Chicago.</p>
-    <figure class="sim" id="sim">
-      <div class="swrap">
-      <svg viewBox="-4 -34 958 156" role="img"
-           aria-label="Schematic of a nine-station transfer line: grinding, milling, facing and drilling. Cycle time reduced from 14.8 to 4.5 seconds. The burr root cause was isolated to station nine, final drilling.">
-        <line class="dim" x1="0" y1="-26" x2="0" y2="-12"/>
-        <line class="dim" x1="946" y1="-26" x2="946" y2="-12"/>
-        <line class="dim" x1="0" y1="-19" x2="946" y2="-19"/>
-        <rect x="330" y="-30" width="290" height="22" fill="var(--tint)"/>
-        <text class="was" x="398" y="-15" text-anchor="end">14.8 s</text>
-        <text class="dlabel" x="406" y="-15">&#8594; 4.5 s cycle</text>
-        <rect class="blk" x="0" y="30" width="92" height="46" rx="1"/>
-        <text class="op" x="46" y="58" text-anchor="middle">Grind</text>
-        <text class="num" x="46" y="94" text-anchor="middle">1</text>
-        <rect class="blk" x="106" y="30" width="92" height="46" rx="1"/>
-        <text class="op" x="152" y="58" text-anchor="middle">Grind</text>
-        <text class="num" x="152" y="94" text-anchor="middle">2</text>
-        <rect class="blk" x="212" y="30" width="92" height="46" rx="1"/>
-        <text class="op" x="258" y="58" text-anchor="middle">Mill</text>
-        <text class="num" x="258" y="94" text-anchor="middle">3</text>
-        <rect class="blk" x="318" y="30" width="92" height="46" rx="1"/>
-        <text class="op" x="364" y="58" text-anchor="middle">Mill</text>
-        <text class="num" x="364" y="94" text-anchor="middle">4</text>
-        <rect class="blk" x="424" y="30" width="92" height="46" rx="1"/>
-        <text class="op" x="470" y="58" text-anchor="middle">Face</text>
-        <text class="num" x="470" y="94" text-anchor="middle">5</text>
-        <rect class="blk" x="530" y="30" width="92" height="46" rx="1"/>
-        <text class="op" x="576" y="58" text-anchor="middle">Face</text>
-        <text class="num" x="576" y="94" text-anchor="middle">6</text>
-        <rect class="blk" x="636" y="30" width="92" height="46" rx="1"/>
-        <text class="op" x="682" y="58" text-anchor="middle">Drill</text>
-        <text class="num" x="682" y="94" text-anchor="middle">7</text>
-        <rect class="blk" x="742" y="30" width="92" height="46" rx="1"/>
-        <text class="op" x="788" y="58" text-anchor="middle">Drill</text>
-        <text class="num" x="788" y="94" text-anchor="middle">8</text>
-        <rect class="blk hot" x="848" y="30" width="92" height="46" rx="1"/>
-        <text class="op" x="894" y="58" text-anchor="middle">Drill</text>
-        <text class="num" x="894" y="94" text-anchor="middle">9</text>
-        <line class="bar" x1="0" y1="82" x2="946" y2="82"/>
-        <rect class="wp" x="28" y="44" width="36" height="18" rx="1"/>
-        <line class="lead" x1="930" y1="78" x2="946" y2="104"/>
-        <text class="note" x="946" y="114" text-anchor="end">Burr root cause isolated here</text>
-      </svg>
-      </div>
-      <figcaption>Nine-station transfer line machining compressor blocks. Time studies reset the routings
-        and took the cycle from <b>14.8 seconds to 4.5</b>. A field-returned burr defect was traced through
-        a capability study across all nine stations to final drilling, and error-proofed with an air purge.</figcaption>
-    </figure>
-    <div class="chips">
-      <span class="chip">Process Engineering</span><span class="chip">Root Cause Analysis</span>
-      <span class="chip">SPC &amp; Cp/Cpk</span><span class="chip">Lean Six Sigma Green Belt</span>
-      <span class="chip">Equipment Qualification</span><span class="chip">MES</span>
-    </div>
-    <div class="cta">
-      <a class="btn solid" href="#cases">View projects</a>
-      <button class="btn" type="button" id="rbtn" aria-expanded="false" aria-controls="rsheet">Resume</button>
-      <a class="btn" href="Sethuraman_Karunanithi_Resume.pdf" download="Sethuraman_Karunanithi_Resume.pdf">Download PDF</a>
-    </div>
-    <div class="contact">
-      <span>Chicago, IL</span><span class="num">(312) 296-9015</span>
-      <span>sethuraman06k@gmail.com</span>
-      <a href="https://www.linkedin.com/in/sethuramankarunanithi/">linkedin.com/in/sethuramankarunanithi</a>
-    </div>
-    <div class="sheet" id="rsheet" hidden><img src="resume.png" width="1360" height="1760"
-      alt="One-page resume for Sethuraman Karunanithi: Process and Quality Engineer, Chicago. Experience at One Community Global, Samsung India Electronics and Delphi TVS Technologies; MS Industrial Engineering at the University of Illinois Chicago; projects and technical skills."></div>
-  </header>
+<section id="work"><div class="shell">
+  <div class="head rv"><span>02</span><h2>Work orders</h2></div>
 
-  <section id="about"><div class="grid">
-    <div class="label">About</div>
+  <article class="wo rv" style="--c:var(--ok)">
+    <div class="top"><span class="op">OP-10</span>
+      <span class="ttl">Field-returned burr defect</span><span class="st">CLOSED &#183; CAPA</span></div>
     <div class="body">
-      <h2 class="h2">What I bring to a process engineering role</h2>
-      <ul class="about">
-        <li><b>Ownership of a running line.</b> Two high-volume automated lines at Samsung — process, quality and equipment, against daily targets for safety, quality, output and cost.</li>
-        <li><b>Root cause through to countermeasure.</b> 8D, DMAIC, 5 Why, Fishbone and Pareto, closed as verified CAPA. The fix is error-proofing on the machine, not an extra inspection downstream.</li>
-        <li><b>Statistics used, not quoted.</b> SPC, Cp/Cpk, Gage R&amp;R, MSA and DOE to qualify processes and prove capability — with OEE, yield and scrap tracked in Minitab and Excel.</li>
-        <li><b>Equipment from specification to sign-off.</b> Specs and RFQs, design review, installation, commissioning and acceptance testing for robotics and AGV.</li>
-        <li><b>Documentation that holds up.</b> PFMEA, control plans and inspection criteria across 40+ operations, plus the SOPs and standard work, and 60+ operators trained to them.</li>
-        <li><b>Cost delivered.</b> $112K a year by qualifying six local vendors to replace imported parts.</li>
+      <div><div class="kpi">100%</div><div class="kpl">BURR REMOVAL AT SOURCE</div></div>
+      <dl>
+        <div><dt>Condition</dt><dd>A compressor returned from the customer with internal burrs. The block
+          ran through <b>nine sequential stations</b> and nothing in the process data pointed at any of them.</dd></div>
+        <div><dt>Investigation</dt><dd>Teardown failure analysis, a Cp/Cpk study across all nine stations,
+          then a week of production monitoring isolated it to final drilling.</dd></div>
+        <div><dt>Countermeasure</dt><dd>A needle-type air purge across all four leg bores — error-proofing
+          on the machine, not an inspection added downstream. Rolled out to every station running the operation.</dd></div>
+      </dl>
+    </div>
+  </article>
+
+  <article class="wo rv" style="--c:var(--cool)">
+    <div class="top"><span class="op">OP-20</span>
+      <span class="ttl">Leak-test tooling damaging the part</span><span class="st">RELEASED</span></div>
+    <div class="body">
+      <div><div class="kpi">1 mo</div><div class="kpl">PILOT TO PRODUCTION STANDARD</div></div>
+      <dl>
+        <div><dt>Condition</dt><dd>Imported leak-test couplers were marking shell pipes during test and
+          throwing <b>false rejects</b> — good product scrapped by the test itself.</dd></div>
+        <div><dt>Design</dt><dd>A replacement sealing cap modelled in SolidWorks, dimensioned to GD&amp;T
+          so it sealed without marking.</dd></div>
+        <div><dt>Validation</dt><dd>Proved over a one-month pilot on the line, then released as the
+          standard tool in place of the import.</dd></div>
+      </dl>
+    </div>
+  </article>
+
+  <article class="wo rv" style="--c:var(--warn)">
+    <div class="top"><span class="op">OP-30</span>
+      <span class="ttl">Imported parts, sourced locally</span><span class="st">IN PRODUCTION</span></div>
+    <div class="body">
+      <div><div class="kpi">$112K</div><div class="kpl">RECURRING ANNUAL SAVING</div></div>
+      <dl>
+        <div><dt>Scope</dt><dd>Six local vendors qualified through site visits, process audits and
+          production trials, replacing imported parts on a line running to volume.</dd></div>
+        <div><dt>Result</dt><dd>The saving repeats every year it holds, and the supply chain got shorter.</dd></div>
+      </dl>
+    </div>
+  </article>
+
+  <article class="wo rv" style="--c:var(--hot)">
+    <div class="top"><span class="op">OP-40</span>
+      <span class="ttl">Retrofit against a shipping date</span><span class="st">DELIVERED</span></div>
+    <div class="body">
+      <div><div class="kpi">3,800</div><div class="kpl">UNITS IN FIVE DAYS</div></div>
+      <dl>
+        <div><dt>Condition</dt><dd>Units already at an off-site warehouse needed rework before reaching
+          customers. The date would not move.</dd></div>
+        <div><dt>Action</dt><dd>Sent from the compressor plant to direct the task force — <b>24 technicians,
+          3,800 units, five days</b>, finished before shipping.</dd></div>
+      </dl>
+    </div>
+  </article>
+</div></section>
+
+<section id="results"><div class="shell">
+  <div class="head rv"><span>03</span><h2>Readouts</h2></div>
+  <div class="ledger rv">
+    <div><div class="v">40+</div><div class="k">Operations documented in the plant MES</div></div>
+    <div><div class="v">60+</div><div class="k">Operators trained to standard work</div></div>
+    <div><div class="v">9</div><div class="k">Stations in the capability study</div></div>
+    <div><div class="v">8</div><div class="k">Operators redeployed by automation</div></div>
+    <div><div class="v">6</div><div class="k">Suppliers qualified and audited</div></div>
+    <div><div class="v">30+</div><div class="k">Incoming lots inspected at Delphi TVS</div></div>
+  </div>
+</div></section>
+
+<section id="record"><div class="shell">
+  <div class="head rv"><span>04</span><h2>Service record</h2></div>
+  <div class="tl">
+    <div class="job now rv">
+      <div class="when">SEP 2026 — PRESENT</div>
+      <h3>One Community Global</h3><div class="role">Industrial Engineer &#183; Remote</div>
+      <ul>
+        <li>Authoring process documentation and SOPs for <b>20+ workflows</b> across the Volunteer and
+          Manager roles, validated against the system as built.</li>
+        <li>Set the documentation standard leadership adopted for all other roles; overseeing two team members.</li>
       </ul>
     </div>
-  </div></section>
-
-  <section id="results"><div class="grid">
-    <div class="label">Results</div>
-    <div class="body">
-      <h2 class="h2">Before and after, at Samsung</h2>
-      <div class="legend">
-        <span class="key"><span class="sw" style="background:var(--before)"></span>Before</span>
-        <span class="key"><span class="sw" style="background:var(--after)"></span>After</span>
-      </div>
-      <div class="panels">
-        <div class="panel">
-          <h4>Scrap rate</h4>
-          <div class="hint">Percent of parts · lower is better</div>
-          <div class="bars">
-            <div class="bar"><span class="bl">Before</span><span class="track"><span class="fill" data-w="168" style="background:var(--before)"></span><span class="bv">6.3%</span></span></div>
-            <div class="bar"><span class="bl">After</span><span class="track"><span class="fill" data-w="21" style="background:var(--after)"></span><span class="bv">0.78%</span></span></div>
-          </div>
-        </div>
-        <div class="panel">
-          <h4>Line efficiency</h4>
-          <div class="hint">Percent · higher is better</div>
-          <div class="bars">
-            <div class="bar"><span class="bl">Before</span><span class="track"><span class="fill" data-w="135" style="background:var(--before)"></span><span class="bv">70%</span></span></div>
-            <div class="bar"><span class="bl">After</span><span class="track"><span class="fill" data-w="168" style="background:var(--after)"></span><span class="bv">87%</span></span></div>
-          </div>
-        </div>
-        <div class="panel">
-          <h4>Takt time</h4>
-          <div class="hint">Seconds per part · lower is better</div>
-          <div class="bars">
-            <div class="bar"><span class="bl">Before</span><span class="track"><span class="fill" data-w="168" style="background:var(--before)"></span><span class="bv">14.8s</span></span></div>
-            <div class="bar"><span class="bl">After</span><span class="track"><span class="fill" data-w="51" style="background:var(--after)"></span><span class="bv">4.5s</span></span></div>
-          </div>
-        </div>
-      </div>
-
-
-      <div class="ledger">
-        <div class="metric"><div class="v">&gt; <span class="cu" data-to="85" data-suf="%">85%</span></div><div class="k">OEE held across two lines</div></div>
-        <div class="metric"><div class="v"><span class="cu" data-to="40" data-suf="+">40+</span></div><div class="k">Operations documented</div></div>
-        <div class="metric"><div class="v"><span class="cu" data-to="60" data-suf="+">60+</span></div><div class="k">Operators trained</div></div>
-        <div class="metric"><div class="v"><span class="cu" data-to="24">24</span></div><div class="k">Technicians led on a task force</div></div>
-        <div class="metric"><div class="v"><span class="cu" data-to="6">6</span></div><div class="k">Suppliers qualified</div></div>
-        <div class="metric"><div class="v"><span class="cu" data-to="9">9</span></div><div class="k">Stations in the capability study</div></div>
-      </div>
+    <div class="job rv">
+      <div class="when">OCT 2022 — JUN 2024</div>
+      <h3>Samsung India Electronics</h3>
+      <div class="role">Associate – Industrial / Process Control Engineer &#183; Chennai</div>
+      <ul>
+        <li>Prepared a newly built compressor plant for production — space planning, line layout,
+          workstation design, AGV routes line-side — then ramped it from launch to volume.</li>
+        <li>Ran time studies in MCube and rebalanced the line: cycle time <b>14.8s to 4.5s</b>,
+          throughput efficiency <b>70% to 87%</b>.</li>
+        <li>Designed the quality controls across a nine-station transfer line — PFMEA, control plans,
+          Cp/Cpk, Gage R&amp;R — scrap <b>6.3% to 0.78%</b>, <b>OEE above 85%</b>.</li>
+        <li>Specified tooling, fixtures and gauging; commissioned capital equipment from RFQ through
+          acceptance testing, taking pick-and-place robotics and AGV to handover.</li>
+        <li>Authored work instructions and routings for <b>40+ operations</b> in the plant MES
+          (Samsung GMES); trained <b>60+ operators</b>.</li>
+        <li>Ran EHS risk assessments, safety walkthroughs and factory audits; scored ergonomics with
+          RULA and REBA and ran plant noise surveys.</li>
+        <li>Led Lean as plant <b>5S coordinator</b> — VSM, SMED, 5S, TPM, Kaizen — through 4M change control.</li>
+      </ul>
     </div>
-  </div></section>
-
-  <section id="experience"><div class="grid">
-    <div class="label">Experience</div>
-    <div class="body">
-
-      <div class="role-block">
-        <div class="rhead"><h3>One Community Global</h3><span class="when">Sep 2026 — Present</span></div>
-        <div class="rtitle">Industrial Engineer (Volunteer)</div>
-        <div class="rmeta">San Gabriel, CA · Remote · 22 hrs/week · Highest Good Network, open-source platform</div>
-        <ul>
-          <li>Rebuilding the outdated Highest Good Network user manual across <b>seven user roles</b>, starting with the volunteer role.</li>
-          <li>Writing SOP-style procedures structured so both a new user and an AI chatbot can follow them step by step — documentation built for retrieval, not only for reading.</li>
-          <li>Testing every page of the application and correcting the draft wherever documented steps did not match what the software actually does.</li>
-          <li>Keeping process documentation consistent across modules, with one current version of every procedure.</li>
-        </ul>
-        <div class="tags"><span class="tag">SOP Writing</span><span class="tag">Process Documentation</span><span class="tag">Software Testing</span><span class="tag">Version Control</span></div>
-      </div>
-
-      <div class="role-block">
-        <div class="rhead"><h3>Samsung India Electronics Pvt. Ltd.</h3><span class="when">Oct 2022 — Jun 2024</span></div>
-        <div class="rtitle">Associate – Industrial / Process Control Engineer</div>
-        <div class="rmeta">Chennai, India · Two high-volume automated lines · Process, quality and equipment ownership</div>
-        <ul>
-          <li>Improved manufacturing processes against safety, quality, productivity and cost, raising <b>line efficiency from 70% to 87%</b>.</li>
-          <li>Cut <b>scrap from 6.3% to 0.78%</b> and held <b>OEE above 85%</b> across a nine-station transfer line.</li>
-          <li>Found the root cause of field failures using 8D, DMAIC, 5 Why, Fishbone and Pareto, closing each as a verified CAPA.</li>
-          <li>Ran process validation, equipment qualification and process capability studies — SPC, Cp/Cpk, Gage R&amp;R, MSA, DOE.</li>
-          <li>Wrote the part quality standards for <b>40+ operations</b>: PFMEA, control plans and inspection criteria.</li>
-          <li>Wrote SOPs, work instructions and standard work for those operations and trained <b>60+ operators</b> to use them.</li>
-          <li>Authored work instructions and routings for <b>40+ operations</b> in the plant MES (Samsung GMES).</li>
-          <li>Ran <b>EHS risk assessments</b>, safety walkthroughs and factory audits, driving findings to closure, and scored workstation ergonomics with RULA and REBA.</li>
-          <li>Brought in capital equipment for robotics and AGV: specifications, RFQs, design review, installation and acceptance testing.</li>
-          <li>Ran engineering changes through 4M change control, from the first request through verifying the change was actually in place.</li>
-          <li>Led Lean and continuous improvement — value stream mapping, SMED, 5S, TPM and Kaizen — as <b>plant 5S coordinator</b>.</li>
-          <li>Ran time studies in MCube to set routings and rebalance <b>takt from 14.8s to 4.5s</b>; redesigned floor layout and material flow.</li>
-          <li>Managed supplier quality, qualifying <b>6 suppliers</b> through site visits, audits and process trials to replace imported parts, saving <b>$112K</b> a year.</li>
-          <li>Tracked OEE, yield, scrap and capability in Minitab and Excel, led a <b>24-technician task force</b>, and supported NPI trials.</li>
-        </ul>
-        <div class="tags"><span class="tag">SPC</span><span class="tag">Cp/Cpk</span><span class="tag">8D</span><span class="tag">DMAIC</span><span class="tag">PFMEA</span><span class="tag">DOE</span><span class="tag">SMED</span><span class="tag">5S</span><span class="tag">TPM</span><span class="tag">OEE</span><span class="tag">MES</span><span class="tag">SAP</span><span class="tag">Robotics &amp; AGV</span></div>
-      </div>
-
-      <div class="role-block">
-        <div class="rhead"><h3>Delphi TVS Technologies Ltd.</h3><span class="when">Jun 2021 — Sep 2022</span></div>
-        <div class="rtitle">Graduate Engineer Trainee — Quality Engineering</div>
-        <div class="rmeta">Chennai, India · Fuel pumps and injectors · Incoming quality</div>
-        <ul>
-          <li>Verified incoming fuel pump and injector components against drawing specification using CMM, precision dimensional measurement and GD&amp;T.</li>
-          <li>Reviewed non-conforming material, decided disposition through technical review, and closed each case out with the supplier.</li>
-        </ul>
-        <div class="tags"><span class="tag">CMM</span><span class="tag">GD&amp;T</span><span class="tag">Metrology</span><span class="tag">Non-Conforming Material</span><span class="tag">Supplier Quality</span></div>
-      </div>
-
+    <div class="job rv">
+      <div class="when">JUN 2021 — SEP 2022</div>
+      <h3>Delphi TVS Technologies</h3>
+      <div class="role">Graduate Engineer Trainee — Quality Engineering &#183; Chennai</div>
+      <ul>
+        <li>Inspected <b>30+ incoming lots</b> of fuel pump and injector parts — 200–2,000 per lot,
+          5+ suppliers — with CMM and GD&amp;T, at reject rates near 1% on large parts and 20% on small.</li>
+        <li>Dispositioned non-conforming material, segregated suspect stock, and recovered a full
+          supplier replacement on a rust-damaged lot traced to poor packing.</li>
+      </ul>
     </div>
-  </div></section>
+  </div>
+</div></section>
 
-  <section id="cases"><div class="grid">
-    <div class="label">Projects</div>
-    <div class="body">
-      <h2 class="h2">Nine projects, by discipline</h2>
-      <div class="filters" id="filters">
-        <button class="fb" type="button" data-f="all" aria-pressed="true">All nine</button>
-        <button class="fb" type="button" data-f="solve" aria-pressed="false"><span class="fdot" style="background:var(--d-solve)"></span>Problem Solving</button>
-        <button class="fb" type="button" data-f="quality" aria-pressed="false"><span class="fdot" style="background:var(--d-quality)"></span>Quality &amp; Statistics</button>
-        <button class="fb" type="button" data-f="design" aria-pressed="false"><span class="fdot" style="background:var(--d-design)"></span>Design &amp; Metrology</button>
-        <button class="fb" type="button" data-f="process" aria-pressed="false"><span class="fdot" style="background:var(--d-process)"></span>Process &amp; Equipment</button>
-        <button class="fb" type="button" data-f="lean" aria-pressed="false"><span class="fdot" style="background:var(--d-lean)"></span>Lean &amp; Improvement</button>
-        <button class="fb" type="button" data-f="data" aria-pressed="false"><span class="fdot" style="background:var(--d-data)"></span>Data &amp; Modeling</button>
-      </div>
-      <p class="count" id="count">Showing all nine projects.</p>
+<section id="spec"><div class="shell">
+  <div class="head rv"><span>05</span><h2>Specification</h2></div>
+  <div class="spec rv">
+    <div><h4>Quality</h4><p>SPC · Cp/Cpk · Gage R&amp;R · MSA · DOE · PFMEA · Control plans · CAPA · GD&amp;T</p></div>
+    <div><h4>Improvement</h4><p>Six Sigma · DMAIC · 8D · Root cause analysis · Five Why · Fishbone · Pareto · Poka-yoke</p></div>
+    <div><h4>Methods</h4><p>Time studies · Line balancing · Takt time · Standard work · NPI · Production readiness</p></div>
+    <div><h4>Software</h4><p>SolidWorks · AutoCAD · Inventor · Mastercam · Minitab · MCube · Excel · MS Project · SAP</p></div>
+    <div><h4>Education</h4><p>MS Industrial Engineering — University of Illinois Chicago, GPA 3.9<br>
+      BE Mechanical Engineering — Rajalakshmi Engineering College, GPA 3.6</p></div>
+    <div><h4>Certification</h4><p>Lean Six Sigma Green Belt — UIC, 2025<br>
+      Foundations of Data Analysis — Minitab, 2025</p></div>
+  </div>
+</div></section>
 
-      <div id="cases-list">
-
-        <div class="case" data-d="solve quality" style="--dc:var(--d-solve)">
-          <div class="disc"><span class="fdot" style="background:var(--d-solve)"></span>Problem Solving</div>
-          <h3>Field failure traced to one drilling station</h3>
-          <div class="tags"><span class="tag">8D</span><span class="tag">Cp/Cpk</span><span class="tag">Gemba</span><span class="tag">Poka-Yoke</span><span class="tag">CAPA</span><span class="tag">Samsung</span></div>
-          <div class="steps">
-            <div class="step"><div class="s">Problem</div><div class="t">A compressor came back from the customer with metal burrs inside it — a field failure on finished product already with the customer.</div></div>
-            <div class="step"><div class="s">Difficulty</div><div class="t">The block ran on a single <b>transfer machine with nine sequential workstations</b> — grinding, milling, facing, drilling — any of which could have produced the burrs, and nothing in the process data pointed at one of them.</div></div>
-            <div class="step"><div class="s">Method</div><div class="t">Teardown failure analysis on the returned unit, a process capability (Cpk) study across all nine stations to find which was drifting, then a <b>one-week production monitoring study</b> standing at the shortlisted machines. Burr formation isolated to the <b>final drilling station on the leg portion of the block</b>.</div></div>
-            <div class="step"><div class="s">Countermeasure</div><div class="t">Engineered a <b>needle-type air purge attachment targeting all four leg bores</b>, so a part physically cannot leave the station with burrs present — error-proofing at source rather than added inspection downstream.</div></div>
-            <div class="step"><div class="s">Result</div><div class="t">Internal burr accumulation eliminated and <b>downstream rework removed entirely</b>. Closed as a verified CAPA, then rolled out to the other stations running the same operation.</div></div>
-          </div>
-        </div>
-
-        <div class="case" data-d="design process quality" style="--dc:var(--d-design)">
-          <div class="disc"><span class="fdot" style="background:var(--d-design)"></span>Design &amp; Metrology</div>
-          <h3>Leak-test sealing cap, designed in-house</h3>
-          <div class="tags"><span class="tag">SolidWorks</span><span class="tag">GD&amp;T</span><span class="tag">Process Validation</span><span class="tag">Samsung</span></div>
-          <div class="steps">
-            <div class="step"><div class="s">Problem</div><div class="t">Imported leak-test couplers were damaging the shell pipes during the test and generating false rejects — good product being scrapped by the test itself.</div></div>
-            <div class="step"><div class="s">Method</div><div class="t">Designed a replacement sealing cap in SolidWorks, dimensioned to GD&amp;T, to seal without marking the part.</div></div>
-            <div class="step"><div class="s">Validation</div><div class="t">Proved the design over a one-month pilot run on the line before release.</div></div>
-            <div class="step"><div class="s">Result</div><div class="t">Released into production as the standard tool, replacing the imported couplers.</div></div>
-          </div>
-        </div>
-
-        <div class="case" data-d="process data" style="--dc:var(--d-process)">
-          <div class="disc"><span class="fdot" style="background:var(--d-process)"></span>Process &amp; Equipment</div>
-          <h3>Capital justification — N<sub>2</sub> purge &amp; capping automation</h3>
-          <div class="tags"><span class="tag">Feasibility Study</span><span class="tag">Cost-Benefit</span><span class="tag">Capital Proposal</span><span class="tag">Samsung</span></div>
-          <div class="steps">
-            <div class="step"><div class="s">Problem</div><div class="t">Nitrogen purge and capping were run manually across <b>two finishing lines</b> — a candidate for automation, but one that needed a business case before anyone would fund it.</div></div>
-            <div class="step"><div class="s">Method</div><div class="t">Assessed the manufacturing feasibility of automating both operations across the two lines: what the equipment would have to do, where it would sit, and what it would displace.</div></div>
-            <div class="step"><div class="s">Result</div><div class="t">Authored the cost-benefit proposal and presented it to <b>Korean HQ</b> — the capital decision-makers, not the local plant.</div></div>
-          </div>
-        </div>
-
-        <div class="case" data-d="lean process" style="--dc:var(--d-lean)">
-          <div class="disc"><span class="fdot" style="background:var(--d-lean)"></span>Lean &amp; Improvement</div>
-          <h3>Floor layout &amp; material flow redesign</h3>
-          <div class="tags"><span class="tag">AutoCAD</span><span class="tag">AGV Routing</span><span class="tag">Line-Side Delivery</span><span class="tag">Material Flow</span><span class="tag">Samsung</span></div>
-          <div class="steps">
-            <div class="step"><div class="s">Problem</div><div class="t">Material moved from the warehouse to the point of use through intermediate staging, with operators walking to fetch it — motion and inventory, two of the seven wastes, built into the layout.</div></div>
-            <div class="step"><div class="s">Method</div><div class="t">Redesigned the floor layout and conveyance routes in AutoCAD so AGVs deliver directly to line side instead of to a staging area.</div></div>
-            <div class="step"><div class="s">Result</div><div class="t">Cut both the walking and the intermediate staging between the warehouse and the point of use.</div></div>
-          </div>
-        </div>
-
-        <div class="case" data-d="lean process" style="--dc:var(--d-lean)">
-          <div class="disc"><span class="fdot" style="background:var(--d-lean)"></span>Lean &amp; Improvement</div>
-          <h3>Line ergonomics &amp; workstation improvement</h3>
-          <div class="tags"><span class="tag">REBA</span><span class="tag">Ergonomics</span><span class="tag">Time Study</span><span class="tag">Noise Survey</span><span class="tag">Samsung</span></div>
-          <div class="steps">
-            <div class="step"><div class="s">Problem</div><div class="t">Operators at high-frequency stations were carrying avoidable physical load, and plant noise had never been mapped against the layout.</div></div>
-            <div class="step"><div class="s">Method</div><div class="t">Scored the workstations with <b>REBA</b>, then specified screw-gun balancers and stator lifters at the stations carrying the most load. Separately surveyed noise plant-wide and matched it to the layout.</div></div>
-            <div class="step"><div class="s">Result</div><div class="t">REBA scores improved at the treated stations, and enclosures were specified at the highest-dB areas — approved and installed.</div></div>
-          </div>
-        </div>
-
-        <div class="case" data-d="data lean" style="--dc:var(--d-data)">
-          <div class="disc"><span class="fdot" style="background:var(--d-data)"></span>Data &amp; Modeling</div>
-          <h3>Patient intake optimization model</h3>
-          <div class="tags"><span class="tag">Linear Programming</span><span class="tag">Excel Solver</span><span class="tag">Simplex</span><span class="tag">Operations Research</span><span class="tag">UIC</span></div>
-          <div class="steps">
-            <div class="step"><div class="s">Problem</div><div class="t">Allocate a fixed pool of rooms and staff across competing surgical treatments when demand varies — the classic capacity problem, set in a hospital rather than a plant.</div></div>
-            <div class="step"><div class="s">Method</div><div class="t">Built a linear programming model for <b>Northwestern Memorial Hospital</b> optimizing room allocation across four surgical treatments — cataract, hallux valgus, knee operations and osteoarthritis — within constraints of <b>40 rooms and 120 staff</b>.</div></div>
-            <div class="step"><div class="s">Result</div><div class="t">Maximized patient intake to <b>120 patients per month</b>, validated two ways — <b>Excel Solver</b> and manual <b>Simplex</b> tabulation.</div></div>
-          </div>
-        </div>
-
-        <div class="case" data-d="lean process" style="--dc:var(--d-lean)">
-          <div class="disc"><span class="fdot" style="background:var(--d-lean)"></span>Lean &amp; Improvement</div>
-          <h3>Tool localization &amp; cost reduction</h3>
-          <div class="tags"><span class="tag">Supplier Evaluation</span><span class="tag">Tooling</span><span class="tag">Cost Reduction</span><span class="tag">Samsung</span></div>
-          <div class="steps">
-            <div class="step"><div class="s">Problem</div><div class="t">Consumable tooling on the compressor line was driving both cost per part and changeover downtime — abrasive film at the shaft super-finishing stage, and drill bits wearing out faster than the schedule allowed.</div></div>
-            <div class="step"><div class="s">Method</div><div class="t">Sourced and evaluated a <b>higher-yield abrasive film roll</b> for the super-finishing stage, holding the same surface quality while getting more output per roll. Separately evaluated <b>drill bit coating alternatives</b> to extend tool life.</div></div>
-            <div class="step"><div class="s">Result</div><div class="t">More output per roll and less changeover downtime at the super-finishing stage, with hole quality and dimensional accuracy held through the drill bit change.</div></div>
-          </div>
-        </div>
-
-        <div class="case" data-d="design quality" style="--dc:var(--d-design)">
-          <div class="disc"><span class="fdot" style="background:var(--d-design)"></span>Design &amp; Metrology</div>
-          <h3>Bad design — ergonomic analysis of lecture hall seating</h3>
-          <div class="tags"><span class="tag">RULA</span><span class="tag">Anthropometrics</span><span class="tag">Human Factors</span><span class="tag">UIC</span></div>
-          <div class="steps">
-            <div class="step"><div class="s">Problem</div><div class="t">Fixed lecture hall seating at UIC forced sustained awkward posture across a population with a wide range of body dimensions.</div></div>
-            <div class="step"><div class="s">Method</div><div class="t">Applied <b>RULA</b> assessment, anthropometric analysis and a <b>Human-Task-Environment</b> framework to identify where the design failed its users.</div></div>
-            <div class="step"><div class="s">Result</div><div class="t">Identified biomechanical strain, postural fatigue and accessibility gaps, and proposed human-centered redesign solutions addressing each.</div></div>
-          </div>
-        </div>
-
-        <div class="case" data-d="design process" style="--dc:var(--d-design)">
-          <div class="disc"><span class="fdot" style="background:var(--d-design)"></span>Design &amp; Metrology</div>
-          <h3>VR-based training prototype</h3>
-          <div class="tags"><span class="tag">Unreal Engine</span><span class="tag">DaVinci Resolve</span><span class="tag">Training Content</span><span class="tag">UIC</span></div>
-          <div class="steps">
-            <div class="step"><div class="s">Problem</div><div class="t">Procedural training is hard to deliver through documents alone — the learner needs to see the sequence and the hand position, not read about them.</div></div>
-            <div class="step"><div class="s">Method</div><div class="t">Designed an immersive VR training prototype in <b>Unreal Engine</b> covering DIY home repair scenarios, then produced integrated VR and video content in <b>DaVinci Resolve</b>.</div></div>
-            <div class="step"><div class="s">Result</div><div class="t">A working prototype for industrial training applications, where the same approach applies to machine setup, changeover and standard work.</div></div>
-          </div>
-        </div>
-
-      </div>
-    </div>
-  </div></section>
-
-  <section id="skills"><div class="grid">
-    <div class="label">Skills &amp; tools</div>
-    <div class="body">
-      <div class="skillrow" style="--dc:var(--d-process)"><div class="cat"><span class="sdot"></span>Process &amp; Equipment</div><div class="items">Process Development &amp; Optimization · Process Validation · Equipment Qualification · Commissioning · Acceptance Testing · NPI · Ramp-Up</div></div>
-      <div class="skillrow" style="--dc:var(--d-lean)"><div class="cat"><span class="sdot"></span>Lean &amp; Improvement</div><div class="items">Lean Manufacturing · Lean Six Sigma Green Belt · Kaizen · 5S · SMED · TPM · Value Stream Mapping · Standard Work · Time Studies · Line Balancing</div></div>
-      <div class="skillrow" style="--dc:var(--d-quality)"><div class="cat"><span class="sdot"></span>Quality &amp; Statistics</div><div class="items">SPC · Cp/Cpk · Process Capability · Gage R&amp;R · MSA · DOE · PFMEA · Control Plans · CAPA · Non-Conforming Material</div></div>
-      <div class="skillrow" style="--dc:var(--d-solve)"><div class="cat"><span class="sdot"></span>Problem Solving</div><div class="items">Root Cause Analysis · 8D · DMAIC · 5 Why · Fishbone / Ishikawa · Pareto · Failure Analysis · Poka-Yoke · Countermeasures</div></div>
-      <div class="skillrow" style="--dc:var(--d-design)"><div class="cat"><span class="sdot"></span>Design &amp; Metrology</div><div class="items">SolidWorks · AutoCAD · Autodesk Inventor · GD&amp;T · CMM · Fixture Design · DFM · Layout &amp; Material Flow · Ergonomics (REBA)</div></div>
-      <div class="skillrow" style="--dc:var(--d-data)"><div class="cat"><span class="sdot"></span>Data &amp; Systems</div><div class="items">SAP (ERP) · Samsung GMES (MES) · MCube · Advanced Excel · Minitab · MS Project · Data Analysis</div></div>
-    </div>
-  </div></section>
-
-  <section id="education"><div class="grid">
-    <div class="label">Education</div>
-    <div class="body">
-      <div class="edu">
-        <div class="rhead"><h3>University of Illinois Chicago</h3><span class="when">Aug 2024 — May 2026</span></div>
-        <div class="rtitle">Master of Science, Industrial Engineering — GPA 3.9 / 4.0</div>
-        <p class="course"><span class="cl">Coursework</span>Statistical Quality Control · Operations Research I &amp; II · Work Measurement &amp; Methods · Supply Chain Management</p>
-      </div>
-      <div class="edu">
-        <div class="rhead"><h3>Rajalakshmi Engineering College</h3><span class="when">Aug 2017 — May 2021</span></div>
-        <div class="rtitle">Bachelor of Engineering, Mechanical Engineering — GPA 3.6 / 4.0</div>
-        <p class="course"><span class="cl">Coursework</span>Total Quality Management · Production Planning &amp; Control · Process Planning &amp; Cost Estimation · CAD/CAM · Metrology</p>
-      </div>
-    </div>
-  </div></section>
-
-  <section id="certs"><div class="grid">
-    <div class="label">Certification</div>
-    <div class="body">
-      <div class="edu">
-        <div class="rhead"><h3>Lean Six Sigma Green Belt</h3><span class="when">May 2025</span></div>
-        <div class="rtitle">University of Illinois Chicago — UIC Business</div>
-        <p class="course"><span class="cl">Applied in practice</span>DMAIC · SPC and process capability · Cp/Cpk · Gage R&amp;R · MSA · DOE · value stream mapping · poka-yoke — used daily on the lines at Samsung rather than studied in isolation.</p>
-      </div>
-      <div class="edu">
-        <div class="rhead"><h3>Foundations of Data Analysis</h3><span class="when">Dec 2025</span></div>
-        <div class="rtitle">Minitab Education Hub</div>
-      </div>
-    </div>
-  </div></section>
-
-  <footer id="contact"><div class="grid">
-    <div class="label">Contact</div>
-    <div class="body">
-      <p>Open to process, manufacturing and quality engineering roles, in Chicago or relocating.
-        Reach me at <b>sethuraman06k@gmail.com</b> or <b class="num">(312) 296-9015</b>.</p>
-      <p class="f">Chicago, IL · linkedin.com/in/sethuramankarunanithi</p>
-    </div>
-  </div></footer>
-
-</div>
+<section class="end" id="end"><div class="shell">
+  <h2>Put me on a line.</h2>
+  <p>Open to process, manufacturing, quality and industrial engineering roles.
+    Based in Chicago, ready to relocate.</p>
+  <div class="acts">
+    <a class="pri" href="mailto:sethuraman06k@gmail.com">Email me</a>
+    <a href="Sethuraman_Karunanithi_Resume.pdf" download>Download resume</a>
+    <a href="https://www.linkedin.com/in/sethuramankarunanithi/">LinkedIn</a>
+  </div>
+</div></section>
+<footer>SETHURAMAN KARUNANITHI &#183; CHICAGO, ILLINOIS &#183; 2026</footer>
 
 <script>
 (function(){
-  var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-
-  /* theme toggle — remembers the choice per browser, works without storage */
-  var root = document.documentElement, btn = document.getElementById('theme');
-  try { var saved = localStorage.getItem('sk-theme'); if (saved) root.setAttribute('data-theme', saved); } catch(e){}
-  function current(){
-    var a = root.getAttribute('data-theme');
-    if (a) return a;
-    return (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) ? 'dark' : 'light';
-  }
-  btn.addEventListener('click', function(){
-    var next = current() === 'dark' ? 'light' : 'dark';
-    root.setAttribute('data-theme', next);
-    try { localStorage.setItem('sk-theme', next); } catch(e){}
+  var C=2*Math.PI*50;
+  [].forEach.call(document.querySelectorAll('.g'),function(g){
+    var a=g.querySelector('.arc'), p=+g.dataset.pct;
+    g.style.setProperty('--len',C.toFixed(1));
+    g.style.setProperty('--off',(C*(1-p/100)).toFixed(1));
   });
-
-  /* project filter */
-  var cases = Array.prototype.slice.call(document.querySelectorAll('#cases-list .case'));
-  var buttons = Array.prototype.slice.call(document.querySelectorAll('#filters .fb'));
-  var count = document.getElementById('count');
-  var words = ['zero','one','two','three','four','five','six','seven','eight','nine'];
-  buttons.forEach(function(b){
-    b.addEventListener('click', function(){
-      var f = b.getAttribute('data-f');
-      buttons.forEach(function(o){ o.setAttribute('aria-pressed', String(o === b)); });
-      var shown = 0;
-      cases.forEach(function(c){
-        var match = (f === 'all') || (' ' + c.getAttribute('data-d') + ' ').indexOf(' ' + f + ' ') > -1;
-        c.hidden = !match;
-        if (match) shown++;
-      });
-      count.textContent = (f === 'all')
-        ? 'Showing all nine projects.'
-        : 'Showing ' + words[shown] + ' of nine projects — ' + b.textContent.trim() + '.';
-    });
-  });
-
-  /* resume opens on a button rather than sitting open */
-  /* one button at the top opens the resume in place */
-  var rbtn = document.getElementById('rbtn'), rsheet = document.getElementById('rsheet');
-  if (rbtn && rsheet){
-    rbtn.addEventListener('click', function(){
-      var open = rsheet.hidden;
-      rsheet.hidden = !open;
-      rbtn.setAttribute('aria-expanded', String(open));
-      rbtn.textContent = open ? 'Hide resume' : 'Resume';
-    });
-  }
-
-  /* scroll spy */
-  var links = Array.prototype.slice.call(document.querySelectorAll('.navin a'));
-  var map = {};
-  links.forEach(function(a){ map[a.getAttribute('href').slice(1)] = a; });
-  var targets = Object.keys(map).map(function(id){ return document.getElementById(id); }).filter(Boolean);
-  if (window.IntersectionObserver && targets.length){
-    var io = new IntersectionObserver(function(entries){
-      entries.forEach(function(en){
-        if (en.isIntersecting){
-          links.forEach(function(a){ a.classList.remove('on'); });
-          var a = map[en.target.id]; if (a) a.classList.add('on');
-        }
-      });
-    }, { rootMargin: '-56px 0px -72% 0px', threshold: 0 });
-    targets.forEach(function(t){ io.observe(t); });
-  }
-
-
-  /* bars grow from zero, numbers count up — real values already in the HTML */
-  var fills = Array.prototype.slice.call(document.querySelectorAll('.fill'));
-  fills.forEach(function(f){ f.style.width = (reduce ? f.getAttribute('data-w') : '0') + 'px'; });
-  var mf = document.getElementById('mfill');
-  var mTarget = mf ? mf.style.width : null;
-  if (mf && !reduce) mf.style.width = '0%';
-
-  function run(){
-    fills.forEach(function(f){ f.style.width = f.getAttribute('data-w') + 'px'; });
-    if (mf) mf.style.width = mTarget;
-    document.querySelectorAll('.cu').forEach(function(el){
-      var to = parseFloat(el.getAttribute('data-to'));
-      var suf = el.getAttribute('data-suf') || '';
-      var t0 = null, dur = 750;
-      function step(ts){
-        if (t0 === null) t0 = ts;
-        var p = Math.min(1, (ts - t0) / dur);
-        var e = 1 - Math.pow(1 - p, 3);
-        el.textContent = Math.round(to * e) + suf;
-        if (p < 1) requestAnimationFrame(step);
-      }
-      el.textContent = '0' + suf;
-      requestAnimationFrame(step);
-    });
-  }
-  if (!reduce) requestAnimationFrame(function(){ setTimeout(run, 90); });
+  var io=new IntersectionObserver(function(es){
+    es.forEach(function(e){ if(e.isIntersecting){e.target.classList.add('on','rv');e.target.classList.add('on');io.unobserve(e.target);} });
+  },{threshold:.2});
+  [].forEach.call(document.querySelectorAll('.g,.rv'),function(e){io.observe(e);});
+  var pr=document.getElementById('prog');
+  addEventListener('scroll',function(){
+    var h=document.documentElement;
+    pr.style.width=(h.scrollTop/(h.scrollHeight-h.clientHeight)*100)+'%';
+  },{passive:true});
 })();
 </script>
-
-</body>
-</html>
+</body></html>
