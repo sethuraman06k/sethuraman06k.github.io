@@ -185,39 +185,26 @@ b{font-weight:600}
   text-transform:uppercase;color:var(--rail)}
 .step .t{max-width:66ch}
 
-/* ---- transfer line: the one interactive moment on the page ---- */
-.sim{margin:26px 0 30px;padding:20px 22px 18px;border:1px solid var(--line);
+/* ---- transfer line schematic ---- */
+.sim{margin:26px 0 30px;padding:22px 24px 18px;border:1px solid var(--line);
   background:var(--tint);border-radius:2px}
-.sim .cap{font-size:13.5px;color:var(--muted);margin:0 0 20px;max-width:62ch}
-.sim .cap b{color:var(--fg);font-weight:600}
-.rail{position:relative;height:66px}
-.bed{position:absolute;left:0;right:0;top:56px;height:2px;background:var(--rail);opacity:.3}
-.stn{position:absolute;top:26px;width:9.4%;height:30px;background:var(--bg);
-  border:1px solid var(--line);border-bottom:2px solid var(--rail)}
-.stn span{position:absolute;bottom:-17px;left:50%;transform:translateX(-50%);
-  font-family:var(--mono);font-size:10px;color:var(--rail)}
-.pt{position:absolute;top:32px;margin-left:2%;width:5.4%;height:18px;
-  background:var(--after);border-radius:1px;
-  animation:index var(--dur,13s) steps(9,end) infinite;
-  animation-delay:calc(var(--dur,13s) / -9 * var(--i))}
-@keyframes index{from{left:0}to{left:95.4%}}
-.sim.slow .pt{background:var(--before)}
-.ctl{display:flex;align-items:center;gap:14px;flex-wrap:wrap;margin-top:26px}
-.ctl label{font-size:13.5px;color:var(--muted)}
-.ctl input[type=range]{flex:1 1 200px;min-width:170px;accent-color:var(--accent);height:22px}
-.ctl .val{font-family:var(--mono);font-size:17px;font-weight:600;color:var(--fg);
-  min-width:62px;font-variant-numeric:tabular-nums}
-.ctl .pre{display:flex;gap:8px}
-.ctl .pre button{font:inherit;font-size:12.5px;padding:5px 11px;cursor:pointer;
-  border:1px solid var(--line);background:var(--bg);color:var(--muted);border-radius:2px}
-.ctl .pre button[aria-pressed=true]{border-color:var(--accent);color:var(--accent);font-weight:600}
-.ctl .pre button:focus-visible,.ctl input:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
-.out{display:flex;gap:30px;margin-top:16px;padding-top:14px;border-top:1px solid var(--line);flex-wrap:wrap}
-.out div{display:flex;flex-direction:column;gap:2px}
-.out .n{font-family:var(--mono);font-size:19px;font-weight:600;color:var(--fg);font-variant-numeric:tabular-nums}
-.out .l{font-size:12px;color:var(--muted)}
-@media (max-width:560px){.rail{height:58px}.stn{height:24px;top:24px}.pt{top:28px;height:14px}.bed{top:48px}}
-@media (prefers-reduced-motion:reduce){.pt{animation-play-state:paused}}
+.sim .swrap{overflow-x:auto;overflow-y:hidden;-webkit-overflow-scrolling:touch}
+.sim svg{width:100%;height:auto;display:block;overflow:visible;min-width:600px}
+.sim .dim{stroke:var(--rail);stroke-width:1;opacity:.75}
+.sim .blk{fill:var(--bg);stroke:var(--rail);stroke-width:1.1}
+.sim .blk.hot{stroke:var(--before);stroke-width:1.8}
+.sim .bar{stroke:var(--rail);stroke-width:2.5;opacity:.45}
+.sim .num{font-family:var(--mono);font-size:10px;fill:var(--rail)}
+.sim .op{font-family:var(--mono);font-size:9.5px;fill:var(--muted);letter-spacing:.04em}
+.sim .dlabel{font-family:var(--mono);font-size:11px;fill:var(--fg);font-weight:600}
+.sim .was{font-family:var(--mono);font-size:11px;fill:var(--rail);text-decoration:line-through}
+.sim .note{font-family:var(--sans);font-size:11.5px;fill:var(--before)}
+.sim .lead{stroke:var(--before);stroke-width:1;stroke-dasharray:2 2}
+.wp{fill:var(--after);animation:idx 4.05s steps(9,end) infinite}
+@keyframes idx{from{transform:translateX(0)}to{transform:translateX(954px)}}
+.sim figcaption{font-size:13px;color:var(--muted);margin-top:16px;max-width:64ch}
+.sim figcaption b{color:var(--fg);font-weight:600}
+@media (prefers-reduced-motion:reduce){.wp{animation:none}}
 
 
 /* skills — dot ties each group to its discipline hue */
@@ -268,29 +255,53 @@ img{max-width:100%}
     <p class="intro">Three years on high-volume automated manufacturing lines at Samsung and Delphi TVS.
       I develop and qualify processes, and I run root-cause investigations that end in a verified
       countermeasure on the machine — not a report. MS Industrial Engineering, University of Illinois Chicago.</p>
-    <div class="sim" id="sim">
-      <p class="cap">A nine-station transfer line machining compressor blocks. Time studies reset the
-        routings and took the cycle from <b>14.8 seconds to 4.5</b>. Drag the control to see the difference &mdash; the line is shown at ten times speed.</p>
-      <div class="rail" aria-hidden="true">
-        <div class="bed"></div>
-        <div class="stn" style="left:0.0%"><span>1</span></div><div class="stn" style="left:10.6%"><span>2</span></div><div class="stn" style="left:21.2%"><span>3</span></div><div class="stn" style="left:31.8%"><span>4</span></div><div class="stn" style="left:42.4%"><span>5</span></div><div class="stn" style="left:53.0%"><span>6</span></div><div class="stn" style="left:63.6%"><span>7</span></div><div class="stn" style="left:74.2%"><span>8</span></div><div class="stn" style="left:84.8%"><span>9</span></div>
-        <div class="pt" style="--i:0"></div><div class="pt" style="--i:1"></div><div class="pt" style="--i:2"></div><div class="pt" style="--i:3"></div><div class="pt" style="--i:4"></div><div class="pt" style="--i:5"></div><div class="pt" style="--i:6"></div><div class="pt" style="--i:7"></div><div class="pt" style="--i:8"></div>
+    <figure class="sim" id="sim">
+      <div class="swrap">
+      <svg viewBox="-4 -34 958 156" role="img"
+           aria-label="Schematic of a nine-station transfer line: grinding, milling, facing and drilling. Cycle time reduced from 14.8 to 4.5 seconds. The burr root cause was isolated to station nine, final drilling.">
+        <line class="dim" x1="0" y1="-26" x2="0" y2="-12"/>
+        <line class="dim" x1="946" y1="-26" x2="946" y2="-12"/>
+        <line class="dim" x1="0" y1="-19" x2="946" y2="-19"/>
+        <rect x="330" y="-30" width="290" height="22" fill="var(--tint)"/>
+        <text class="was" x="398" y="-15" text-anchor="end">14.8 s</text>
+        <text class="dlabel" x="406" y="-15">&#8594; 4.5 s cycle</text>
+        <rect class="blk" x="0" y="30" width="92" height="46" rx="1"/>
+        <text class="op" x="46" y="58" text-anchor="middle">Grind</text>
+        <text class="num" x="46" y="94" text-anchor="middle">1</text>
+        <rect class="blk" x="106" y="30" width="92" height="46" rx="1"/>
+        <text class="op" x="152" y="58" text-anchor="middle">Grind</text>
+        <text class="num" x="152" y="94" text-anchor="middle">2</text>
+        <rect class="blk" x="212" y="30" width="92" height="46" rx="1"/>
+        <text class="op" x="258" y="58" text-anchor="middle">Mill</text>
+        <text class="num" x="258" y="94" text-anchor="middle">3</text>
+        <rect class="blk" x="318" y="30" width="92" height="46" rx="1"/>
+        <text class="op" x="364" y="58" text-anchor="middle">Mill</text>
+        <text class="num" x="364" y="94" text-anchor="middle">4</text>
+        <rect class="blk" x="424" y="30" width="92" height="46" rx="1"/>
+        <text class="op" x="470" y="58" text-anchor="middle">Face</text>
+        <text class="num" x="470" y="94" text-anchor="middle">5</text>
+        <rect class="blk" x="530" y="30" width="92" height="46" rx="1"/>
+        <text class="op" x="576" y="58" text-anchor="middle">Face</text>
+        <text class="num" x="576" y="94" text-anchor="middle">6</text>
+        <rect class="blk" x="636" y="30" width="92" height="46" rx="1"/>
+        <text class="op" x="682" y="58" text-anchor="middle">Drill</text>
+        <text class="num" x="682" y="94" text-anchor="middle">7</text>
+        <rect class="blk" x="742" y="30" width="92" height="46" rx="1"/>
+        <text class="op" x="788" y="58" text-anchor="middle">Drill</text>
+        <text class="num" x="788" y="94" text-anchor="middle">8</text>
+        <rect class="blk hot" x="848" y="30" width="92" height="46" rx="1"/>
+        <text class="op" x="894" y="58" text-anchor="middle">Drill</text>
+        <text class="num" x="894" y="94" text-anchor="middle">9</text>
+        <line class="bar" x1="0" y1="82" x2="946" y2="82"/>
+        <rect class="wp" x="28" y="44" width="36" height="18" rx="1"/>
+        <line class="lead" x1="930" y1="78" x2="946" y2="104"/>
+        <text class="note" x="946" y="114" text-anchor="end">Burr root cause isolated here</text>
+      </svg>
       </div>
-      <div class="ctl">
-        <label for="takt">Cycle time</label>
-        <input id="takt" type="range" min="45" max="148" step="1" value="148"
-               aria-label="Cycle time in tenths of a second">
-        <span class="val" id="taktv">14.8 s</span>
-        <span class="pre">
-          <button type="button" data-v="148" aria-pressed="true">Before</button>
-          <button type="button" data-v="45" aria-pressed="false">After</button>
-        </span>
-      </div>
-      <div class="out">
-        <div><span class="n" id="pph">243</span><span class="l">Parts per hour (3600 ÷ cycle time)</span></div>
-        <div><span class="n" id="mult">1.0&times;</span><span class="l">Throughput against the 14.8 s baseline</span></div>
-      </div>
-    </div>
+      <figcaption>Nine-station transfer line machining compressor blocks. Time studies reset the routings
+        and took the cycle from <b>14.8 seconds to 4.5</b>. A field-returned burr defect was traced through
+        a capability study across all nine stations to final drilling, and error-proofed with an air purge.</figcaption>
+    </figure>
     <div class="chips">
       <span class="chip">Process Engineering</span><span class="chip">Root Cause Analysis</span>
       <span class="chip">SPC &amp; Cp/Cpk</span><span class="chip">Lean Six Sigma Green Belt</span>
@@ -671,33 +682,6 @@ img{max-width:100%}
     targets.forEach(function(t){ io.observe(t); });
   }
 
-
-  /* transfer line — cycle time drives the flow */
-  (function(){
-    var sim=document.getElementById('sim'); if(!sim) return;
-    var r=document.getElementById('takt'), v=document.getElementById('taktv'),
-        pph=document.getElementById('pph'), mu=document.getElementById('mult'),
-        pre=sim.querySelectorAll('.pre button');
-    function paint(){
-      var t=+r.value/10;
-      sim.style.setProperty('--dur',(t*0.9).toFixed(2)+'s');
-      sim.classList.toggle('slow',t>9.6);
-      v.textContent=t.toFixed(1)+' s';
-      pph.textContent=Math.round(3600/t).toLocaleString();
-      mu.innerHTML=(14.8/t).toFixed(1)+'&times;';
-      pre.forEach(function(b){b.setAttribute('aria-pressed',String(+b.dataset.v===+r.value));});
-    }
-    r.addEventListener('input',paint);
-    pre.forEach(function(b){b.addEventListener('click',function(){
-      var from=+r.value,to=+b.dataset.v,t0=performance.now();
-      (function step(now){
-        var k=Math.min((now-t0)/650,1), e=1-Math.pow(1-k,3);
-        r.value=Math.round(from+(to-from)*e); paint();
-        if(k<1) requestAnimationFrame(step);
-      })(t0);
-    });});
-    paint();
-  })();
 
   /* bars grow from zero, numbers count up — real values already in the HTML */
   var fills = Array.prototype.slice.call(document.querySelectorAll('.fill'));
