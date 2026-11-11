@@ -177,6 +177,8 @@ h1,h2,h3,h4{margin:0;font-weight:600}
 .cta .direct a{color:var(--ink);text-underline-offset:3px;text-decoration-color:#5A626A}
 .cta .direct a:hover{text-decoration-color:var(--tape)}
 footer{border-top:1px solid var(--seam);padding-block:1.5rem;color:var(--steel);font-size:.95rem}
+.toast{position:fixed;left:50%;bottom:1.25rem;z-index:30;transform:translate(-50%,8px);width:max-content;max-width:calc(100vw - 2rem);background:var(--tape);color:var(--tape-ink);font-weight:600;line-height:1.35;text-align:center;padding:.7rem 1.1rem;border-radius:3px;opacity:0;pointer-events:none;transition:opacity .2s,transform .2s}
+.toast.show{opacity:1;transform:translate(-50%,0)}
 
 @media (min-width:981px){
   .case > div:first-child{position:sticky;top:92px;align-self:start}
@@ -220,7 +222,7 @@ footer{border-top:1px solid var(--seam);padding-block:1.5rem;color:var(--steel);
 @media (prefers-reduced-motion:reduce){
   html{scroll-behavior:auto}
   .rail::before,.stop{animation:none}
-  .btn{transition:none}
+  .btn,.toast{transition:none}
 }
 </style>
 </head>
@@ -249,7 +251,7 @@ footer{border-top:1px solid var(--seam);padding-block:1.5rem;color:var(--steel);
       <p class="lede">Process and industrial engineer with three years on compressor and fuel-system lines at Samsung and Delphi TVS. I trace a problem to the machine that causes it and fix it there. MS Industrial Engineering, University of Illinois Chicago.</p>
       <div class="actions">
         <a class="btn solid" href="Sethuraman_Karunanithi_Resume.pdf">Download resume</a>
-        <a class="btn open" href="mailto:sethuraman06k@gmail.com">Email me</a>
+        <a class="btn open" href="mailto:sethuraman06k@gmail.com" data-copy="sethuraman06k@gmail.com">Email me</a>
         <span class="place">Chicago, IL. Open to relocation.</span>
       </div>
     </div>
@@ -541,11 +543,11 @@ footer{border-top:1px solid var(--seam);padding-block:1.5rem;color:var(--steel);
     <div class="tapeline" aria-hidden="true"></div>
     <p>Open to process, manufacturing, quality and industrial engineering roles. Based in Chicago and ready to relocate.</p>
     <div class="actions">
-      <a class="btn solid" href="mailto:sethuraman06k@gmail.com">Email me</a>
+      <a class="btn solid" href="mailto:sethuraman06k@gmail.com" data-copy="sethuraman06k@gmail.com">Email me</a>
       <a class="btn open" href="Sethuraman_Karunanithi_Resume.pdf">Download resume</a>
       <a class="btn open" href="https://www.linkedin.com/in/sethuramankarunanithi/" rel="noopener">LinkedIn</a>
     </div>
-    <p class="direct"><a href="mailto:sethuraman06k@gmail.com">sethuraman06k@gmail.com</a> &nbsp; <a href="tel:+13122969015">(312) 296-9015</a></p>
+    <p class="direct"><a href="mailto:sethuraman06k@gmail.com" data-copy="sethuraman06k@gmail.com">sethuraman06k@gmail.com</a> &nbsp; <a href="tel:+13122969015">(312) 296-9015</a></p>
   </div>
 </section>
 
@@ -554,7 +556,9 @@ footer{border-top:1px solid var(--seam);padding-block:1.5rem;color:var(--steel);
 <footer>
   <div class="wrap">Sethuraman Karunanithi, Chicago, Illinois, 2026</div>
 </footer>
+<div class="toast" role="status" aria-live="polite"></div>
 <script>
+(function(){var t=document.querySelector('.toast'),timer;function say(m){t.textContent=m;t.classList.add('show');clearTimeout(timer);timer=setTimeout(function(){t.classList.remove('show')},3500)}function legacy(v){var a=document.createElement('textarea');a.value=v;a.setAttribute('readonly','');a.style.position='fixed';a.style.opacity='0';document.body.appendChild(a);a.select();var ok=false;try{ok=document.execCommand('copy')}catch(e){}document.body.removeChild(a);return ok}document.querySelectorAll('a[data-copy]').forEach(function(a){a.addEventListener('click',function(){var v=a.getAttribute('data-copy'),m='Email address copied: '+v;if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(v).then(function(){say(m)},function(){if(legacy(v)){say(m)}})}else if(legacy(v)){say(m)}})})})();
 (function(){var mq=window.matchMedia('(max-width:760px)');function set(){document.querySelectorAll('details.how').forEach(function(d){d.open=!mq.matches})}set();if(mq.addEventListener){mq.addEventListener('change',set)}else if(mq.addListener){mq.addListener(set)}})();
 </script>
 </body>
