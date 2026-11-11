@@ -1,439 +1,561 @@
 <!doctype html>
-<html lang="en"><head>
-<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Sethuraman Karunanithi — Process &amp; Industrial Engineer</title>
-<meta name="description" content="Process and industrial engineer. Three years on high-volume automated lines at Samsung and Delphi TVS. MS Industrial Engineering, UIC.">
-<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Sethuraman Karunanithi | Process and Industrial Engineer</title>
+<meta name="description" content="Process and industrial engineer in Chicago. Three years on compressor and fuel-system lines at Samsung and Delphi TVS. MS Industrial Engineering, University of Illinois Chicago.">
+<meta property="og:title" content="Sethuraman Karunanithi | Process and Industrial Engineer">
+<meta property="og:description" content="Three years on compressor and fuel-system lines at Samsung and Delphi TVS. Case studies from the plant floor.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://sethuraman06k.github.io/">
+<meta property="og:image" content="https://sethuraman06k.github.io/og.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="canonical" href="https://sethuraman06k.github.io/">
+<meta name="theme-color" content="#15181B">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"Person","name":"Sethuraman Karunanithi","jobTitle":"Process and Industrial Engineer","url":"https://sethuraman06k.github.io/","email":"mailto:sethuraman06k@gmail.com","address":{"@type":"PostalAddress","addressLocality":"Chicago","addressRegion":"IL","addressCountry":"US"},"sameAs":["https://www.linkedin.com/in/sethuramankarunanithi/"],"alumniOf":[{"@type":"CollegeOrUniversity","name":"University of Illinois Chicago"},{"@type":"CollegeOrUniversity","name":"Rajalakshmi Engineering College"}]}
+</script>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='5' fill='%2315181B'/%3E%3Crect x='4' y='14.5' width='24' height='3' fill='%23F6C515'/%3E%3Ccircle cx='11' cy='16' r='4.5' fill='%23F6C515'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600&family=Barlow+Condensed:wght@500;600;700&display=swap" rel="stylesheet">
 <style>
-*{margin:0;padding:0;box-sizing:border-box}
 :root{
-  --void:#080B10; --deck:#0E131C; --panel:#131A26; --edge:#1F2938; --edge-2:#2B3850;
-  --fg:#E8EEF7; --dim:#8794A8; --faint:#5A6678;
-  --ok:#3FD68C; --warn:#E8A33D; --cool:#4CC9F0; --hot:#FF6B5A;
-  --mono:"JetBrains Mono",ui-monospace,Menlo,Consolas,monospace;
-  --cond:"Barlow Condensed",Impact,sans-serif;
-  --ui:"Inter",-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+  --floor:#15181B;      /* shop floor */
+  --plate:#1D2125;      /* raised plate */
+  --seam:#31373D;       /* expansion joints, hairlines */
+  --ink:#ECEDE8;        /* primary text */
+  --steel:#A3A9AF;      /* secondary text */
+  --tape:#F6C515;       /* floor-marking tape */
+  --tape-ink:#16181A;   /* text on tape */
+  --display:"Barlow Condensed","Arial Narrow",Arial,sans-serif;
+  --text:"Barlow","Helvetica Neue",Arial,sans-serif;
+  --wrap:1160px;
 }
-html{scroll-behavior:smooth}
-body{background:var(--void);color:var(--fg);font-family:var(--ui);line-height:1.6;
-  -webkit-font-smoothing:antialiased;overflow-x:hidden}
-body:before{content:"";position:fixed;inset:0;pointer-events:none;z-index:0;opacity:.5;
-  background:
-    radial-gradient(900px 500px at 12% -5%,rgba(76,201,240,.10),transparent 60%),
-    radial-gradient(760px 460px at 92% 8%,rgba(63,214,140,.07),transparent 60%),
-    repeating-linear-gradient(0deg,transparent 0 39px,rgba(255,255,255,.018) 39px 40px),
-    repeating-linear-gradient(90deg,transparent 0 39px,rgba(255,255,255,.018) 39px 40px)}
-.shell{position:relative;z-index:1;max-width:1180px;margin:0 auto;padding:0 clamp(16px,3.4vw,34px)}
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--floor);color:var(--ink);font:400 1.0625rem/1.6 var(--text);
+  -webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+a{color:inherit}
+p{margin:0}
+h1,h2,h3,h4{margin:0;font-weight:600}
+:focus-visible{outline:3px solid var(--tape);outline-offset:3px;border-radius:2px}
+.wrap{max-width:var(--wrap);margin-inline:auto;padding-inline:clamp(1rem,4vw,2.5rem)}
+.skip{position:absolute;left:-999px;top:0;background:var(--tape);color:var(--tape-ink);padding:.6rem 1rem;font-weight:600;z-index:20}
+.skip:focus{left:1rem;top:1rem}
 
-/* status bar */
-.bar{position:fixed;inset:0 0 auto;z-index:40;background:rgba(8,11,16,.82);
-  backdrop-filter:blur(14px);border-bottom:1px solid var(--edge)}
-.bar .in{max-width:1180px;margin:0 auto;padding:0 clamp(16px,3.4vw,34px);height:50px;
-  display:flex;align-items:center;justify-content:space-between;gap:16px}
-.bar .id{font-family:var(--mono);font-size:12px;letter-spacing:.06em;color:var(--fg);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.bar .id i{color:var(--ok);font-style:normal}
-.bar nav{display:flex;gap:clamp(12px,2vw,26px)}
-.bar a{font-family:var(--mono);font-size:11px;letter-spacing:.07em;color:var(--dim);
-  text-decoration:none;text-transform:uppercase;transition:color .2s;white-space:nowrap}
-.bar a:hover{color:var(--cool)}
-@media(max-width:860px){.bar nav a:nth-child(n+4){display:none}}
-@media(max-width:620px){.bar nav a:nth-child(n+2){display:none}}
-@media(max-width:460px){.bar .id{font-size:10.5px}}
-.prog{position:fixed;top:50px;left:0;height:2px;width:0;z-index:41;
-  background:linear-gradient(90deg,var(--cool),var(--ok))}
+/* top bar */
+.top{position:sticky;top:0;z-index:10;background:rgba(21,24,27,.9);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);border-bottom:1px solid var(--seam)}
+.top .wrap{display:flex;align-items:center;justify-content:space-between;gap:1rem;min-height:60px}
+.brand{font:600 clamp(.98rem,4.2vw,1.15rem)/1 var(--display);letter-spacing:.07em;text-transform:uppercase;text-decoration:none;white-space:nowrap;min-width:0;overflow:hidden;text-overflow:ellipsis}
+.top nav{display:flex;align-items:center;gap:1.75rem;flex:none}
+.top nav a.link{font-size:.97rem;color:var(--steel);text-decoration:none}
+.top nav a.link:hover{color:var(--ink)}
+
+.btn{display:inline-flex;align-items:center;justify-content:center;min-height:46px;padding:.6rem 1.25rem;
+  font:600 1rem/1 var(--text);text-decoration:none;border-radius:3px;border:2px solid var(--tape);transition:background-color .15s,color .15s,border-color .15s}
+.btn.solid{background:var(--tape);color:var(--tape-ink)}
+.btn.solid:hover{background:#FFD83A;border-color:#FFD83A}
+.btn.open{color:var(--ink);border-color:var(--seam)}
+.btn.open:hover{border-color:var(--tape)}
+.btn.small{min-height:38px;padding:.4rem .9rem;font-size:.95rem}
 
 /* hero */
-.hero{padding:clamp(96px,16vh,150px) 0 clamp(50px,8vh,86px)}
-.tagline{font-family:var(--mono);font-size:11.5px;letter-spacing:.2em;color:var(--ok);
-  text-transform:uppercase;margin-bottom:18px}
-h1{font-family:var(--cond);font-weight:700;font-size:clamp(50px,10.5vw,124px);
-  line-height:.9;letter-spacing:-.015em;text-transform:uppercase}
-h1 em{font-style:normal;color:var(--cool)}
-.lede{font-size:clamp(15.5px,1.8vw,19px);color:var(--dim);max-width:60ch;margin-top:22px}
-.id-row{display:flex;gap:10px 26px;flex-wrap:wrap;margin-top:26px;
-  font-family:var(--mono);font-size:12.5px;color:var(--faint)}
-.id-row a{color:var(--cool);text-decoration:none}
-.id-row a:hover{text-decoration:underline}
+.hero{padding-block:clamp(2.5rem,5.5vw,4.25rem) clamp(2rem,4vw,3rem)}
+.hero h1{font:700 clamp(3.2rem,17.8vw,12.5rem)/.86 var(--display);text-transform:uppercase;letter-spacing:-.012em;margin-bottom:clamp(1.25rem,2.4vw,2rem)}
+.intro{display:grid;gap:1.75rem}
+.intro .actions{margin-top:0}
+.lede{max-width:39rem;font-size:clamp(1.12rem,1.55vw,1.3rem);line-height:1.5}
+.actions{display:flex;flex-wrap:wrap;align-items:center;gap:.75rem 1rem;margin-top:1.75rem}
+.actions .place{color:var(--steel);margin-left:.25rem}
 
-/* gauges */
-.gauges{display:grid;grid-template-columns:repeat(auto-fit,minmax(172px,1fr));
-  gap:14px;margin-top:clamp(40px,6vw,62px)}
-.g{background:var(--panel);border:1px solid var(--edge);border-radius:10px;
-  padding:20px 18px 16px;position:relative;overflow:hidden}
-.g:after{content:"";position:absolute;inset:0 0 auto;height:1px;
-  background:linear-gradient(90deg,transparent,var(--c,var(--cool)),transparent);opacity:.65}
-.g svg{display:block;margin:0 auto}
-.g .trk{fill:none;stroke:var(--edge-2);stroke-width:7}
-.g .arc{fill:none;stroke:var(--c,var(--cool));stroke-width:7;stroke-linecap:round;
-  stroke-dasharray:var(--len);stroke-dashoffset:var(--len);
-  transition:stroke-dashoffset 1.5s cubic-bezier(.2,.75,.25,1)}
-.g.on .arc{stroke-dashoffset:var(--off)}
-.g .rd{position:absolute;top:82px;left:0;right:0;transform:translateY(-50%);text-align:center;pointer-events:none}
-.g .rd b{display:block;font-family:var(--mono);font-weight:700;
-  font-size:clamp(18px,2.1vw,23px);color:var(--c,var(--cool));line-height:1.05}
-.g .rd s{display:block;font-family:var(--mono);font-size:10px;color:var(--faint);
-  text-decoration:none;margin-top:4px;letter-spacing:-.01em}
-.g h4{font-family:var(--mono);font-size:10.5px;letter-spacing:.11em;text-transform:uppercase;
-  color:var(--dim);text-align:center;margin-top:12px}
-.g p{font-size:11.5px;color:var(--faint);text-align:center;margin-top:3px}
+/* the line */
+.line{padding-block:clamp(1rem,2vw,1.5rem) clamp(3.5rem,7vw,5.5rem)}
+.line h2{font:600 clamp(1.5rem,2.6vw,2rem)/1.1 var(--display);text-transform:uppercase;letter-spacing:.02em}
+.line .note{color:var(--steel);max-width:58rem;margin-top:.4rem}
+.rail{list-style:none;margin:1.5rem 0 0;padding:0;display:grid;grid-template-columns:minmax(0,2fr) minmax(0,1.25fr) minmax(0,1.15fr) minmax(0,1fr) minmax(0,1.15fr) minmax(0,.85fr) minmax(0,1.2fr) minmax(0,.7fr);position:relative}
+.rail::before{content:"";position:absolute;left:0;right:0;top:calc(3.4rem + 6px);height:4px;background:var(--tape);
+  transform-origin:left center;animation:drawX 1.3s .15s cubic-bezier(.2,.7,.2,1) both}
+.stop{display:grid;grid-template-rows:3.4rem 16px auto;align-content:start;padding-right:.9rem;
+  animation:rise .5s both;animation-delay:calc(.3s + var(--i) * .1s)}
+.stop .st{align-self:end;padding-bottom:.6rem;font:600 1.05rem/1.1 var(--display);letter-spacing:.04em;text-transform:uppercase;color:var(--steel)}
+.stop.on .st{color:var(--ink)}
+.stop .dot{width:16px;height:16px;border-radius:50%;background:var(--floor);border:3px solid var(--tape);position:relative;z-index:1}
+.stop.on .dot{background:var(--tape)}
+.stop ul{list-style:none;margin:.85rem 0 0;padding:0;display:grid;gap:.5rem}
+.stop a,.plantwide a{font-size:.97rem;line-height:1.3;text-decoration:underline;text-decoration-color:#5A626A;text-decoration-thickness:1px;text-underline-offset:3px}
+.stop a:hover,.plantwide a:hover{text-decoration-color:var(--tape);text-decoration-thickness:2px}
+.plantwide{display:flex;flex-wrap:wrap;align-items:baseline;gap:.5rem 1.6rem;margin-top:2rem;padding-top:1.1rem;border-top:1px dashed #5A626A}
+.plantwide .lbl{font:600 1.05rem/1.1 var(--display);letter-spacing:.04em;text-transform:uppercase;color:var(--steel)}
+@keyframes drawX{from{transform:scaleX(0)}to{transform:scaleX(1)}}
+@keyframes drawY{from{transform:scaleY(0)}to{transform:scaleY(1)}}
+@keyframes rise{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
 
 /* sections */
-section{padding:clamp(60px,9vw,108px) 0;position:relative}
-.head{display:flex;align-items:baseline;gap:16px;margin-bottom:clamp(26px,4vw,42px);
-  border-bottom:1px solid var(--edge);padding-bottom:14px}
-.head span{font-family:var(--mono);font-size:11px;color:var(--ok);letter-spacing:.14em}
-.head h2{font-family:var(--cond);font-weight:600;font-size:clamp(28px,4.4vw,52px);
-  text-transform:uppercase;letter-spacing:-.005em;line-height:1}
+.sec{padding-block:clamp(3.5rem,8vw,6rem);border-top:1px solid var(--seam)}
+.sec h2.h{font:600 clamp(2.3rem,5vw,3.5rem)/1 var(--display);text-transform:uppercase;letter-spacing:.01em;margin-bottom:clamp(1.75rem,3.5vw,2.75rem)}
+[id]{scroll-margin-top:84px}
 
-/* work orders */
-.wo{border:1px solid var(--edge);border-radius:12px;background:var(--deck);
-  margin-bottom:16px;overflow:hidden;transition:border-color .3s}
-.wo:hover{border-color:var(--edge-2)}
-.wo .top{display:flex;align-items:center;gap:14px;padding:14px 20px;
-  border-bottom:1px solid var(--edge);background:rgba(255,255,255,.015);flex-wrap:wrap}
-.wo .op{font-family:var(--mono);font-size:11px;color:var(--faint);letter-spacing:.1em}
-.wo .ttl{font-family:var(--cond);font-weight:600;font-size:clamp(19px,2.5vw,27px);
-  text-transform:uppercase;letter-spacing:.005em;flex:1;min-width:200px;line-height:1.1}
-.wo .st{font-family:var(--mono);font-size:10px;letter-spacing:.1em;padding:3px 9px;
-  border-radius:3px;border:1px solid currentColor;color:var(--ok)}
-.wo .body{display:grid;grid-template-columns:230px minmax(0,1fr);gap:clamp(16px,3vw,32px);padding:22px 20px}
-@media(max-width:720px){.wo .body{grid-template-columns:1fr;gap:16px}}
-.wo .kpi{font-family:var(--mono);font-weight:700;font-size:clamp(34px,5vw,52px);
-  color:var(--c,var(--cool));line-height:1}
-.wo .kpl{font-family:var(--mono);font-size:11px;color:var(--faint);margin-top:8px;letter-spacing:.04em}
-.wo dl{display:grid;gap:12px}
-.wo dt{font-family:var(--mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;
-  color:var(--faint);margin-bottom:3px}
-.wo dd{font-size:15px;color:var(--dim)}
-.wo dd b{color:var(--fg);font-weight:600}
+/* experience */
+.job{display:grid;grid-template-columns:13.5rem minmax(0,1fr);gap:.75rem 2.5rem;padding-block:2rem;border-top:1px solid var(--seam)}
+.job.first{border-top:0;padding-top:0}
+.job .when{font:500 1.12rem/1.4 var(--display);letter-spacing:.04em;color:var(--steel)}
+.job h3{font:600 1.7rem/1.12 var(--display);letter-spacing:.01em}
+.job .role{color:var(--steel);margin:.25rem 0 1.1rem}
+.ticks{list-style:none;margin:0;padding:0;display:grid;gap:.6rem;max-width:45rem}
+.ticks li{position:relative;padding-left:1.5rem}
+.ticks li::before{content:"";position:absolute;left:0;top:.74em;width:.75rem;height:3px;background:var(--tape)}
+.job .more{margin-top:1.1rem;color:var(--steel)}
+.also{font:600 1.05rem/1.2 var(--display);letter-spacing:.04em;text-transform:uppercase;color:var(--steel);padding-top:2rem;border-top:1px solid var(--seam)}
+.also + .job{border-top:0;padding-top:1.1rem}
 
-/* ledger */
-.ledger{display:grid;grid-template-columns:repeat(auto-fit,minmax(158px,1fr));gap:1px;
-  background:var(--edge);border:1px solid var(--edge);border-radius:10px;overflow:hidden}
-.ledger div{background:var(--deck);padding:20px 16px}
-.ledger .v{font-family:var(--mono);font-weight:700;font-size:clamp(23px,3vw,31px);color:var(--cool)}
-.ledger .k{font-size:12px;color:var(--faint);margin-top:6px;line-height:1.4}
+/* case studies */
+.case{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:1.5rem 3.5rem;padding-block:2.75rem;border-top:1px solid var(--seam)}
+.case.first{border-top:0;padding-top:.25rem}
+.case .where{display:flex;align-items:center;gap:.6rem;font:600 1.05rem/1.2 var(--display);letter-spacing:.04em;text-transform:uppercase;color:var(--steel)}
+.case .where i{flex:none;width:12px;height:12px;border-radius:50%;background:var(--tape)}
+.case .where i.wide{width:22px;height:4px;border-radius:0}
+.case h3{font:600 clamp(1.8rem,3.1vw,2.5rem)/1.06 var(--display);letter-spacing:.005em;margin:.45rem 0 .9rem}
+.ba{margin:1.15rem 0 0;display:grid;gap:.6rem;max-width:27rem}
+.ba > div{display:grid;grid-template-columns:5.1rem minmax(0,1fr);gap:.5rem;position:relative}
+.ba dt{display:flex;align-items:center;gap:.55rem;height:1.6em;font-weight:600;color:var(--steel)}
+.ba dd{margin:0;color:var(--steel)}
+.ba > div.after dd{color:var(--ink);font-weight:500}
+.ba i{flex:none;width:10px;height:10px;border-radius:50%;border:2px solid var(--tape)}
+.ba > div.after i{background:var(--tape)}
+.ba > div:first-child::after{content:"";position:absolute;left:4px;top:calc(.8em + 7px);bottom:calc(-.6rem - .8em + 7px);width:2px;background:var(--tape)}
+.a3{margin:0;border-top:1px solid var(--seam)}
+.a3 > div{display:grid;grid-template-columns:6.5rem minmax(0,1fr);gap:.25rem 1.5rem;padding:1rem 0;border-bottom:1px solid var(--seam)}
+.a3 dt{font-weight:600;color:var(--steel)}
+.a3 dd{margin:0}
+.a3 > div.result{border-bottom:0;background:var(--plate);box-shadow:inset 4px 0 0 var(--tape);padding:1.05rem 1.1rem 1.1rem 1.1rem;margin-top:-1px}
+.a3 > div.result dt{color:var(--tape)}
+.a3 > div.result dd{font-weight:500}
+.a3.res{border-top:0}
+.story{display:flex;flex-direction:column;min-width:0}
+.how summary{display:none}
 
-/* timeline */
-.tl{position:relative;padding-left:30px}
-.tl:before{content:"";position:absolute;left:5px;top:6px;bottom:6px;width:1px;background:var(--edge)}
-.job{position:relative;padding-bottom:clamp(28px,4vw,44px)}
-.job:before{content:"";position:absolute;left:-29px;top:7px;width:11px;height:11px;border-radius:50%;
-  background:var(--void);border:2px solid var(--cool)}
-.job.now:before{border-color:var(--ok);box-shadow:0 0 0 4px rgba(63,214,140,.16)}
-.job .when{font-family:var(--mono);font-size:11px;color:var(--faint);letter-spacing:.08em}
-.job h3{font-family:var(--cond);font-weight:600;font-size:clamp(21px,2.8vw,30px);
-  text-transform:uppercase;margin:4px 0 2px;line-height:1.1}
-.job .role{font-size:13.5px;color:var(--cool);margin-bottom:12px}
-.job ul{list-style:none;display:grid;gap:8px}
-.job li{font-size:14.5px;color:var(--dim);padding-left:16px;position:relative}
-.job li:before{content:"";position:absolute;left:0;top:.68em;width:5px;height:1px;background:var(--faint)}
-.job b{color:var(--fg);font-weight:600}
+/* arriving from the line map: mark the project you jumped to */
+.case,.fixes li{position:relative}
+.case:target::before,.fixes li:target::before{content:"";position:absolute;left:-14px;width:4px;background:var(--tape)}
+.case:target::before{top:2.75rem;bottom:2.75rem}
+.case.first:target::before{top:.25rem}
+.fixes li:target::before{top:.2rem;bottom:.2rem}
 
-/* spec grid */
-.spec{display:grid;grid-template-columns:repeat(auto-fit,minmax(252px,1fr));gap:14px}
-.spec div{background:var(--panel);border:1px solid var(--edge);border-radius:10px;padding:18px}
-.spec h4{font-family:var(--mono);font-size:10.5px;letter-spacing:.13em;text-transform:uppercase;
-  color:var(--ok);margin-bottom:9px}
-.spec p{font-size:13.5px;color:var(--dim);line-height:1.66}
+/* smaller fixes */
+.sub{font:600 clamp(1.5rem,2.6vw,2rem)/1.1 var(--display);text-transform:uppercase;letter-spacing:.02em;margin:3.25rem 0 1.5rem;padding-top:2.5rem;border-top:1px solid var(--seam)}
+.fixes{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1.6rem 3.5rem}
+.fixes h4{font:600 1.08rem/1.35 var(--text);margin-bottom:.2rem}
+.fixes p{color:#C9CDD0}
+.fixes .tag{color:var(--steel);font-weight:500}
+
+/* university */
+.uni{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1.75rem 2.5rem}
+.uni h3{font:600 1.45rem/1.15 var(--display);letter-spacing:.01em;margin-bottom:.45rem}
+.uni p{color:#C9CDD0}
+
+/* skills + education */
+.spec{margin:0;border-top:1px solid var(--seam)}
+.spec > div{display:grid;grid-template-columns:13.5rem minmax(0,1fr);gap:.2rem 2.5rem;padding:.95rem 0;border-bottom:1px solid var(--seam)}
+.spec dt{font-weight:600}
+.spec dd{margin:0;color:#C9CDD0}
+.edu{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:2rem 3.5rem;margin-top:3rem}
+.edu h3{font:600 1.45rem/1.15 var(--display);letter-spacing:.01em}
+.edu p{color:var(--steel);margin-top:.25rem}
+.edu p.deg{color:var(--ink)}
 
 /* contact */
-.end{text-align:center;padding:clamp(70px,10vw,120px) 0}
-.end h2{font-family:var(--cond);font-weight:700;font-size:clamp(34px,6vw,70px);text-transform:uppercase;line-height:1}
-.end p{color:var(--dim);margin:14px auto 0;max-width:52ch}
-.acts{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-top:28px}
-.acts a{font-family:var(--mono);font-size:12.5px;letter-spacing:.06em;padding:12px 24px;
-  border-radius:6px;text-decoration:none;border:1px solid var(--edge-2);color:var(--fg);transition:.2s}
-.acts a.pri{background:var(--ok);border-color:var(--ok);color:#06240F;font-weight:700}
-.acts a:hover{border-color:var(--cool);color:var(--cool)}
-.acts a.pri:hover{opacity:.85;color:#06240F}
-footer{border-top:1px solid var(--edge);padding:22px 0;text-align:center;
-  font-family:var(--mono);font-size:11px;color:var(--faint)}
+.cta{padding-block:clamp(4rem,10vw,7.5rem) clamp(3rem,7vw,5rem);border-top:1px solid var(--seam)}
+.cta h2{font:700 clamp(3.2rem,10vw,8.5rem)/.88 var(--display);text-transform:uppercase;letter-spacing:-.01em}
+.cta .tapeline{height:4px;background:var(--tape);margin:clamp(1.25rem,2.5vw,2rem) 0 clamp(1.5rem,3vw,2.25rem);position:relative}
+.cta .tapeline::before{content:"";position:absolute;left:0;top:-6px;width:16px;height:16px;border-radius:50%;background:var(--tape)}
+.cta p{max-width:36rem;font-size:clamp(1.1rem,1.5vw,1.25rem);line-height:1.5}
+.cta .direct{margin-top:1.5rem;color:var(--steel);font-size:1.05rem}
+.cta .direct a{color:var(--ink);text-underline-offset:3px;text-decoration-color:#5A626A}
+.cta .direct a:hover{text-decoration-color:var(--tape)}
+footer{border-top:1px solid var(--seam);padding-block:1.5rem;color:var(--steel);font-size:.95rem}
 
-.rv{opacity:0;transform:translateY(20px);transition:opacity .7s ease,transform .7s ease}
-.rv.on{opacity:1;transform:none}
-@media(prefers-reduced-motion:reduce){
-  .rv{opacity:1;transform:none;transition:none}
-  .g .arc{transition:none}html{scroll-behavior:auto}}
-:focus-visible{outline:2px solid var(--cool);outline-offset:3px}
-</style></head><body>
+@media (min-width:981px){
+  .case > div:first-child{position:sticky;top:92px;align-self:start}
+}
+@media (min-width:1000px){
+  .intro{grid-template-columns:minmax(0,39rem) auto;justify-content:space-between;align-items:end}
+  .intro .actions{justify-content:flex-end;max-width:21rem}
+  .intro .place{flex-basis:100%;text-align:right;margin:0}
+}
+@media (max-width:980px){
+  .case{grid-template-columns:1fr;gap:1.1rem}
+  .uni{grid-template-columns:1fr}
+}
+@media (max-width:860px){
+  .rail{grid-template-columns:1fr}
+  .rail::before{left:6px;right:auto;top:8px;bottom:14px;width:4px;height:auto;transform-origin:center top;animation-name:drawY}
+  .stop{grid-template-rows:auto;grid-template-columns:16px minmax(0,1fr);column-gap:1rem;padding:0 0 1.15rem}
+  .stop .st{grid-column:2;grid-row:1;align-self:start;padding:0;font-size:1.15rem}
+  .stop .dot{grid-column:1;grid-row:1;margin-top:.12rem}
+  .stop ul{grid-column:2;margin-top:.4rem;gap:.45rem}
+  .stop:not(.on){padding-bottom:.8rem}
+}
+@media (max-width:760px){
+  .top nav a.link{display:none}
+  .job{grid-template-columns:1fr;gap:.35rem}
+  .job h3{margin-top:.25rem}
+  .fixes{grid-template-columns:1fr}
+  .spec > div{grid-template-columns:1fr}
+  .edu{grid-template-columns:1fr}
+  .a3 > div{grid-template-columns:1fr}
+  .story .res{order:-1}
+  .story .res .result{margin-top:0}
+  .how{margin-top:.35rem}
+  .how[open] summary{margin-bottom:.15rem}
+  .how summary{display:flex;align-items:center;justify-content:space-between;gap:1rem;min-height:48px;cursor:pointer;list-style:none;font-weight:600}
+  .how summary::-webkit-details-marker{display:none}
+  .how summary::after{content:"+";font:600 1.6rem/1 var(--display);color:var(--tape)}
+  .how[open] summary::after{content:"\2212"}
+  .actions .place{margin-left:0;flex-basis:100%}
+}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  .rail::before,.stop{animation:none}
+  .btn{transition:none}
+}
+</style>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
 
-<div class="bar"><div class="in">
-  <span class="id"><i>&#9679;</i> SETHURAMAN KARUNANITHI</span>
-  <nav><a href="#record">Experience</a><a href="#work">Projects</a>
-    <a href="#results">Readouts</a><a href="#spec">Spec</a><a href="#end">Contact</a></nav>
-</div></div>
-<div class="prog" id="prog"></div>
-
-<header class="hero"><div class="shell">
-  <p class="tagline">Process &amp; Industrial Engineer &#183; Chicago</p>
-  <h1>I take time<br>out of <em>lines</em>.</h1>
-  <p class="lede">Three years on high-volume automated manufacturing lines at Samsung and Delphi TVS.
-    Cycle time, process capability, tooling and equipment — and field failures closed at the machine
-    rather than caught downstream. MS Industrial Engineering, University of Illinois Chicago.</p>
-  <p class="id-row">
-    <span>(312) 296-9015</span>
-    <a href="mailto:sethuraman06k@gmail.com">sethuraman06k@gmail.com</a>
-    <a href="https://www.linkedin.com/in/sethuramankarunanithi/">linkedin.com/in/sethuramankarunanithi</a>
-  </p>
-
-  <div class="gauges" id="gauges">
-    <div class="g" style="--c:var(--ok)"  data-pct="70">
-      <svg width="124" height="124" viewBox="0 0 124 124"><circle class="trk" cx="62" cy="62" r="50"/>
-      <circle class="arc" cx="62" cy="62" r="50" transform="rotate(-90 62 62)"/></svg>
-      <div class="rd"><b>4.5s</b><s>was 14.8s</s></div>
-      <h4>Cycle time</h4><p>70% reduction</p></div>
-
-    <div class="g" style="--c:var(--cool)" data-pct="88">
-      <svg width="124" height="124" viewBox="0 0 124 124"><circle class="trk" cx="62" cy="62" r="50"/>
-      <circle class="arc" cx="62" cy="62" r="50" transform="rotate(-90 62 62)"/></svg>
-      <div class="rd"><b>0.78%</b><s>was 6.3%</s></div>
-      <h4>Scrap rate</h4><p>88% reduction</p></div>
-
-    <div class="g" style="--c:var(--warn)" data-pct="87">
-      <svg width="124" height="124" viewBox="0 0 124 124"><circle class="trk" cx="62" cy="62" r="50"/>
-      <circle class="arc" cx="62" cy="62" r="50" transform="rotate(-90 62 62)"/></svg>
-      <div class="rd"><b>87%</b><s>was 70%</s></div>
-      <h4>Line efficiency</h4><p>17 points gained</p></div>
-
-    <div class="g" style="--c:var(--ok)" data-pct="85">
-      <svg width="124" height="124" viewBox="0 0 124 124"><circle class="trk" cx="62" cy="62" r="50"/>
-      <circle class="arc" cx="62" cy="62" r="50" transform="rotate(-90 62 62)"/></svg>
-      <div class="rd"><b>&gt;85%</b><s>sustained</s></div>
-      <h4>OEE</h4><p>Nine-station line</p></div>
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="#top">Sethuraman Karunanithi</a>
+    <nav aria-label="Sections">
+      <a class="link" href="#experience">Work experience</a>
+      <a class="link" href="#work">Projects</a>
+      <a class="link" href="#skills">Skills</a>
+      <a class="link" href="#contact">Contact</a>
+      <a class="btn solid small" href="Sethuraman_Karunanithi_Resume.pdf">Resume</a>
+    </nav>
   </div>
-</div></header>
+</header>
 
-<section id="record"><div class="shell">
-  <div class="head rv"><span>02</span><h2>Work experience</h2></div>
-  <div class="tl">
-    <div class="job now rv">
-      <div class="when">SEP 2026 — PRESENT</div>
-      <h3>One Community Global</h3><div class="role">Industrial Engineer &#183; Remote</div>
-      <ul>
-        <li>Authoring process documentation and SOPs for <b>20+ workflows</b> across the Volunteer and
-          Manager roles, validated against the system as built.</li>
-        <li>Set the documentation standard leadership adopted for all other roles; overseeing two team members.</li>
-      </ul>
+<main id="main">
+
+<div id="top" class="wrap">
+  <section class="hero">
+    <h1>I take time<br>out of lines.</h1>
+    <div class="intro">
+      <p class="lede">Process and industrial engineer with three years on compressor and fuel-system lines at Samsung and Delphi TVS. I trace a problem to the machine that causes it and fix it there. MS Industrial Engineering, University of Illinois Chicago.</p>
+      <div class="actions">
+        <a class="btn solid" href="Sethuraman_Karunanithi_Resume.pdf">Download resume</a>
+        <a class="btn open" href="mailto:sethuraman06k@gmail.com">Email me</a>
+        <span class="place">Chicago, IL. Open to relocation.</span>
+      </div>
     </div>
-    <div class="job rv">
-      <div class="when">OCT 2022 — JUN 2024</div>
-      <h3>Samsung India Electronics</h3>
-      <div class="role">Associate – Industrial / Process Control Engineer &#183; Chennai</div>
-      <ul>
-        <li>Prepared a newly built compressor plant for production — space planning, line layout,
-          workstation design, AGV routes line-side — then ramped it from launch to volume.</li>
-        <li>Ran time studies in MCube and rebalanced the line: cycle time <b>14.8s to 4.5s</b>,
-          throughput efficiency <b>70% to 87%</b>.</li>
-        <li>Designed the quality controls across a nine-station transfer line — PFMEA, control plans,
-          Cp/Cpk, Gage R&amp;R — scrap <b>6.3% to 0.78%</b>, <b>OEE above 85%</b>.</li>
-        <li>Specified tooling, fixtures and gauging; commissioned capital equipment from RFQ through
-          acceptance testing, taking pick-and-place robotics and AGV to handover.</li>
-        <li>Authored work instructions and routings for <b>40+ operations</b> in the plant MES
-          (Samsung GMES); trained <b>60+ operators</b>.</li>
-        <li>Ran EHS risk assessments, safety walkthroughs and factory audits; scored ergonomics with
-          RULA and REBA and ran plant noise surveys.</li>
-        <li>Led Lean as plant <b>5S coordinator</b> — VSM, SMED, 5S, TPM, Kaizen — through 4M change control.</li>
-      </ul>
-    </div>
-    <div class="job rv">
-      <div class="when">JUN 2021 — SEP 2022</div>
-      <h3>Delphi TVS Technologies</h3>
-      <div class="role">Graduate Engineer Trainee — Quality Engineering &#183; Chennai</div>
-      <ul>
-        <li>Inspected <b>30+ incoming lots</b> of fuel pump and injector parts — 200–2,000 per lot,
-          5+ suppliers — with CMM and GD&amp;T, at reject rates near 1% on large parts and 20% on small.</li>
-        <li>Dispositioned non-conforming material, segregated suspect stock, and recovered a full
-          supplier replacement on a rust-damaged lot traced to poor packing.</li>
-      </ul>
+  </section>
+
+  <section class="line" id="line" aria-labelledby="line-h">
+    <h2 id="line-h">The line I worked on</h2>
+    <p class="note">Samsung's compressor line, in process order. The filled stops are where I changed something. Each link opens that project.</p>
+    <ol class="rail">
+      <li class="stop on" style="--i:0"><span class="st">Machining</span><i class="dot" aria-hidden="true"></i>
+        <ul>
+          <li><a href="#burr">Burrs stopped at the drill</a></li>
+          <li><a href="#tips">Indexable-tip tooling</a></li>
+          <li><a href="#warmup">Warm-up before shift</a></li>
+          <li><a href="#f-scrap">Scrap sorted by defect</a></li>
+          <li><a href="#f-pick">Piston pick-and-place</a></li>
+        </ul></li>
+      <li class="stop on" style="--i:1"><span class="st">Assembly</span><i class="dot" aria-hidden="true"></i>
+        <ul><li><a href="#f-ergo">Ergonomic aids</a></li><li><a href="#f-stator">Stator film jig</a></li></ul></li>
+      <li class="stop on" style="--i:2"><span class="st">Shell welding</span><i class="dot" aria-hidden="true"></i>
+        <ul><li><a href="#f-weld">Weld filler fix</a></li></ul></li>
+      <li class="stop on" style="--i:3"><span class="st">Leak test</span><i class="dot" aria-hidden="true"></i>
+        <ul><li><a href="#cap">Sealing cap</a></li></ul></li>
+      <li class="stop" style="--i:4"><span class="st">Paint and oven</span><i class="dot" aria-hidden="true"></i></li>
+      <li class="stop" style="--i:5"><span class="st">Marking</span><i class="dot" aria-hidden="true"></i></li>
+      <li class="stop on" style="--i:6"><span class="st">Purge and capping</span><i class="dot" aria-hidden="true"></i>
+        <ul><li><a href="#f-n2">Automation case</a></li></ul></li>
+      <li class="stop" style="--i:7"><span class="st">Packing</span><i class="dot" aria-hidden="true"></i></li>
+    </ol>
+    <p class="plantwide"><span class="lbl">Beyond one station</span>
+      <a href="#agv">AGV routes</a>
+      <a href="#vendors">Six local vendors</a>
+      <a href="#f-store">Dry storage</a>
+      <a href="#f-noise">Noise survey</a>
+      <a href="#f-supplier">Supplier visit</a>
+      <a href="#f-task">24-technician task force</a>
+    </p>
+  </section>
+</div>
+
+<section class="sec" id="experience">
+  <div class="wrap">
+    <h2 class="h">Work experience</h2>
+
+    <article class="job first">
+      <p class="when">Oct 2022 – Jun 2024<br>Chennai, India</p>
+      <div>
+        <h3>Samsung India Electronics</h3>
+        <p class="role">Associate – Industrial / Process Control Engineer, compressor manufacturing plant</p>
+        <ul class="ticks">
+          <li>Ran video time studies in M-Cube, measuring cycle time against takt to locate line bottlenecks.</li>
+          <li>Ran Cp/Cpk studies with a Samsung Korea technician to correct machining quality parameters.</li>
+          <li>Tracked machining quality on SPC charts and tuned machining parameters with line leaders through structured DOE trials.</li>
+          <li>Closed all plant quality and safety audit findings, updating PFMEA, control plans, SOPs and work procedures.</li>
+          <li>Presented customer-complaint analysis to Korean headquarters using 5 Why, fishbone and Pareto.</li>
+          <li>Served as a 5S coordinator on a program that won the plant an award, and supported 4M change control.</li>
+        </ul>
+        <p class="more">Sixteen projects from this role are written up under <a href="#work">projects</a>.</p>
+      </div>
+    </article>
+
+    <article class="job">
+      <p class="when">Jun 2021 – Sep 2022<br>Chennai, India</p>
+      <div>
+        <h3>Delphi TVS Technologies</h3>
+        <p class="role">Graduate Engineer Trainee, Quality Engineering</p>
+        <ul class="ticks">
+          <li>Inspected incoming fuel-pump and injector parts on gauges, performed Gage R&amp;R studies to verify gauge repeatability, and kept inspection records for traceability.</li>
+          <li>Updated store inventory in SAP, assessed line-rejected parts for rework, re-inspected conforming material before returning it to stock, and supported 2 physical inventory audits.</li>
+        </ul>
+      </div>
+    </article>
+
+    <p class="also">Additional experience</p>
+    <article class="job">
+      <p class="when">Sep 2026 – Present<br>Remote</p>
+      <div>
+        <h3>One Community Global</h3>
+        <p class="role">Industrial Engineer</p>
+        <ul class="ticks">
+          <li>Develop SOPs for 20+ Volunteer and Manager workflows, validated against the live and development systems.</li>
+          <li>Set the documentation standard adopted by leadership, coordinating two team members and peer review.</li>
+        </ul>
+      </div>
+    </article>
+  </div>
+</section>
+
+<section class="sec" id="work">
+  <div class="wrap">
+    <h2 class="h">Projects</h2>
+
+    <article class="case first" id="burr">
+      <div>
+        <p class="where"><i aria-hidden="true"></i>Machining</p>
+        <h3>Burrs in a returned compressor, stopped at the drill</h3>
+        <dl class="ba">
+          <div><dt><i aria-hidden="true"></i>Before</dt><dd>Burrs from drilling stayed in the block and reached a customer.</dd></div>
+          <div class="after"><dt><i aria-hidden="true"></i>After</dt><dd>An air purge clears the holes at the drilling station.</dd></div>
+        </dl>
+      </div>
+      <div class="story">
+        <details class="how" open>
+          <summary>How it was done</summary>
+          <dl class="a3">
+            <div><dt>Problem</dt><dd>A compressor came back from a customer as faulty. I cut it open and found metal burrs and chips lodged between the block bore and the piston.</dd></div>
+            <div><dt>Trace</dt><dd>The burrs were coming from the block, through its leg holes. I spent a week standing at the line to see where and how they formed. On the same machine, drill bits sometimes broke in the head-bolt holes, and nothing caught it before the line stopped.</dd></div>
+            <div><dt>Fix</dt><dd>I proposed an air-purge system: one needle for the head holes outside the machine and one for the leg holes inside it, so chips are blown clear before the block moves on.</dd></div>
+          </dl>
+        </details>
+        <dl class="a3 res">
+          <div class="result"><dt>Result</dt><dd>100% burr removal from the small holes, at the station that creates them.</dd></div>
+        </dl>
+      </div>
+    </article>
+
+    <article class="case" id="tips">
+      <div>
+        <p class="where"><i aria-hidden="true"></i>Machining</p>
+        <h3>Whole-drill changes replaced with indexable tips</h3>
+        <dl class="ba">
+          <div><dt><i aria-hidden="true"></i>Before</dt><dd>A worn drill meant changing the whole tool and re-aligning it.</dd></div>
+          <div class="after"><dt><i aria-hidden="true"></i>After</dt><dd>Only the worn tip is changed, at the machine.</dd></div>
+        </dl>
+      </div>
+      <div class="story">
+        <details class="how" open>
+          <summary>How it was done</summary>
+          <dl class="a3">
+            <div><dt>Problem</dt><dd>When a drill wore out, the operator changed the whole tool and re-aligned it. Every change cost production time, and alignment errors cost parts.</dd></div>
+            <div><dt>Fix</dt><dd>After researching the options, I moved the large facing, milling and cutting drills to tip-based tooling, where only the worn tip is replaced. On other tools I changed the flute angle and specifications to extend tool life. I supervised the trial runs until the process was stable.</dd></div>
+          </dl>
+        </details>
+        <dl class="a3 res">
+          <div class="result"><dt>Result</dt><dd>Faster changeovers, fewer alignment problems, lower tooling cost and less scrap, with part quality held.</dd></div>
+        </dl>
+      </div>
+    </article>
+
+    <article class="case" id="vendors">
+      <div>
+        <p class="where"><i class="wide" aria-hidden="true"></i>Plant-wide</p>
+        <h3>Six local vendors in place of imports</h3>
+        <dl class="ba">
+          <div><dt><i aria-hidden="true"></i>Before</dt><dd>Tools and consumables were imported.</dd></div>
+          <div class="after"><dt><i aria-hidden="true"></i>After</dt><dd>Six audited local vendors supply filter paper, drill bits, screws and brushes.</dd></div>
+        </dl>
+      </div>
+      <div class="story">
+        <details class="how" open>
+          <summary>How it was done</summary>
+          <dl class="a3">
+            <div><dt>Problem</dt><dd>Many tools and consumables were imported, which made them expensive and slow to replace.</dd></div>
+            <div><dt>Fix</dt><dd>I inspected and audited vendor companies against Samsung policy and quality standards, and registered six. Filter paper, drill bits, screws and brushes moved to local supply. I replaced imported superfinishing tape with an alternative from Saint-Gobain, matched the coolant to the same specification through a vendor, and completed MSDS training to register a chemical supplier. I also coordinated the weekly localization meeting.</dd></div>
+          </dl>
+        </details>
+        <dl class="a3 res">
+          <div class="result"><dt>Result</dt><dd>Lower cost across tools and consumables, and shorter changeovers on the superfinishing tape. I presented the program and its benefits to the CEO at the annual display meeting.</dd></div>
+        </dl>
+      </div>
+    </article>
+
+    <article class="case" id="cap">
+      <div>
+        <p class="where"><i aria-hidden="true"></i>Leak test</p>
+        <h3>A sealing cap in place of imported leak-test couplers</h3>
+        <dl class="ba">
+          <div><dt><i aria-hidden="true"></i>Before</dt><dd>Three imported couplers per compressor, fitted while the conveyor moved.</dd></div>
+          <div class="after"><dt><i aria-hidden="true"></i>After</dt><dd>One coupler and two caps designed in-house.</dd></div>
+        </dl>
+      </div>
+      <div class="story">
+        <details class="how" open>
+          <summary>How it was done</summary>
+          <dl class="a3">
+            <div><dt>Problem</dt><dd>Each compressor took three couplers before the leak-test tank. Operators fitted them by lever while the hanging conveyor kept moving, which damaged the pipe on the lower shell. Coupler spares had to be imported from Korea.</dd></div>
+            <div><dt>Fix</dt><dd>The N2 charging port had to keep its coupler, so I designed a cap for the other two ports. We ran a one-month trial during production without affecting output. Early caps came off under N2 pressure in the tank, which let water in and scrapped the compressor, so I revised the design until it held.</dd></div>
+          </dl>
+        </details>
+        <dl class="a3 res">
+          <div class="result"><dt>Result</dt><dd>Less scrap, less production loss and lower cost, with less coupler repair work on those two ports.</dd></div>
+        </dl>
+      </div>
+    </article>
+
+    <article class="case" id="agv">
+      <div>
+        <p class="where"><i class="wide" aria-hidden="true"></i>Plant-wide</p>
+        <h3>AGVs in place of forklifts, from collisions to a pallet train</h3>
+        <dl class="ba">
+          <div><dt><i aria-hidden="true"></i>Before</dt><dd>Forklifts carried material from the warehouse to the floor.</dd></div>
+          <div class="after"><dt><i aria-hidden="true"></i>After</dt><dd>AGVs pull pallet trains along marked routes.</dd></div>
+        </dl>
+      </div>
+      <div class="story">
+        <details class="how" open>
+          <summary>How it was done</summary>
+          <dl class="a3">
+            <div><dt>Problem</dt><dd>Material moved from the warehouse to the shop floor by forklift. AGVs were planned, but the routes did not exist yet.</dd></div>
+            <div><dt>Fix</dt><dd>Working from the plant layout, I marked the guide-strip paths the AGV follows and the stations where it stops. In trial runs it had accidents and could pull only one pallet. We worked through both problems over repeated trials.</dd></div>
+          </dl>
+        </details>
+        <dl class="a3 res">
+          <div class="result"><dt>Result</dt><dd>The AGVs run without accidents and pull several pallets as a train on stronger motors, which reduced material-handling labor and raised the plant's automation rate.</dd></div>
+        </dl>
+      </div>
+    </article>
+
+    <article class="case" id="warmup">
+      <div>
+        <p class="where"><i aria-hidden="true"></i>Machining</p>
+        <h3>Warm-up time moved out of the shift</h3>
+        <dl class="ba">
+          <div><dt><i aria-hidden="true"></i>Before</dt><dd>Machines warmed up after the shift had started.</dd></div>
+          <div class="after"><dt><i aria-hidden="true"></i>After</dt><dd>Warm-up is done before the shift starts.</dd></div>
+        </dl>
+      </div>
+      <div class="story">
+        <details class="how" open>
+          <summary>How it was done</summary>
+          <dl class="a3">
+            <div><dt>Problem</dt><dd>The machining centers are large and take time to warm up. Warming them up at the start of the shift meant lost production time every day.</dd></div>
+            <div><dt>Fix</dt><dd>With my team, I proposed starting the machines before production time. With management approval, we scheduled some operators to arrive early and begin the warm-up.</dd></div>
+          </dl>
+        </details>
+        <dl class="a3 res">
+          <div class="result"><dt>Result</dt><dd>Warm-up is finished before the shift begins, so it no longer comes out of production time.</dd></div>
+        </dl>
+      </div>
+    </article>
+
+    <h3 class="sub">More projects from the same plant</h3>
+    <ul class="fixes">
+      <li id="f-scrap"><h4>Scrap sorted by defect type</h4><p>Designed bins to separate machining scrap by cause (roughness, roundness, facing, milling), then adjusted machining parameters with the line leader to reduce each one.</p></li>
+      <li id="f-ergo"><h4>Ergonomic aids at assembly</h4><p>Scored workstations with REBA from video, then added a retracting holder for the screw gun and a lifter for the stator. Both improved the REBA scores.</p></li>
+      <li id="f-weld"><h4>Weld complaint on the shell</h4><p>Traced it, with a senior operator and the line leader, to too little weld material being fed, and corrected the machine parameters.</p></li>
+      <li id="f-stator"><h4>Stator film insertion jig</h4><p>The thin film inserted into the stator core was being cut too deep and failing on the main line. With the tooling team, we re-machined one area of the insertion jig, and the fault stopped.</p></li>
+      <li id="f-noise"><h4>Plant noise survey</h4><p>Measured sound levels area by area against the layout and presented the results. The team then built acrylic enclosures and curtains at the loudest points.</p></li>
+      <li id="f-store"><h4>Dry storage for machined parts</h4><p>Designed a clean room with a dehumidifier so machined blocks, pistons and shafts do not rust before assembly.</p></li>
+      <li id="f-pick"><h4>Piston pick-and-place</h4><p>Proposed automating the manual transfer of pistons to the washer and into bins. The automation team built it under our team's supervision.</p></li>
+      <li id="f-supplier"><h4>Supplier visit after a lower-shell complaint</h4><p>After customer complaints traced to the lower shell, our team inspected the vendor's machines and SOPs on site and stabilized their production.</p></li>
+      <li id="f-n2"><h4>Automation case for N2 purge and capping <span class="tag">(proposal)</span></h4><p>Assessed the feasibility of automating both steps on two finishing lines. The proposal targeted four fewer operators per line and was submitted to headquarters.</p></li>
+      <li id="f-task"><h4>Off-site task force</h4><p>Led 24 technicians at warehouses, updating AC units to resolve customer complaints.</p></li>
+    </ul>
+  </div>
+</section>
+
+<section class="sec" id="university">
+  <div class="wrap">
+    <h2 class="h">University projects</h2>
+    <ul class="uni">
+      <li><h3>Patient intake optimization</h3><p>Linear programming model allocating 40 rooms and 120 staff across four surgical treatments, validated in Excel Solver and by the Simplex method.</p></li>
+      <li><h3>Ergonomics of lecture hall seating</h3><p>RULA assessment and anthropometric analysis of fixed seating at UIC, with a proposed redesign.</p></li>
+      <li><h3>VR training prototype</h3><p>Immersive procedural training prototype built in Unreal Engine, with supporting video produced in DaVinci Resolve.</p></li>
+    </ul>
+  </div>
+</section>
+
+<section class="sec" id="skills">
+  <div class="wrap">
+    <h2 class="h">Skills</h2>
+    <dl class="spec">
+      <div><dt>Quality</dt><dd>SPC, Cp/Cpk, Gage R&amp;R, MSA, DOE, PFMEA, Control Plans, CAPA, GD&amp;T, Supplier Audits</dd></div>
+      <div><dt>Lean and Six Sigma</dt><dd>DMAIC, Six Sigma, 5S, 4M, Continuous Improvement, Cost Reduction</dd></div>
+      <div><dt>Problem solving</dt><dd>Root Cause Analysis, 8D, 5 Why, Fishbone, Pareto, Poka-Yoke</dd></div>
+      <div><dt>Work measurement</dt><dd>Time Studies, Cycle Time, Takt Time, Bottleneck Analysis, Line Balancing, REBA</dd></div>
+      <div><dt>Software</dt><dd>SolidWorks, AutoCAD, Inventor, Mastercam, Minitab, M-Cube, MES (GMES), SAP, Excel</dd></div>
+      <div><dt>Certifications</dt><dd>Lean Six Sigma Green Belt (UIC, 2025), Foundations of Data Analysis (Minitab, 2025)</dd></div>
+    </dl>
+
+    <div class="edu">
+      <div>
+        <h3>University of Illinois Chicago</h3>
+        <p class="deg">Master of Science, Industrial Engineering</p>
+        <p>GPA 3.9 / 4.0, Aug 2024 – May 2026</p>
+      </div>
+      <div>
+        <h3>Rajalakshmi Engineering College</h3>
+        <p class="deg">Bachelor of Engineering, Mechanical Engineering</p>
+        <p>GPA 3.6 / 4.0, Aug 2017 – May 2021</p>
+      </div>
     </div>
   </div>
-</div></section>
+</section>
 
-<section id="work"><div class="shell">
-  <div class="head rv"><span>03</span><h2>Projects</h2></div>
-
-  <article class="wo rv" style="--c:var(--ok)">
-    <div class="top"><span class="op">P-01</span>
-      <span class="ttl">Field failure traced to one drilling station</span><span class="st">CLOSED &#183; CAPA</span></div>
-    <div class="body">
-      <div><div class="kpi">100%</div><div class="kpl">BURR REMOVAL AT SOURCE</div></div>
-      <dl>
-        <div><dt>Problem</dt><dd>A compressor came back from the customer with metal burrs inside it &mdash; a field failure on finished product already with the customer.</dd></div>
-        <div><dt>Difficulty</dt><dd>The block ran on a single transfer machine with <b>nine sequential workstations</b> &mdash; grinding, milling, facing, drilling &mdash; any of which could have produced the burrs, and nothing in the process data pointed at one of them.</dd></div>
-        <div><dt>Method</dt><dd>Teardown failure analysis on the returned unit, a Cp/Cpk study across all nine stations, then a week of production monitoring standing at the shortlisted machines. Burr formation isolated to the final drilling station.</dd></div>
-        <div><dt>Countermeasure</dt><dd>A needle-type air purge across all four leg bores, so a part cannot leave the station with burrs present &mdash; error-proofing at source rather than inspection downstream.</dd></div>
-      </dl>
+<section class="cta" id="contact">
+  <div class="wrap">
+    <h2>Put me on<br>a line.</h2>
+    <div class="tapeline" aria-hidden="true"></div>
+    <p>Open to process, manufacturing, quality and industrial engineering roles. Based in Chicago and ready to relocate.</p>
+    <div class="actions">
+      <a class="btn solid" href="mailto:sethuraman06k@gmail.com">Email me</a>
+      <a class="btn open" href="Sethuraman_Karunanithi_Resume.pdf">Download resume</a>
+      <a class="btn open" href="https://www.linkedin.com/in/sethuramankarunanithi/" rel="noopener">LinkedIn</a>
     </div>
-  </article>
-
-  <article class="wo rv" style="--c:var(--hot)">
-    <div class="top"><span class="op">P-02</span>
-      <span class="ttl">Supplier localization programme</span><span class="st">IN PRODUCTION</span></div>
-    <div class="body">
-      <div><div class="kpi">$112K</div><div class="kpl">RECURRING ANNUAL SAVING</div></div>
-      <dl>
-        <div><dt>Scope</dt><dd>Six local vendors qualified through site visits, process audits and production trials, replacing imported parts on a line running to volume.</dd></div>
-        <div><dt>Result</dt><dd>The saving repeats every year it holds, and the supply chain got shorter.</dd></div>
-      </dl>
-    </div>
-  </article>
-
-  <article class="wo rv" style="--c:var(--warn)">
-    <div class="top"><span class="op">P-03</span>
-      <span class="ttl">Floor layout &amp; material flow redesign</span><span class="st">IMPLEMENTED</span></div>
-    <div class="body">
-      <div><div class="kpi">Line-side</div><div class="kpl">MATERIAL DELIVERED TO POINT OF USE</div></div>
-      <dl>
-        <div><dt>Problem</dt><dd>Material moved from the warehouse through intermediate staging, with operators walking to fetch it &mdash; motion and inventory, two of the seven wastes, built into the layout.</dd></div>
-        <div><dt>Method</dt><dd>Redesigned the floor layout and conveyance routes in AutoCAD so AGVs deliver directly to line side instead of to a staging area.</dd></div>
-      </dl>
-    </div>
-  </article>
-
-  <article class="wo rv" style="--c:var(--cool)">
-    <div class="top"><span class="op">P-04</span>
-      <span class="ttl">Leak-test sealing cap, designed in-house</span><span class="st">RELEASED</span></div>
-    <div class="body">
-      <div><div class="kpi">1 mo</div><div class="kpl">PILOT TO PRODUCTION STANDARD</div></div>
-      <dl>
-        <div><dt>Problem</dt><dd>Imported leak-test couplers were damaging shell pipes during test and generating <b>false rejects</b> &mdash; good product scrapped by the test itself.</dd></div>
-        <div><dt>Method</dt><dd>Designed a replacement sealing cap in SolidWorks, dimensioned to GD&amp;T, to seal without marking the part.</dd></div>
-        <div><dt>Validation</dt><dd>Proved over a one-month pilot run on the line, then released as the standard tool in place of the import.</dd></div>
-      </dl>
-    </div>
-  </article>
-
-  <article class="wo rv" style="--c:var(--ok)">
-    <div class="top"><span class="op">P-05</span>
-      <span class="ttl">Line ergonomics &amp; workstation improvement</span><span class="st">IMPLEMENTED</span></div>
-    <div class="body">
-      <div><div class="kpi">REBA</div><div class="kpl">SCORED AND RE-FITTED</div></div>
-      <dl>
-        <div><dt>Problem</dt><dd>Operators at high-frequency stations were carrying avoidable physical load, and plant noise had never been mapped against the layout.</dd></div>
-        <div><dt>Method</dt><dd>Scored the workstations with REBA, then specified screw-gun balancers and stator lifters at the stations carrying the most load. Surveyed noise plant-wide and matched it to the layout.</dd></div>
-      </dl>
-    </div>
-  </article>
-
-  <article class="wo rv" style="--c:var(--cool)">
-    <div class="top"><span class="op">P-06</span>
-      <span class="ttl">Tool localization &amp; cost reduction</span><span class="st">IMPLEMENTED</span></div>
-    <div class="body">
-      <div><div class="kpi">2 tools</div><div class="kpl">CONSUMABLES RE-SOURCED</div></div>
-      <dl>
-        <div><dt>Problem</dt><dd>Consumable tooling on the compressor line was driving both cost per part and changeover downtime &mdash; abrasive film at shaft super-finishing, and drill bits wearing faster than the schedule allowed.</dd></div>
-        <div><dt>Method</dt><dd>Sourced and evaluated a higher-yield abrasive film roll, holding the same surface quality with more output per roll. Separately evaluated drill bit coatings to extend tool life.</dd></div>
-      </dl>
-    </div>
-  </article>
-
-  <article class="wo rv" style="--c:var(--warn)">
-    <div class="top"><span class="op">P-07</span>
-      <span class="ttl">Capital justification &mdash; N<sub>2</sub> purge &amp; capping</span><span class="st">SUBMITTED</span></div>
-    <div class="body">
-      <div><div class="kpi">2 lines</div><div class="kpl">FEASIBILITY AND COST-BENEFIT</div></div>
-      <dl>
-        <div><dt>Problem</dt><dd>Nitrogen purge and capping were run manually across two finishing lines &mdash; a candidate for automation, but one that needed a business case before anyone would fund it.</dd></div>
-        <div><dt>Method</dt><dd>On a three-person team, assessed the manufacturing feasibility of automating both operations: what the equipment would have to do, where it would sit, and what it would displace. The cost-benefit study went to Korean headquarters.</dd></div>
-      </dl>
-    </div>
-  </article>
-
-  <article class="wo rv" style="--c:var(--cool)">
-    <div class="top"><span class="op">P-08</span>
-      <span class="ttl">Patient intake optimization model</span><span class="st">UIC</span></div>
-    <div class="body">
-      <div><div class="kpi">120/mo</div><div class="kpl">PATIENTS, OPTIMIZED ALLOCATION</div></div>
-      <dl>
-        <div><dt>Problem</dt><dd>Allocate a fixed pool of rooms and staff across competing surgical treatments when demand varies &mdash; the classic capacity problem, set in a hospital rather than a plant.</dd></div>
-        <div><dt>Method</dt><dd>Built a linear programming model for Northwestern Memorial Hospital allocating <b>40 rooms</b> and <b>120 staff</b> across four surgical treatments, validated in Excel Solver and by Simplex.</dd></div>
-      </dl>
-    </div>
-  </article>
-
-  <article class="wo rv" style="--c:var(--ok)">
-    <div class="top"><span class="op">P-09</span>
-      <span class="ttl">Ergonomic analysis of lecture hall seating</span><span class="st">UIC</span></div>
-    <div class="body">
-      <div><div class="kpi">RULA</div><div class="kpl">HUMAN-TASK-ENVIRONMENT STUDY</div></div>
-      <dl>
-        <div><dt>Problem</dt><dd>Fixed lecture hall seating at UIC forced sustained awkward posture across a population with a wide range of body dimensions.</dd></div>
-        <div><dt>Method</dt><dd>Applied RULA assessment, anthropometric analysis and a Human-Task-Environment framework to identify where the design failed its users, and proposed a redesign.</dd></div>
-      </dl>
-    </div>
-  </article>
-
-  <article class="wo rv" style="--c:var(--warn)">
-    <div class="top"><span class="op">P-10</span>
-      <span class="ttl">VR-based training prototype</span><span class="st">PROTOTYPE</span></div>
-    <div class="body">
-      <div><div class="kpi">VR</div><div class="kpl">PROCEDURAL TRAINING BUILD</div></div>
-      <dl>
-        <div><dt>Problem</dt><dd>Procedural training is hard to deliver through documents alone &mdash; the learner needs to see the sequence and the hand position, not read about them.</dd></div>
-        <div><dt>Method</dt><dd>Designed an immersive VR training prototype in Unreal Engine covering DIY home repair scenarios, then produced integrated VR and video content in DaVinci Resolve.</dd></div>
-      </dl>
-    </div>
-  </article>
-
-</div></section>
-
-<section id="results"><div class="shell">
-  <div class="head rv"><span>04</span><h2>Readouts</h2></div>
-  <div class="ledger rv">
-    <div><div class="v">40+</div><div class="k">Operations documented in the plant MES</div></div>
-    <div><div class="v">60+</div><div class="k">Operators trained to standard work</div></div>
-    <div><div class="v">9</div><div class="k">Stations in the capability study</div></div>
-    <div><div class="v">8</div><div class="k">Operators redeployed by automation</div></div>
-    <div><div class="v">6</div><div class="k">Suppliers qualified and audited</div></div>
-    <div><div class="v">30+</div><div class="k">Incoming lots inspected at Delphi TVS</div></div>
+    <p class="direct"><a href="mailto:sethuraman06k@gmail.com">sethuraman06k@gmail.com</a> &nbsp; <a href="tel:+13122969015">(312) 296-9015</a></p>
   </div>
-</div></section>
+</section>
 
-<section id="spec"><div class="shell">
-  <div class="head rv"><span>05</span><h2>Specification</h2></div>
-  <div class="spec rv">
-    <div><h4>Quality</h4><p>SPC · Cp/Cpk · Gage R&amp;R · MSA · DOE · PFMEA · Control plans · CAPA · GD&amp;T</p></div>
-    <div><h4>Improvement</h4><p>Six Sigma · DMAIC · 8D · Root cause analysis · Five Why · Fishbone · Pareto · Poka-yoke</p></div>
-    <div><h4>Methods</h4><p>Time studies · Line balancing · Takt time · Standard work · NPI · Production readiness</p></div>
-    <div><h4>Software</h4><p>SolidWorks · AutoCAD · Inventor · Mastercam · Minitab · MCube · Excel · MS Project · SAP</p></div>
-    <div><h4>Education</h4><p>MS Industrial Engineering — University of Illinois Chicago, GPA 3.9<br>
-      BE Mechanical Engineering — Rajalakshmi Engineering College, GPA 3.6</p></div>
-    <div><h4>Certification</h4><p>Lean Six Sigma Green Belt — UIC, 2025<br>
-      Foundations of Data Analysis — Minitab, 2025</p></div>
-  </div>
-</div></section>
+</main>
 
-<section class="end" id="end"><div class="shell">
-  <h2>Put me on a line.</h2>
-  <p>Open to process, manufacturing, quality and industrial engineering roles.
-    Based in Chicago, ready to relocate.</p>
-  <div class="acts">
-    <a class="pri" href="mailto:sethuraman06k@gmail.com">Email me</a>
-    <a href="Sethuraman_Karunanithi_Resume.pdf" download>Download resume</a>
-    <a href="https://www.linkedin.com/in/sethuramankarunanithi/">LinkedIn</a>
-  </div>
-</div></section>
-<footer>SETHURAMAN KARUNANITHI &#183; CHICAGO, ILLINOIS &#183; 2026</footer>
-
+<footer>
+  <div class="wrap">Sethuraman Karunanithi, Chicago, Illinois, 2026</div>
+</footer>
 <script>
-(function(){
-  var C=2*Math.PI*50;
-  [].forEach.call(document.querySelectorAll('.g'),function(g){
-    var a=g.querySelector('.arc'), p=+g.dataset.pct;
-    g.style.setProperty('--len',C.toFixed(1));
-    g.style.setProperty('--off',(C*(1-p/100)).toFixed(1));
-  });
-  var io=new IntersectionObserver(function(es){
-    es.forEach(function(e){ if(e.isIntersecting){e.target.classList.add('on','rv');e.target.classList.add('on');io.unobserve(e.target);} });
-  },{threshold:.2});
-  [].forEach.call(document.querySelectorAll('.g,.rv'),function(e){io.observe(e);});
-  var pr=document.getElementById('prog');
-  addEventListener('scroll',function(){
-    var h=document.documentElement;
-    pr.style.width=(h.scrollTop/(h.scrollHeight-h.clientHeight)*100)+'%';
-  },{passive:true});
-})();
+(function(){var mq=window.matchMedia('(max-width:760px)');function set(){document.querySelectorAll('details.how').forEach(function(d){d.open=!mq.matches})}set();if(mq.addEventListener){mq.addEventListener('change',set)}else if(mq.addListener){mq.addListener(set)}})();
 </script>
-</body></html>
+</body>
+</html>
